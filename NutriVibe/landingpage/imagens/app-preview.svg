@@ -1,0 +1,45 @@
+<svg width="780" height="620" viewBox="0 0 780 620" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+    <title id="title">Prévia do aplicativo NutriVibe</title>
+    <desc id="desc">Mockup de interface com tela inicial, registro alimentar, recomendações e pontos.</desc>
+    <rect width="780" height="620" rx="34" fill="#F8FAF7"/>
+    <circle cx="112" cy="96" r="70" fill="#E8F5E9"/>
+    <circle cx="684" cy="512" r="92" fill="#FFF3E0"/>
+    <rect x="205" y="56" width="370" height="508" rx="42" fill="#263238"/>
+    <rect x="225" y="78" width="330" height="464" rx="30" fill="#FFFFFF"/>
+    <rect x="250" y="112" width="140" height="16" rx="8" fill="#2E7D32"/>
+    <rect x="250" y="140" width="260" height="70" rx="18" fill="#E8F5E9"/>
+    <circle cx="286" cy="175" r="22" fill="#4CAF50"/>
+    <path d="M275 176C279 184 286 188 294 190C302 185 307 179 309 169" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+    <rect x="322" y="160" width="150" height="12" rx="6" fill="#2E7D32"/>
+    <rect x="322" y="182" width="108" height="10" rx="5" fill="#607D8B"/>
+    <rect x="250" y="232" width="260" height="58" rx="16" fill="#FFF3E0"/>
+    <rect x="272" y="253" width="76" height="12" rx="6" fill="#B85F00"/>
+    <rect x="272" y="271" width="144" height="8" rx="4" fill="#FF9800"/>
+    <circle cx="474" cy="261" r="18" fill="#FFD54F"/>
+    <rect x="250" y="310" width="120" height="102" rx="18" fill="#E3F2FD"/>
+    <rect x="392" y="310" width="118" height="102" rx="18" fill="#E8F5E9"/>
+    <rect x="272" y="335" width="62" height="10" rx="5" fill="#126AA4"/>
+    <rect x="272" y="356" width="76" height="8" rx="4" fill="#42A5F5"/>
+    <rect x="414" y="335" width="54" height="10" rx="5" fill="#2E7D32"/>
+    <rect x="414" y="356" width="70" height="8" rx="4" fill="#4CAF50"/>
+    <rect x="250" y="435" width="260" height="66" rx="18" fill="#2E7D32"/>
+    <rect x="272" y="457" width="118" height="12" rx="6" fill="#FFFFFF"/>
+    <rect x="272" y="478" width="184" height="8" rx="4" fill="#E8F5E9"/>
+    <circle cx="482" cy="468" r="18" fill="#FFD54F"/>
+    <rect x="118" y="176" width="178" height="126" rx="24" fill="#FFFFFF" stroke="#DDE9DD" stroke-width="2"/>
+    <rect x="142" y="202" width="94" height="12" rx="6" fill="#2E7D32"/>
+    <rect x="142" y="230" width="132" height="12" rx="6" fill="#E8F5E9"/>
+    <rect x="142" y="254" width="106" height="12" rx="6" fill="#E8F5E9"/>
+    <circle cx="256" cy="248" r="18" fill="#FF9800"/>
+    <rect x="504" y="166" width="158" height="138" rx="24" fill="#FFFFFF" stroke="#DDE9DD" stroke-width="2"/>
+    <rect x="528" y="194" width="80" height="12" rx="6" fill="#2E7D32"/>
+    <path d="M532 262C548 232 570 246 584 224C594 253 620 238 634 268" stroke="#4CAF50" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="104" y="352" width="178" height="118" rx="24" fill="#FFFFFF" stroke="#DDE9DD" stroke-width="2"/>
+    <rect x="128" y="380" width="92" height="12" rx="6" fill="#B85F00"/>
+    <rect x="128" y="408" width="130" height="14" rx="7" fill="#FFD54F"/>
+    <rect x="128" y="436" width="82" height="12" rx="6" fill="#FFF3E0"/>
+    <rect x="510" y="370" width="168" height="116" rx="24" fill="#FFFFFF" stroke="#DDE9DD" stroke-width="2"/>
+    <rect x="535" y="398" width="92" height="12" rx="6" fill="#126AA4"/>
+    <rect x="535" y="426" width="118" height="12" rx="6" fill="#E3F2FD"/>
+    <rect x="535" y="454" width="76" height="12" rx="6" fill="#E3F2FD"/>
+</svg>

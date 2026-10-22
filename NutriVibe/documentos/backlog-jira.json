@@ -1,0 +1,700 @@
+{
+  "schema_version": "1.0",
+  "project": {
+    "name": "NutriVibe",
+    "jira_project_name": "trabalho",
+    "jira_project_key": "TRAB",
+    "jira_base_url": "https://nutrivibeproject.atlassian.net",
+    "delivery": 3,
+    "academic_scope": "Front-end 100% HTML, CSS e JavaScript; sem back-end e sem banco de dados."
+  },
+  "export_date": "2026-10-22",
+  "source": "Tarefas TRAB-26 a TRAB-57 cadastradas no Jira e consultadas nesta conversa.",
+  "limitations": [
+    "As sprints S1/S2/S3 são planejamento por etiquetas, não sprints nativas confirmadas.",
+    "Os responsáveis e datas não estão definidos.",
+    "Status 'A fazer' não significa que a implementação esteja ausente do repositório: o Codex deve inspecionar o código.",
+    "Não substituir requisitos acadêmicos por hipóteses sem registrar a decisão."
+  ],
+  "codex_instructions": {
+    "objective": "Analisar o repositório existente e implementar progressivamente o MVP da 3ª entrega, seguindo o backlog em ordem de dependências.",
+    "workflow": [
+      "Inspecionar arquivos e identificar funcionalidades já implementadas, preservando trabalho existente.",
+      "Comparar cada tarefa do backlog com o código antes de implementar.",
+      "Trabalhar primeiro na Sprint 1, depois Sprint 2, depois Sprint 3; respeitar dependências.",
+      "Não usar back-end, banco de dados ou APIs externas obrigatórias; usar dados locais fictícios quando necessário.",
+      "Validar no navegador e registrar evidências verificáveis; não afirmar que algo foi testado sem executar.",
+      "Não alterar status no Jira sem permissão do usuário e verificação de critérios de aceite.",
+      "Não criar funcionalidades clínicas, diagnósticos ou prescrição nutricional."
+    ],
+    "mvp_user_flow": [
+      "Início",
+      "Perfil e preferências (simulados)",
+      "Registro de alimentos",
+      "Resumo visual",
+      "Sugestões educativas"
+    ],
+    "global_definition_of_done": [
+      "Código HTML/CSS/JS integrado e organizado",
+      "Navegação funcional e sem links quebrados",
+      "Interações reais demonstráveis quando aplicáveis",
+      "Formulários e estados vazios validados",
+      "Responsivo em 360px, 768px e 1280px",
+      "Sem erros bloqueantes no console",
+      "Evidências reais e documentação atualizada"
+    ]
+  },
+  "kanban": {
+    "recommended_columns": [
+      "A fazer",
+      "Em andamento",
+      "Revisão/Testes",
+      "Feito"
+    ],
+    "native_board_reconfigured": false
+  },
+  "sprints": [
+    {
+      "id": "S1",
+      "name": "Estrutura e navegação",
+      "goal": "Verificar HTML semântico, organização de pastas, identidade visual, telas principais e fluxo navegável.",
+      "native_jira_sprint_created": false,
+      "start_date": null,
+      "end_date": null,
+      "task_keys": [
+        "TRAB-26",
+        "TRAB-27",
+        "TRAB-28",
+        "TRAB-29",
+        "TRAB-30",
+        "TRAB-31",
+        "TRAB-32",
+        "TRAB-33",
+        "TRAB-55"
+      ]
+    },
+    {
+      "id": "S2",
+      "name": "JavaScript e fluxo funcional",
+      "goal": "Verificar validações, DOM, registro, filtros, persistência simulada, resumos e sugestões educativas.",
+      "native_jira_sprint_created": false,
+      "start_date": null,
+      "end_date": null,
+      "task_keys": [
+        "TRAB-34",
+        "TRAB-35",
+        "TRAB-36",
+        "TRAB-37",
+        "TRAB-38",
+        "TRAB-39",
+        "TRAB-40",
+        "TRAB-41",
+        "TRAB-42",
+        "TRAB-43",
+        "TRAB-56"
+      ]
+    },
+    {
+      "id": "S3",
+      "name": "Consolidação e apresentação",
+      "goal": "Verificar responsividade, testes, relatório com evidências, PDF e execução oral ao professor.",
+      "native_jira_sprint_created": false,
+      "start_date": null,
+      "end_date": null,
+      "task_keys": [
+        "TRAB-44",
+        "TRAB-45",
+        "TRAB-46",
+        "TRAB-47",
+        "TRAB-48",
+        "TRAB-49",
+        "TRAB-50",
+        "TRAB-51",
+        "TRAB-52",
+        "TRAB-53",
+        "TRAB-54",
+        "TRAB-57"
+      ]
+    }
+  ],
+  "total_tasks": 32,
+  "tasks": [
+    {
+      "jira_key": "TRAB-26",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-26",
+      "summary": "[E3][S1] Organizar estrutura HTML, CSS e JavaScript do MVP",
+      "title": "Organizar estrutura HTML, CSS e JavaScript do MVP",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "Highest",
+      "assignee": null,
+      "labels": [
+        "arquitetura-front",
+        "entrega-3",
+        "mvp",
+        "sprint-1"
+      ],
+      "planned_sprint": "S1",
+      "description_markdown": "**Objetivo:** consolidar a estrutura 100% front-end sem back-end nem banco de dados.\n\n**Atividades:** organizar arquivos por páginas, estilos, scripts, componentes e dados simulados; criar HTML semântico; padronizar nomes, classes e imports; revisar caminhos e execução local.\n\n**Critérios de aceite:** páginas carregam sem erros; HTML/CSS/JS separados; sem dependência obrigatória de servidor ou banco; estrutura documentada; evidências da árvore de arquivos e execução.\n\n**Origem:** exigências da 3ª entrega — estrutura e organização do projeto.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-27",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-27",
+      "summary": "[E3][S1] Implementar HTML semântico das telas principais",
+      "title": "Implementar HTML semântico das telas principais",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-1"
+      ],
+      "planned_sprint": "S1",
+      "description_markdown": "**Objetivo:** Implementar HTML semântico das telas principais no MVP NutriVibe.\n\n**Atividades:** implementar e integrar ao fluxo da aplicação da terceira entrega, com HTML semântico, CSS organizado e JavaScript quando necessário. Considerar telas de início, perfil/preferências, registro alimentar, resumo e educação alimentar. Usar somente dados simulados no front-end.\n\n**Critérios de aceite:** comportamento demonstrável na aplicação em execução; interação funcional quando aplicável; navegação e estados de erro validados; layout legível em celular e desktop; evidência anexada ou vinculada.\n\n**Definição de pronto:** código integrado, sem erros bloqueantes no console, revisado, testado e com evidência real.\n\n**Planejamento:** S1; data a definir pelo grupo. Sem backend e sem banco de dados.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-28",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-28",
+      "summary": "[E3][S1] Padronizar identidade visual e componentes CSS",
+      "title": "Padronizar identidade visual e componentes CSS",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-1"
+      ],
+      "planned_sprint": "S1",
+      "description_markdown": "**Objetivo:** Padronizar identidade visual e componentes CSS no MVP NutriVibe.\n\n**Atividades:** implementar e integrar ao fluxo da aplicação da terceira entrega, com HTML semântico, CSS organizado e JavaScript quando necessário. Considerar telas de início, perfil/preferências, registro alimentar, resumo e educação alimentar. Usar somente dados simulados no front-end.\n\n**Critérios de aceite:** comportamento demonstrável na aplicação em execução; interação funcional quando aplicável; navegação e estados de erro validados; layout legível em celular e desktop; evidência anexada ou vinculada.\n\n**Definição de pronto:** código integrado, sem erros bloqueantes no console, revisado, testado e com evidência real.\n\n**Planejamento:** S1; data a definir pelo grupo. Sem backend e sem banco de dados.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-29",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-29",
+      "summary": "[E3][S1] Implementar navegação e fluxo entre páginas",
+      "title": "Implementar navegação e fluxo entre páginas",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-1"
+      ],
+      "planned_sprint": "S1",
+      "description_markdown": "**Objetivo:** Implementar navegação e fluxo entre páginas no MVP NutriVibe.\n\n**Atividades:** implementar e integrar ao fluxo da aplicação da terceira entrega, com HTML semântico, CSS organizado e JavaScript quando necessário. Considerar telas de início, perfil/preferências, registro alimentar, resumo e educação alimentar. Usar somente dados simulados no front-end.\n\n**Critérios de aceite:** comportamento demonstrável na aplicação em execução; interação funcional quando aplicável; navegação e estados de erro validados; layout legível em celular e desktop; evidência anexada ou vinculada.\n\n**Definição de pronto:** código integrado, sem erros bloqueantes no console, revisado, testado e com evidência real.\n\n**Planejamento:** S1; data a definir pelo grupo. Sem backend e sem banco de dados.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-30",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-30",
+      "summary": "[E3][S1] Implementar telas de perfil e preferências",
+      "title": "Implementar telas de perfil e preferências",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-1"
+      ],
+      "planned_sprint": "S1",
+      "description_markdown": "**Objetivo:** Implementar telas de perfil e preferências no MVP NutriVibe.\n\n**Atividades:** implementar e integrar ao fluxo da aplicação da terceira entrega, com HTML semântico, CSS organizado e JavaScript quando necessário. Considerar telas de início, perfil/preferências, registro alimentar, resumo e educação alimentar. Usar somente dados simulados no front-end.\n\n**Critérios de aceite:** comportamento demonstrável na aplicação em execução; interação funcional quando aplicável; navegação e estados de erro validados; layout legível em celular e desktop; evidência anexada ou vinculada.\n\n**Definição de pronto:** código integrado, sem erros bloqueantes no console, revisado, testado e com evidência real.\n\n**Planejamento:** S1; data a definir pelo grupo. Sem backend e sem banco de dados.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-31",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-31",
+      "summary": "[E3][S1] Implementar menu móvel e estados de navegação",
+      "title": "Implementar menu móvel e estados de navegação",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-1"
+      ],
+      "planned_sprint": "S1",
+      "description_markdown": "**Objetivo:** Implementar menu móvel e estados de navegação no MVP NutriVibe.\n\n**Atividades:** implementar e integrar ao fluxo da aplicação da terceira entrega, com HTML semântico, CSS organizado e JavaScript quando necessário. Considerar telas de início, perfil/preferências, registro alimentar, resumo e educação alimentar. Usar somente dados simulados no front-end.\n\n**Critérios de aceite:** comportamento demonstrável na aplicação em execução; interação funcional quando aplicável; navegação e estados de erro validados; layout legível em celular e desktop; evidência anexada ou vinculada.\n\n**Definição de pronto:** código integrado, sem erros bloqueantes no console, revisado, testado e com evidência real.\n\n**Planejamento:** S1; data a definir pelo grupo. Sem backend e sem banco de dados.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-32",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-32",
+      "summary": "[E3][S1] Conferir telas implementadas com protótipo da 2ª entrega",
+      "title": "Conferir telas implementadas com protótipo da 2ª entrega",
+      "issue_type": "Protótipo",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-1"
+      ],
+      "planned_sprint": "S1",
+      "description_markdown": "**Objetivo:** Conferir telas implementadas com protótipo da 2ª entrega no MVP NutriVibe.\n\n**Atividades:** implementar e integrar ao fluxo da aplicação da terceira entrega, com HTML semântico, CSS organizado e JavaScript quando necessário. Considerar telas de início, perfil/preferências, registro alimentar, resumo e educação alimentar. Usar somente dados simulados no front-end.\n\n**Critérios de aceite:** comportamento demonstrável na aplicação em execução; interação funcional quando aplicável; navegação e estados de erro validados; layout legível em celular e desktop; evidência anexada ou vinculada.\n\n**Definição de pronto:** código integrado, sem erros bloqueantes no console, revisado, testado e com evidência real.\n\n**Planejamento:** S1; data a definir pelo grupo. Sem backend e sem banco de dados.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-33",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-33",
+      "summary": "[E3][S1] Definir escopo MVP e critérios de pronto",
+      "title": "Definir escopo MVP e critérios de pronto",
+      "issue_type": "Scrum/Kanban",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-1"
+      ],
+      "planned_sprint": "S1",
+      "description_markdown": "**Objetivo:** Definir escopo MVP e critérios de pronto no NutriVibe.\n**Implementação:** usar HTML/CSS/JavaScript e dados simulados locais; integrar ao fluxo início → perfil/preferências → registro → resumo → sugestões. Sem servidor, back-end ou banco de dados.\n**Critérios de aceite:** funcionalidade executada e validada no navegador, com entradas inválidas tratadas, feedback ao usuário, adaptação a telas menores e evidências reais. Recomendações são educativas, não prescrição nutricional.\n**Definição de pronto:** código revisado, integrado, sem erros bloqueantes, com teste e evidência. Planejado para S1.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-34",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-34",
+      "summary": "[E3][S2] Validar formulários com JavaScript",
+      "title": "Validar formulários com JavaScript",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Objetivo:** Validar formulários com JavaScript no NutriVibe.\n**Implementação:** usar HTML/CSS/JavaScript e dados simulados locais; integrar ao fluxo início → perfil/preferências → registro → resumo → sugestões. Sem servidor, back-end ou banco de dados.\n**Critérios de aceite:** funcionalidade executada e validada no navegador, com entradas inválidas tratadas, feedback ao usuário, adaptação a telas menores e evidências reais. Recomendações são educativas, não prescrição nutricional.\n**Definição de pronto:** código revisado, integrado, sem erros bloqueantes, com teste e evidência. Planejado para S2.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-35",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-35",
+      "summary": "[E3][S2] Criar catálogo local de alimentos simulados",
+      "title": "Criar catálogo local de alimentos simulados",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Objetivo:** Criar catálogo local de alimentos simulados no NutriVibe.\n**Implementação:** usar HTML/CSS/JavaScript e dados simulados locais; integrar ao fluxo início → perfil/preferências → registro → resumo → sugestões. Sem servidor, back-end ou banco de dados.\n**Critérios de aceite:** funcionalidade executada e validada no navegador, com entradas inválidas tratadas, feedback ao usuário, adaptação a telas menores e evidências reais. Recomendações são educativas, não prescrição nutricional.\n**Definição de pronto:** código revisado, integrado, sem erros bloqueantes, com teste e evidência. Planejado para S2.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-36",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-36",
+      "summary": "[E3][S2] Implementar registro e remoção de alimentos",
+      "title": "Implementar registro e remoção de alimentos",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Objetivo:** Implementar registro e remoção de alimentos no NutriVibe.\n**Implementação:** usar HTML/CSS/JavaScript e dados simulados locais; integrar ao fluxo início → perfil/preferências → registro → resumo → sugestões. Sem servidor, back-end ou banco de dados.\n**Critérios de aceite:** funcionalidade executada e validada no navegador, com entradas inválidas tratadas, feedback ao usuário, adaptação a telas menores e evidências reais. Recomendações são educativas, não prescrição nutricional.\n**Definição de pronto:** código revisado, integrado, sem erros bloqueantes, com teste e evidência. Planejado para S2.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-37",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-37",
+      "summary": "[E3][S2] Implementar pesquisa e filtros de alimentos",
+      "title": "Implementar pesquisa e filtros de alimentos",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Objetivo:** Implementar pesquisa e filtros de alimentos no NutriVibe.\n**Implementação:** usar HTML/CSS/JavaScript e dados simulados locais; integrar ao fluxo início → perfil/preferências → registro → resumo → sugestões. Sem servidor, back-end ou banco de dados.\n**Critérios de aceite:** funcionalidade executada e validada no navegador, com entradas inválidas tratadas, feedback ao usuário, adaptação a telas menores e evidências reais. Recomendações são educativas, não prescrição nutricional.\n**Definição de pronto:** código revisado, integrado, sem erros bloqueantes, com teste e evidência. Planejado para S2.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-38",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-38",
+      "summary": "[E3][S2] Armazenar registros fictícios localmente",
+      "title": "Armazenar registros fictícios localmente",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Objetivo:** Armazenar registros fictícios localmente no NutriVibe.\n**Implementação:** usar HTML/CSS/JavaScript e dados simulados locais; integrar ao fluxo início → perfil/preferências → registro → resumo → sugestões. Sem servidor, back-end ou banco de dados.\n**Critérios de aceite:** funcionalidade executada e validada no navegador, com entradas inválidas tratadas, feedback ao usuário, adaptação a telas menores e evidências reais. Recomendações são educativas, não prescrição nutricional.\n**Definição de pronto:** código revisado, integrado, sem erros bloqueantes, com teste e evidência. Planejado para S2.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-39",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-39",
+      "summary": "[E3][S2] Criar resumo visual dinâmico da alimentação",
+      "title": "Criar resumo visual dinâmico da alimentação",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Objetivo:** Criar resumo visual dinâmico da alimentação no NutriVibe.\n**Implementação:** usar HTML/CSS/JavaScript e dados simulados locais; integrar ao fluxo início → perfil/preferências → registro → resumo → sugestões. Sem servidor, back-end ou banco de dados.\n**Critérios de aceite:** funcionalidade executada e validada no navegador, com entradas inválidas tratadas, feedback ao usuário, adaptação a telas menores e evidências reais. Recomendações são educativas, não prescrição nutricional.\n**Definição de pronto:** código revisado, integrado, sem erros bloqueantes, com teste e evidência. Planejado para S2.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-40",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-40",
+      "summary": "[E3][S2] Implementar sugestões educativas demonstrativas",
+      "title": "Implementar sugestões educativas demonstrativas",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Objetivo:** Implementar sugestões educativas demonstrativas no NutriVibe.\n**Implementação:** usar HTML/CSS/JavaScript e dados simulados locais; integrar ao fluxo início → perfil/preferências → registro → resumo → sugestões. Sem servidor, back-end ou banco de dados.\n**Critérios de aceite:** funcionalidade executada e validada no navegador, com entradas inválidas tratadas, feedback ao usuário, adaptação a telas menores e evidências reais. Recomendações são educativas, não prescrição nutricional.\n**Definição de pronto:** código revisado, integrado, sem erros bloqueantes, com teste e evidência. Planejado para S2.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-41",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-41",
+      "summary": "[E3][S2] Implementar mensagens e estados vazios",
+      "title": "Implementar mensagens e estados vazios",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Escopo:** Implementar mensagens e estados vazios no NutriVibe (terceira entrega).\n\n**Orientações:** implementação 100% front-end com HTML semântico, CSS estruturado e JavaScript para eventos, validações e DOM; quando necessário utilizar catálogo simulado e localStorage. Fluxo início → preferências → registro → resumo → sugestões. Sem back-end e sem banco de dados.\n\n**Critérios de aceite:** executar a aplicação e demonstrar o comportamento correspondente; testar casos positivos, negativos e estados vazios; testar largura 360px, 768px, 1280px; garantir navegação sem links quebrados, console sem erros bloqueantes, retorno claro ao usuário e evidências reais.\n\n**Definição de pronto:** código revisado, integrado, testado e evidência registrada. Ciclo S2; sem data fixada.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-42",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-42",
+      "summary": "[E3][S2] Integrar fluxo completo do MVP",
+      "title": "Integrar fluxo completo do MVP",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Escopo:** Integrar fluxo completo do MVP no NutriVibe (terceira entrega).\n\n**Orientações:** implementação 100% front-end com HTML semântico, CSS estruturado e JavaScript para eventos, validações e DOM; quando necessário utilizar catálogo simulado e localStorage. Fluxo início → preferências → registro → resumo → sugestões. Sem back-end e sem banco de dados.\n\n**Critérios de aceite:** executar a aplicação e demonstrar o comportamento correspondente; testar casos positivos, negativos e estados vazios; testar largura 360px, 768px, 1280px; garantir navegação sem links quebrados, console sem erros bloqueantes, retorno claro ao usuário e evidências reais.\n\n**Definição de pronto:** código revisado, integrado, testado e evidência registrada. Ciclo S2; sem data fixada.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-43",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-43",
+      "summary": "[E3][S2] Criar conteúdo educativo navegável",
+      "title": "Criar conteúdo educativo navegável",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Escopo:** Criar conteúdo educativo navegável no NutriVibe (terceira entrega).\n\n**Orientações:** implementação 100% front-end com HTML semântico, CSS estruturado e JavaScript para eventos, validações e DOM; quando necessário utilizar catálogo simulado e localStorage. Fluxo início → preferências → registro → resumo → sugestões. Sem back-end e sem banco de dados.\n\n**Critérios de aceite:** executar a aplicação e demonstrar o comportamento correspondente; testar casos positivos, negativos e estados vazios; testar largura 360px, 768px, 1280px; garantir navegação sem links quebrados, console sem erros bloqueantes, retorno claro ao usuário e evidências reais.\n\n**Definição de pronto:** código revisado, integrado, testado e evidência registrada. Ciclo S2; sem data fixada.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-44",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-44",
+      "summary": "[E3][S3] Adaptar telas a celular tablet e desktop",
+      "title": "Adaptar telas a celular tablet e desktop",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Escopo:** Adaptar telas a celular tablet e desktop no NutriVibe (terceira entrega).\n\n**Orientações:** implementação 100% front-end com HTML semântico, CSS estruturado e JavaScript para eventos, validações e DOM; quando necessário utilizar catálogo simulado e localStorage. Fluxo início → preferências → registro → resumo → sugestões. Sem back-end e sem banco de dados.\n\n**Critérios de aceite:** executar a aplicação e demonstrar o comportamento correspondente; testar casos positivos, negativos e estados vazios; testar largura 360px, 768px, 1280px; garantir navegação sem links quebrados, console sem erros bloqueantes, retorno claro ao usuário e evidências reais.\n\n**Definição de pronto:** código revisado, integrado, testado e evidência registrada. Ciclo S3; sem data fixada.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-45",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-45",
+      "summary": "[E3][S3] Revisar acessibilidade e usabilidade",
+      "title": "Revisar acessibilidade e usabilidade",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Escopo:** Revisar acessibilidade e usabilidade no NutriVibe (terceira entrega).\n\n**Orientações:** implementação 100% front-end com HTML semântico, CSS estruturado e JavaScript para eventos, validações e DOM; quando necessário utilizar catálogo simulado e localStorage. Fluxo início → preferências → registro → resumo → sugestões. Sem back-end e sem banco de dados.\n\n**Critérios de aceite:** executar a aplicação e demonstrar o comportamento correspondente; testar casos positivos, negativos e estados vazios; testar largura 360px, 768px, 1280px; garantir navegação sem links quebrados, console sem erros bloqueantes, retorno claro ao usuário e evidências reais.\n\n**Definição de pronto:** código revisado, integrado, testado e evidência registrada. Ciclo S3; sem data fixada.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-46",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-46",
+      "summary": "[E3][S3] Executar testes funcionais e corrigir bugs",
+      "title": "Executar testes funcionais e corrigir bugs",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Escopo:** Executar testes funcionais e corrigir bugs no NutriVibe (terceira entrega).\n\n**Orientações:** implementação 100% front-end com HTML semântico, CSS estruturado e JavaScript para eventos, validações e DOM; quando necessário utilizar catálogo simulado e localStorage. Fluxo início → preferências → registro → resumo → sugestões. Sem back-end e sem banco de dados.\n\n**Critérios de aceite:** executar a aplicação e demonstrar o comportamento correspondente; testar casos positivos, negativos e estados vazios; testar largura 360px, 768px, 1280px; garantir navegação sem links quebrados, console sem erros bloqueantes, retorno claro ao usuário e evidências reais.\n\n**Definição de pronto:** código revisado, integrado, testado e evidência registrada. Ciclo S3; sem data fixada.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-47",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-47",
+      "summary": "[E3][S3] Revisar organização e legibilidade do código",
+      "title": "Revisar organização e legibilidade do código",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Escopo:** Revisar organização e legibilidade do código no NutriVibe (terceira entrega).\n\n**Orientações:** implementação 100% front-end com HTML semântico, CSS estruturado e JavaScript para eventos, validações e DOM; quando necessário utilizar catálogo simulado e localStorage. Fluxo início → preferências → registro → resumo → sugestões. Sem back-end e sem banco de dados.\n\n**Critérios de aceite:** executar a aplicação e demonstrar o comportamento correspondente; testar casos positivos, negativos e estados vazios; testar largura 360px, 768px, 1280px; garantir navegação sem links quebrados, console sem erros bloqueantes, retorno claro ao usuário e evidências reais.\n\n**Definição de pronto:** código revisado, integrado, testado e evidência registrada. Ciclo S3; sem data fixada.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-48",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-48",
+      "summary": "[E3][S3] Testar funcionamento em navegadores e resoluções",
+      "title": "Testar funcionamento em navegadores e resoluções",
+      "issue_type": "Front-End",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Escopo:** Testar funcionamento em navegadores e resoluções no NutriVibe (terceira entrega).\n\n**Orientações:** implementação 100% front-end com HTML semântico, CSS estruturado e JavaScript para eventos, validações e DOM; quando necessário utilizar catálogo simulado e localStorage. Fluxo início → preferências → registro → resumo → sugestões. Sem back-end e sem banco de dados.\n\n**Critérios de aceite:** executar a aplicação e demonstrar o comportamento correspondente; testar casos positivos, negativos e estados vazios; testar largura 360px, 768px, 1280px; garantir navegação sem links quebrados, console sem erros bloqueantes, retorno claro ao usuário e evidências reais.\n\n**Definição de pronto:** código revisado, integrado, testado e evidência registrada. Ciclo S3; sem data fixada.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-49",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-49",
+      "summary": "[E3][S3] Documentar evolução técnica desde a segunda entrega",
+      "title": "Documentar evolução técnica desde a segunda entrega",
+      "issue_type": "Documentação",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Objetivo:** Documentar evolução técnica desde a segunda entrega.\n\n**Atividades:** usar apenas fatos e evidências verificáveis do código HTML, CSS e JavaScript e das entregas anteriores; documentar telas, fluxo de navegação, validação de formulários, DOM, interações, responsividade e limitações. Incluir capturas de execução, arquivos organizados e testes; distribuir apresentação entre integrantes. Documento final deve seguir o modelo oficial de Avisos, ser exportado em PDF para submissão no Canvas e permitir apresentação com aplicativo aberto.\n\n**Critérios de aceite:** material completo, revisado, consistente com a aplicação real, identificado e pronto para demonstração. Pendências e dificuldades relatadas sem inventar funcionalidades realizadas.\n\n**Definição de pronto:** revisão cruzada, checklist assinalado e evidências vinculadas. Sprint 3 proposta, data pendente.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-50",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-50",
+      "summary": "[E3][S3] Documentar desafios soluções e pendências",
+      "title": "Documentar desafios soluções e pendências",
+      "issue_type": "Documentação",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Objetivo:** Documentar desafios soluções e pendências.\n\n**Atividades:** usar apenas fatos e evidências verificáveis do código HTML, CSS e JavaScript e das entregas anteriores; documentar telas, fluxo de navegação, validação de formulários, DOM, interações, responsividade e limitações. Incluir capturas de execução, arquivos organizados e testes; distribuir apresentação entre integrantes. Documento final deve seguir o modelo oficial de Avisos, ser exportado em PDF para submissão no Canvas e permitir apresentação com aplicativo aberto.\n\n**Critérios de aceite:** material completo, revisado, consistente com a aplicação real, identificado e pronto para demonstração. Pendências e dificuldades relatadas sem inventar funcionalidades realizadas.\n\n**Definição de pronto:** revisão cruzada, checklist assinalado e evidências vinculadas. Sprint 3 proposta, data pendente.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-51",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-51",
+      "summary": "[E3][S3] Capturar evidências reais da aplicação funcionando",
+      "title": "Capturar evidências reais da aplicação funcionando",
+      "issue_type": "Documentação",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Objetivo:** Capturar evidências reais da aplicação funcionando.\n\n**Atividades:** usar apenas fatos e evidências verificáveis do código HTML, CSS e JavaScript e das entregas anteriores; documentar telas, fluxo de navegação, validação de formulários, DOM, interações, responsividade e limitações. Incluir capturas de execução, arquivos organizados e testes; distribuir apresentação entre integrantes. Documento final deve seguir o modelo oficial de Avisos, ser exportado em PDF para submissão no Canvas e permitir apresentação com aplicativo aberto.\n\n**Critérios de aceite:** material completo, revisado, consistente com a aplicação real, identificado e pronto para demonstração. Pendências e dificuldades relatadas sem inventar funcionalidades realizadas.\n\n**Definição de pronto:** revisão cruzada, checklist assinalado e evidências vinculadas. Sprint 3 proposta, data pendente.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-52",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-52",
+      "summary": "[E3][S3] Montar PDF no modelo oficial da disciplina",
+      "title": "Montar PDF no modelo oficial da disciplina",
+      "issue_type": "Documentação",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Objetivo:** Montar PDF no modelo oficial da disciplina.\n\n**Atividades:** usar apenas fatos e evidências verificáveis do código HTML, CSS e JavaScript e das entregas anteriores; documentar telas, fluxo de navegação, validação de formulários, DOM, interações, responsividade e limitações. Incluir capturas de execução, arquivos organizados e testes; distribuir apresentação entre integrantes. Documento final deve seguir o modelo oficial de Avisos, ser exportado em PDF para submissão no Canvas e permitir apresentação com aplicativo aberto.\n\n**Critérios de aceite:** material completo, revisado, consistente com a aplicação real, identificado e pronto para demonstração. Pendências e dificuldades relatadas sem inventar funcionalidades realizadas.\n\n**Definição de pronto:** revisão cruzada, checklist assinalado e evidências vinculadas. Sprint 3 proposta, data pendente.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-53",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-53",
+      "summary": "[E3][S3] Preparar roteiro e ensaio da apresentação oral",
+      "title": "Preparar roteiro e ensaio da apresentação oral",
+      "issue_type": "Scrum/Kanban",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Objetivo:** Preparar roteiro e ensaio da apresentação oral.\n\n**Atividades:** usar apenas fatos e evidências verificáveis do código HTML, CSS e JavaScript e das entregas anteriores; documentar telas, fluxo de navegação, validação de formulários, DOM, interações, responsividade e limitações. Incluir capturas de execução, arquivos organizados e testes; distribuir apresentação entre integrantes. Documento final deve seguir o modelo oficial de Avisos, ser exportado em PDF para submissão no Canvas e permitir apresentação com aplicativo aberto.\n\n**Critérios de aceite:** material completo, revisado, consistente com a aplicação real, identificado e pronto para demonstração. Pendências e dificuldades relatadas sem inventar funcionalidades realizadas.\n\n**Definição de pronto:** revisão cruzada, checklist assinalado e evidências vinculadas. Sprint 3 proposta, data pendente.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-54",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-54",
+      "summary": "[E3][S3] Conferir checklist completo da terceira entrega",
+      "title": "Conferir checklist completo da terceira entrega",
+      "issue_type": "Scrum/Kanban",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "backlog-mvp",
+        "entrega-3",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Objetivo:** Conferir checklist completo da terceira entrega.\n\n**Atividades:** usar apenas fatos e evidências verificáveis do código HTML, CSS e JavaScript e das entregas anteriores; documentar telas, fluxo de navegação, validação de formulários, DOM, interações, responsividade e limitações. Incluir capturas de execução, arquivos organizados e testes; distribuir apresentação entre integrantes. Documento final deve seguir o modelo oficial de Avisos, ser exportado em PDF para submissão no Canvas e permitir apresentação com aplicativo aberto.\n\n**Critérios de aceite:** material completo, revisado, consistente com a aplicação real, identificado e pronto para demonstração. Pendências e dificuldades relatadas sem inventar funcionalidades realizadas.\n\n**Definição de pronto:** revisão cruzada, checklist assinalado e evidências vinculadas. Sprint 3 proposta, data pendente.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-55",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-55",
+      "summary": "[E3][S1] Planejamento e revisão da sprint — Estrutura e navegação",
+      "title": "Planejamento e revisão da sprint — Estrutura e navegação",
+      "issue_type": "Scrum/Kanban",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "entrega-3",
+        "gestao-scrum",
+        "sprint-1"
+      ],
+      "planned_sprint": "S1",
+      "description_markdown": "**Meta da sprint:** Verificar HTML semântico, organização de pastas, identidade visual, telas principais e fluxo navegável.\n\n**Planejamento:** revisar as tarefas com etiqueta sprint-1, definir responsáveis, capacidade e impedimentos; acompanhar diariamente pelo Kanban nas colunas A fazer, Em andamento, Revisão/Testes (se disponível) e Feito.\n\n**Revisão:** demonstrar funcionalidades executáveis e comparar com critérios de aceite. **Retrospectiva:** registrar melhorias, problemas e ações.\n\n**Condição de fechamento:** só marcar como Feito após revisão do incremento e registro das evidências. A sprint está apenas planejada por etiqueta; vinculação a sprint nativa depende da configuração do quadro Jira. Datas não definidas.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-56",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-56",
+      "summary": "[E3][S2] Planejamento e revisão da sprint — JavaScript e fluxo funcional",
+      "title": "Planejamento e revisão da sprint — JavaScript e fluxo funcional",
+      "issue_type": "Scrum/Kanban",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "entrega-3",
+        "gestao-scrum",
+        "sprint-2"
+      ],
+      "planned_sprint": "S2",
+      "description_markdown": "**Meta da sprint:** Verificar validações, DOM, registro, filtros, persistência simulada, resumos e sugestões educativas.\n\n**Planejamento:** revisar as tarefas com etiqueta sprint-2, definir responsáveis, capacidade e impedimentos; acompanhar diariamente pelo Kanban nas colunas A fazer, Em andamento, Revisão/Testes (se disponível) e Feito.\n\n**Revisão:** demonstrar funcionalidades executáveis e comparar com critérios de aceite. **Retrospectiva:** registrar melhorias, problemas e ações.\n\n**Condição de fechamento:** só marcar como Feito após revisão do incremento e registro das evidências. A sprint está apenas planejada por etiqueta; vinculação a sprint nativa depende da configuração do quadro Jira. Datas não definidas.",
+      "is_native_jira_sprint_assigned": false
+    },
+    {
+      "jira_key": "TRAB-57",
+      "jira_url": "https://nutrivibeproject.atlassian.net/browse/TRAB-57",
+      "summary": "[E3][S3] Planejamento e revisão da sprint — Consolidação e apresentação",
+      "title": "Planejamento e revisão da sprint — Consolidação e apresentação",
+      "issue_type": "Scrum/Kanban",
+      "status": "A fazer",
+      "priority": "High",
+      "assignee": null,
+      "labels": [
+        "entrega-3",
+        "gestao-scrum",
+        "sprint-3"
+      ],
+      "planned_sprint": "S3",
+      "description_markdown": "**Meta da sprint:** Verificar responsividade, testes, relatório com evidências, PDF e execução oral ao professor.\n\n**Planejamento:** revisar as tarefas com etiqueta sprint-3, definir responsáveis, capacidade e impedimentos; acompanhar diariamente pelo Kanban nas colunas A fazer, Em andamento, Revisão/Testes (se disponível) e Feito.\n\n**Revisão:** demonstrar funcionalidades executáveis e comparar com critérios de aceite. **Retrospectiva:** registrar melhorias, problemas e ações.\n\n**Condição de fechamento:** só marcar como Feito após revisão do incremento e registro das evidências. A sprint está apenas planejada por etiqueta; vinculação a sprint nativa depende da configuração do quadro Jira. Datas não definidas.",
+      "is_native_jira_sprint_assigned": false
+    }
+  ]
+}

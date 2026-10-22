@@ -1,0 +1,128 @@
+prezados(as) alunos(as),
+
+Chegamos a uma etapa decisiva do projeto.
+
+Se, na 2ª entrega, o foco foi estruturar, organizar e iniciar a construção da solução, agora entramos em uma fase em que o projeto precisa demonstrar maturidade técnica e evolução real da implementação.
+
+A 3ª entrega não é mais sobre planejamento, é sobre consolidação.
+
+A aplicação precisa começar a demonstrar funcionamento consistente.
+Objetivo desta etapa
+Comprovar que o projeto evoluiu tecnicamente desde a 2ª entrega, apresentando:
+- Front-end implementado
+- Principais telas funcionais
+- Navegação operacional
+- Layout responsivo
+- Interações implementadas com JavaScript
+- Evidências reais da aplicação em funcionamento
+Nesta etapa, o Front-End do projeto deve estar praticamente consolidado e operando.
+
+Importante: nesta disciplina, o escopo do projeto é 100% Front-End, utilizando HTML, CSS e JavaScript. Não será exigida implementação de back-end ou banco de dados.
+1) Implementação do Front-End
+O protótipo já foi apresentado na etapa anterior. Agora, as telas devem estar implementadas em código.
+
+O grupo deverá apresentar:
+- Principais telas funcionais
+- Navegação operacional entre as páginas
+- Estrutura coerente da aplicação
+- Identidade visual consistente
+- Organização dos arquivos do projeto
+- Evidências reais da aplicação em execução
+O que foi apresentado anteriormente como protótipo deverá agora estar efetivamente representado na aplicação.
+2) Estrutura e Organização do Projeto
+Deverá ficar clara a organização técnica do Front-End.
+
+Será observado:
+- Utilização adequada de HTML semântico
+- Organização dos arquivos e diretórios
+- Separação entre HTML, CSS e JavaScript
+- Estrutura e legibilidade do código
+- Uso adequado de classes e identificadores
+- Padronização entre as diferentes páginas da aplicação
+O código deverá demonstrar organização compatível com o estágio atual do projeto.
+3) Layout e Responsividade
+Nesta etapa, a aplicação deverá apresentar comportamento adequado em diferentes tamanhos de tela.
+
+O grupo deverá demonstrar:
+- Organização adequada dos elementos utilizando CSS
+- Uso de Flexbox e/ou Grid, quando aplicável
+- Adaptação do layout para diferentes resoluções
+- Responsividade das principais telas
+- Manutenção da legibilidade e usabilidade
+- Coerência visual entre desktop e dispositivos com telas menores
+A aplicação não deverá estar limitada a uma única resolução de tela.
+4) Funcionalidades e Interações com JavaScript – Ponto Central da Entrega
+Este é um dos pontos mais importantes desta etapa.
+
+O grupo deverá demonstrar que a aplicação possui interações reais desenvolvidas com JavaScript.
+
+Podem ser apresentadas funcionalidades como:
+- Eventos de clique
+- Manipulação do DOM
+- Validação de formulários
+- Exibição e ocultação de elementos
+- Alterações dinâmicas de conteúdo
+- Menus interativos
+- Filtros ou pesquisas
+- Mensagens e retornos ao usuário
+- Manipulação de dados no próprio Front-End
+- Outras interações relacionadas à proposta do projeto
+As funcionalidades deverão estar relacionadas ao contexto da aplicação e ao MVP definido pelo grupo.
+
+Não será suficiente apresentar apenas páginas estáticas em HTML e CSS.
+
+A aplicação deverá demonstrar comportamento e interação com o usuário.
+5) Fluxo da Aplicação e MVP
+O grupo deverá demonstrar que o fluxo principal da aplicação está implementado.
+
+Deverá ficar claro:
+- Como o usuário inicia sua interação com a aplicação
+- Como ocorre a navegação entre as principais telas
+- Quais funcionalidades do MVP já estão implementadas
+- Quais funcionalidades estão parcialmente implementadas
+- Como as diferentes telas se relacionam dentro da proposta da solução
+Quando necessário, poderão ser utilizados dados simulados no Front-End para representar o comportamento esperado da aplicação.
+6) Evolução em Relação à 2ª Entrega
+O documento deverá conter uma seção objetiva explicando:
+- O que foi implementado desde a última entrega
+- Quais telas foram desenvolvidas
+- Quais funcionalidades foram implementadas
+- Quais interações em JavaScript foram adicionadas
+- O que evoluiu tecnicamente
+- Quais desafios técnicos surgiram
+- Como esses desafios foram solucionados
+- O que ainda falta para a entrega final
+Esse ponto é importante para demonstrar o processo de desenvolvimento e a maturidade do grupo.
+7) Verificações Importantes
+O documento e a aplicação serão analisados considerando:
+- Clareza técnica
+- Organização do projeto
+- Qualidade da implementação
+- Uso adequado de HTML, CSS e JavaScript
+- Responsividade
+- Navegação
+- Funcionalidades implementadas
+- Coerência com o protótipo apresentado anteriormente
+- Evidências reais da evolução do projeto
+Checklist antes do envio
+✔ Front-End implementado
+✔ Principais telas funcionais
+✔ Navegação operacional
+✔ HTML organizado e semântico
+✔ CSS estruturado
+✔ Layout responsivo
+✔ JavaScript implementado
+✔ Interações funcionais
+✔ Fluxo principal do MVP demonstrado
+✔ Evidências reais da aplicação
+✔ Evolução em relação à 2ª entrega documentada
+✔ Documento organizado e atualizado
+Formato da Entrega
+- Utilizar o documento padrão da disciplina, disponível em “Avisos”
+- Entregar o documento em PDF via Canvas
+- Apresentação oral obrigatória, realizada diretamente ao professor
+- Todos os integrantes deverão estar preparados para explicar a evolução e o funcionamento do projeto
+- Durante a apresentação, a aplicação deverá ser executada e demonstrada em funcionamento
+Importante: a apresentação não deverá se limitar ao documento ou a prints da aplicação. O grupo deverá demonstrar diretamente o funcionamento das principais telas, navegação e interações implementadas.
+
+Nesta etapa, espera-se que o projeto demonstre uma evolução clara em relação à 2ª entrega, apresentando um Front-End consistente, funcional e próximo da versão final do MVP.
