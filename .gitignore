@@ -8,3 +8,6 @@ NutriVibe/.data/
 !.env.example
 .vercel/
 public/
+
+NutriVibe/modelos/
+NutriVibe/javascript/vendor/

@@ -539,27 +539,23 @@ function setupPhoto() {
     if (!$("#photo-consent").checked)
       return message(
         "#photo-status",
-        "Autorize o envio da foto ou selecione o alimento no catálogo.",
+        "Confirme a análise local ou selecione o alimento no catálogo.",
       );
     const current = version;
     controller = new AbortController();
     const requestController = controller;
-    const timeout = setTimeout(() => requestController.abort(), 30000);
+    const timeout = undefined;
     $("#analisar").disabled = true;
     candidates.replaceChildren();
     $("#confirmar-foto").hidden = true;
     message("#photo-status", "Analisando a imagem…");
     try {
-      const response = await fetch("/api/identify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ image, consent: true }),
-        signal: requestController.signal,
-      });
-      const result = await response.json();
+      const { classifyLocal } = await import("../vendor/free-vision.js");
       if (current !== version) return;
-      if (!response.ok)
-        throw Error(result.error || "Não foi possível analisar.");
+      const result = await classifyLocal($("#preview"), (text) => {
+        if (current === version) message("#photo-status", text);
+      });
+      if (current !== version) return;
       message("#photo-status", result.message);
       for (const c of result.candidates || []) {
         const f = foods.find((f) => f.id === c.foodId);

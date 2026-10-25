@@ -31,6 +31,13 @@ export async function identify(
   } = {},
 ) {
   validateImage(image);
+  if (provider === "browser-local")
+    return {
+      available: false,
+      candidates: [],
+      message:
+        "A análise gratuita é realizada no navegador. Atualize a página para usar o reconhecimento local.",
+    };
   if (!key)
     return {
       available: false,

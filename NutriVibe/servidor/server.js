@@ -38,6 +38,8 @@ const mime = {
   ".jpeg": "image/jpeg",
   ".png": "image/png",
   ".svg": "image/svg+xml",
+  ".json": "application/json",
+  ".bin": "application/octet-stream",
 };
 export async function handler(req, res) {
   res.setHeader("X-Content-Type-Options", "nosniff");
@@ -54,7 +56,8 @@ export async function handler(req, res) {
     if (endpoint) url.pathname = "/api/" + String(endpoint);
     if (url.pathname === "/api/status" && req.method === "GET")
       return json(res, 200, {
-        vision: !!process.env.NUTRIVIBE_VISION_KEY,
+        vision: true,
+        visionMode: "browser-local",
         contacts: contacts.available,
       });
     if (url.pathname.startsWith("/api/")) {
@@ -163,17 +166,22 @@ export async function handler(req, res) {
     }
     const pathname = decodeURIComponent(url.pathname);
     if (
-      !["/html/", "/css/", "/javascript/", "/dados/", "/imagens/"].some(
-        (prefix) => pathname.startsWith(prefix),
-      )
+      ![
+        "/html/",
+        "/css/",
+        "/javascript/",
+        "/dados/",
+        "/imagens/",
+        "/modelos/",
+      ].some((prefix) => pathname.startsWith(prefix))
     ) {
       res.writeHead(404);
       return res.end("Não encontrado");
     }
     const file = path.resolve(root, "." + pathname);
     if (
-      !["html", "css", "javascript", "dados", "imagens"].some((dir) =>
-        file.startsWith(path.join(root, dir) + path.sep),
+      !["html", "css", "javascript", "dados", "imagens", "modelos"].some(
+        (dir) => file.startsWith(path.join(root, dir) + path.sep),
       ) ||
       !mime[path.extname(file)]
     ) {

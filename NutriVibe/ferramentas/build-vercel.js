@@ -1,3 +1,4 @@
+import "./prepare-free-vision.js";
 import { mkdir, cp, rm, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -6,7 +7,14 @@ const source = path.join(root, "NutriVibe");
 const output = path.join(root, "public");
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
-for (const directory of ["html", "css", "javascript", "dados", "imagens"])
+for (const directory of [
+  "html",
+  "css",
+  "javascript",
+  "dados",
+  "imagens",
+  "modelos",
+])
   await cp(path.join(source, directory), path.join(output, directory), {
     recursive: true,
   });
