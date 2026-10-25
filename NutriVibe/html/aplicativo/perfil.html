@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#176247" />
+    <title>Meu perfil · NutriVibe</title>
+    <link rel="icon" href="../../imagens/aplicativo/logo-nutrivibe.jpeg" />
+    <link rel="stylesheet" href="../../css/aplicativo/style.css" />
+    <script type="module" src="../../javascript/aplicativo/app.js"></script>
+  </head>
+  <body data-page="perfil">
+    <a class="skip" href="#conteudo">Pular para conteúdo</a>
+    <header>
+      <div class="container bar">
+        <a class="brand" href="index.html"
+          ><span class="brand-mark">n<span>•</span></span
+          >NutriVibe<span class="brand-label">seu ritmo, seu cuidado</span></a
+        ><button
+          id="menu"
+          class="secondary"
+          aria-expanded="false"
+          aria-controls="navegacao"
+        >
+          Menu
+        </button>
+        <nav id="navegacao" aria-label="Principal">
+          <a href="index.html">Visão geral</a
+          ><a href="registro.html">Diário alimentar</a
+          ><a href="resumo.html">Meu dia</a
+          ><a href="perfil.html" aria-current="page">Preferências</a
+          ><a href="educacao.html">Aprender</a>
+        </nav>
+      </div>
+    </header>
+    <main id="conteudo" class="container">
+      <p id="storage-status" role="status"></p>
+      <div class="page-title">
+        <p class="eyebrow">SEU ESPAÇO</p>
+        <h1>Preferências que importam.</h1>
+        <p>Deixe as sugestões mais próximas da sua rotina.</p>
+      </div>
+      <form id="perfil-form" class="card">
+        <div class="form-grid">
+          <div>
+            <label for="apelido">Como quer ser chamado?</label
+            ><input
+              id="apelido"
+              name="apelido"
+              required
+              maxlength="40"
+              autocomplete="nickname"
+            />
+          </div>
+          <div>
+            <label for="idade">Idade</label
+            ><input
+              id="idade"
+              name="idade"
+              type="number"
+              min="1"
+              max="120"
+              required
+            />
+          </div>
+        </div>
+        <fieldset>
+          <legend>Restrições alimentares</legend>
+          <p>
+            Selecione todas as opções necessárias. Confira sempre ingredientes,
+            preparo e risco de contaminação cruzada.
+          </p>
+          <div id="restricoes" class="choices"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Cores que prefere evitar</legend>
+          <div class="choices" id="cores"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Texturas que prefere evitar</legend>
+          <div class="choices" id="texturas"></div>
+        </fieldset>
+        <div class="form-grid">
+          <div>
+            <label for="preferred">Alimentos preferidos</label
+            ><input
+              id="preferred"
+              name="preferred"
+              maxlength="300"
+              placeholder="Separe os alimentos por vírgula"
+            />
+          </div>
+          <div>
+            <label for="avoided">Alimentos que quer evitar</label
+            ><input
+              id="avoided"
+              name="avoided"
+              maxlength="300"
+              placeholder="Separe os alimentos por vírgula"
+            />
+          </div>
+        </div>
+        <div class="actions">
+          <button>Salvar preferências</button
+          ><a href="registro.html">Ir para o diário →</a>
+        </div>
+        <p id="perfil-status" role="status"></p>
+      </form>
+    </main>
+    <footer class="container">
+      <div>
+        <a class="brand" href="../landingpage/index.html">NutriVibe</a>
+        <p>Alimentação com mais cuidado e possibilidades.</p>
+        <p class="muted">
+          Seus registros ficam neste navegador. Você controla seus dados.
+        </p>
+      </div>
+      <div>
+        <button id="exportar" class="secondary">Exportar meus dados</button
+        ><button id="importar-btn" class="secondary">Importar dados</button
+        ><input
+          id="importar"
+          type="file"
+          accept="application/json"
+          hidden
+        /><button id="limpar" class="text-button">Apagar meus dados</button>
+        <p id="global-status" role="status"></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#176247" />
+    <title>Aprender · NutriVibe</title>
+    <link rel="icon" href="../../imagens/aplicativo/logo-nutrivibe.jpeg" />
+    <link rel="stylesheet" href="../../css/aplicativo/style.css" />
+    <script type="module" src="../../javascript/aplicativo/app.js"></script>
+  </head>
+  <body data-page="educacao">
+    <a class="skip" href="#conteudo">Pular para conteúdo</a>
+    <header>
+      <div class="container bar">
+        <a class="brand" href="index.html"
+          ><span class="brand-mark">n<span>•</span></span
+          >NutriVibe<span class="brand-label">seu ritmo, seu cuidado</span></a
+        ><button
+          id="menu"
+          class="secondary"
+          aria-expanded="false"
+          aria-controls="navegacao"
+        >
+          Menu
+        </button>
+        <nav id="navegacao" aria-label="Principal">
+          <a href="index.html">Visão geral</a
+          ><a href="registro.html">Diário alimentar</a
+          ><a href="resumo.html">Meu dia</a
+          ><a href="perfil.html">Preferências</a
+          ><a href="educacao.html" aria-current="page">Aprender</a>
+        </nav>
+      </div>
+    </header>
+    <main id="conteudo" class="container">
+      <p id="storage-status" role="status"></p>
+      <div class="page-title">
+        <p class="eyebrow">APRENDER À MESA</p>
+        <h1>Curiosidade é um ótimo começo.</h1>
+        <p>
+          Uma alimentação com mais descobertas, menos pressão e cuidado em cada
+          escolha.
+        </p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="food-icon">🎨</span>
+          <h2>Descobrir pelos sentidos</h2>
+          <p>
+            Cores, cheiros e texturas fazem parte da experiência. Explore no seu
+            tempo, sem obrigação de experimentar.
+          </p>
+        </article>
+        <article class="card">
+          <span class="food-icon">🧺</span>
+          <h2>Participar da rotina</h2>
+          <p>
+            Escolher alimentos na feira e ajudar em tarefas seguras na cozinha
+            aproxima a família dos alimentos.
+          </p>
+        </article>
+        <article class="card">
+          <span class="food-icon">🌱</span>
+          <h2>Cuidar também é planejar</h2>
+          <p>
+            Observe os alimentos disponíveis antes de comprar. Planeje o uso
+            para reduzir desperdício.
+          </p>
+        </article>
+      </div>
+      <section class="card">
+        <h2>Dúvidas do dia a dia</h2>
+        <details>
+          <summary>Como o NutriVibe cria sugestões?</summary>
+          <p>
+            O sistema observa os grupos registrados no dia escolhido, prioriza
+            grupos diferentes e exclui opções incompatíveis com seu perfil. Não
+            calcula deficiência nutricional, calorias ou uma dieta.
+          </p>
+        </details>
+        <details>
+          <summary>Uma foto identifica ingredientes e alergênicos?</summary>
+          <p>
+            Não. Ingredientes ocultos, leite, molhos ou traços de alergênicos
+            não podem ser confirmados pela aparência. Verifique receitas,
+            rótulos e preparo.
+          </p>
+        </details>
+        <details>
+          <summary>O que fazer quando há seletividade intensa?</summary>
+          <p>
+            Evite pressão e punição. Dificuldades persistentes, dor ou
+            alterações no crescimento precisam de avaliação com profissionais de
+            saúde.
+          </p>
+        </details>
+        <p class="muted">
+          Referência educativa: Guia Alimentar para a População Brasileira,
+          Ministério da Saúde. As sugestões do aplicativo não são validações
+          clínicas desse guia.
+        </p>
+      </section>
+    </main>
+    <footer class="container">
+      <div>
+        <a class="brand" href="../landingpage/index.html">NutriVibe</a>
+        <p>Alimentação com mais cuidado e possibilidades.</p>
+        <p class="muted">
+          Seus registros ficam neste navegador. Você controla seus dados.
+        </p>
+      </div>
+      <div>
+        <button id="exportar" class="secondary">Exportar meus dados</button
+        ><button id="importar-btn" class="secondary">Importar dados</button
+        ><input
+          id="importar"
+          type="file"
+          accept="application/json"
+          hidden
+        /><button id="limpar" class="text-button">Apagar meus dados</button>
+        <p id="global-status" role="status"></p>
+      </div>
+    </footer>
+  </body>
+</html>

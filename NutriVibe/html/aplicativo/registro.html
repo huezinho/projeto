@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#176247" />
+    <title>Diário · NutriVibe</title>
+    <link rel="icon" href="../../imagens/aplicativo/logo-nutrivibe.jpeg" />
+    <link rel="stylesheet" href="../../css/aplicativo/style.css" />
+    <script type="module" src="../../javascript/aplicativo/app.js"></script>
+  </head>
+  <body data-page="registro">
+    <a class="skip" href="#conteudo">Pular para conteúdo</a>
+    <header>
+      <div class="container bar">
+        <a class="brand" href="index.html"
+          ><span class="brand-mark">n<span>•</span></span
+          >NutriVibe<span class="brand-label">seu ritmo, seu cuidado</span></a
+        ><button
+          id="menu"
+          class="secondary"
+          aria-expanded="false"
+          aria-controls="navegacao"
+        >
+          Menu
+        </button>
+        <nav id="navegacao" aria-label="Principal">
+          <a href="index.html">Visão geral</a
+          ><a href="registro.html" aria-current="page">Diário alimentar</a
+          ><a href="resumo.html">Meu dia</a
+          ><a href="perfil.html">Preferências</a
+          ><a href="educacao.html">Aprender</a>
+        </nav>
+      </div>
+    </header>
+    <main id="conteudo" class="container">
+      <p id="storage-status" role="status"></p>
+      <div class="page-title">
+        <p class="eyebrow">DIÁRIO ALIMENTAR</p>
+        <h1>Cada refeição conta uma história.</h1>
+        <p>Fotografe seu prato ou escolha os alimentos no catálogo.</p>
+      </div>
+      <div class="toolbar card">
+        <div>
+          <label for="data">Dia do registro</label
+          ><input id="data" type="date" required />
+        </div>
+        <div>
+          <label for="refeicao">Refeição</label
+          ><select id="refeicao">
+            <option>Café da manhã</option>
+            <option>Almoço</option>
+            <option>Lanche</option>
+            <option>Jantar</option>
+            <option>Outra refeição</option>
+          </select>
+        </div>
+        <div>
+          <label for="quantidade">Quantidade de porções</label
+          ><input
+            id="quantidade"
+            type="number"
+            min="0.25"
+            max="20"
+            step="0.25"
+            value="1"
+            required
+          /><small>Referência livre, sem cálculo nutricional.</small>
+        </div>
+      </div>
+      <section class="card photo-section">
+        <div>
+          <span class="tag">REGISTRO POR FOTO</span>
+          <h2>O que tem no seu prato?</h2>
+          <p>
+            Use a câmera do celular ou envie uma imagem. Você sempre confirma os
+            alimentos antes de salvar.
+          </p>
+        </div>
+        <label class="upload" for="foto"
+          >📷 Tirar ou enviar foto<input
+            id="foto"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            capture="environment"
+        /></label>
+        <div id="photo-area" hidden>
+          <img id="preview" alt="Foto da refeição a conferir" /><label
+            class="check"
+            ><input id="photo-consent" type="checkbox" /> Autorizo enviar esta
+            foto ao serviço de identificação por IA.</label
+          >
+          <p class="muted">
+            A foto não é salva no NutriVibe. O serviço externo pode processá-la
+            conforme sua política de dados. Não inclua rostos ou documentos.
+          </p>
+          <button id="analisar" type="button">Identificar alimentos</button
+          ><button id="descartar" class="secondary" type="button">
+            Descartar foto
+          </button>
+          <p id="photo-status" role="status"></p>
+          <div id="candidatos" class="choices"></div>
+          <button id="confirmar-foto" hidden type="button">
+            Confirmar alimentos selecionados</button
+          ><a href="#busca">Selecionar ou corrigir alimento no catálogo ↓</a>
+        </div>
+      </section>
+      <p id="registro-status" role="status"></p>
+      <section>
+        <div class="section-title">
+          <h2>Explore os alimentos</h2>
+          <label class="check"
+            ><input id="compativeis" type="checkbox" checked /> Somente
+            compatíveis com meu perfil</label
+          >
+        </div>
+        <div class="filters">
+          <div>
+            <label for="busca">Pesquisar alimento</label
+            ><input
+              id="busca"
+              type="search"
+              placeholder="Qual alimento você procura?"
+            />
+          </div>
+          <div>
+            <label for="grupo">Grupo alimentar</label
+            ><select id="grupo">
+              <option value="">Todos os grupos</option>
+            </select>
+          </div>
+        </div>
+        <div id="catalogo" class="grid foods"></div>
+      </section>
+      <section class="card">
+        <h2>Não encontrou o alimento?</h2>
+        <p>
+          Informe o nome para registrar. Alimentos fora do catálogo ficam sem
+          classificação automática e não são usados para inferir ingredientes ou
+          nutrientes.
+        </p>
+        <form id="custom-form">
+          <label for="custom-name">Qual alimento foi consumido?</label
+          ><input id="custom-name" maxlength="80" required /><button
+            type="submit"
+          >
+            Registrar alimento informado
+          </button>
+        </form>
+      </section>
+      <section>
+        <div class="section-title">
+          <h2>Refeições registradas</h2>
+          <a href="resumo.html">Ver sugestões para o dia →</a>
+        </div>
+        <ul id="registros" class="records"></ul>
+      </section>
+    </main>
+    <footer class="container">
+      <div>
+        <a class="brand" href="../landingpage/index.html">NutriVibe</a>
+        <p>Alimentação com mais cuidado e possibilidades.</p>
+        <p class="muted">
+          Seus registros ficam neste navegador. Você controla seus dados.
+        </p>
+      </div>
+      <div>
+        <button id="exportar" class="secondary">Exportar meus dados</button
+        ><button id="importar-btn" class="secondary">Importar dados</button
+        ><input
+          id="importar"
+          type="file"
+          accept="application/json"
+          hidden
+        /><button id="limpar" class="text-button">Apagar meus dados</button>
+        <p id="global-status" role="status"></p>
+      </div>
+    </footer>
+  </body>
+</html>

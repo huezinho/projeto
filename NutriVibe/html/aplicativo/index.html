@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#176247" />
+    <title>Início · NutriVibe</title>
+    <link rel="icon" href="../../imagens/aplicativo/logo-nutrivibe.jpeg" />
+    <link rel="stylesheet" href="../../css/aplicativo/style.css" />
+    <script type="module" src="../../javascript/aplicativo/app.js"></script>
+  </head>
+  <body data-page="index">
+    <a class="skip" href="#conteudo">Pular para conteúdo</a>
+    <header>
+      <div class="container bar">
+        <a class="brand" href="index.html"
+          ><span class="brand-mark">n<span>•</span></span
+          >NutriVibe<span class="brand-label">seu ritmo, seu cuidado</span></a
+        ><button
+          id="menu"
+          class="secondary"
+          aria-expanded="false"
+          aria-controls="navegacao"
+        >
+          Menu
+        </button>
+        <nav id="navegacao" aria-label="Principal">
+          <a href="index.html" aria-current="page">Visão geral</a
+          ><a href="registro.html">Diário alimentar</a
+          ><a href="resumo.html">Meu dia</a
+          ><a href="perfil.html">Preferências</a
+          ><a href="educacao.html">Aprender</a>
+        </nav>
+      </div>
+    </header>
+    <main id="conteudo" class="container">
+      <p id="storage-status" role="status"></p>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">ROTINA LEVE, DESCOBERTAS REAIS</p>
+          <h1>Uma relação mais tranquila com a alimentação.</h1>
+          <p>
+            Registre suas refeições, respeite suas preferências e encontre novas
+            possibilidades para o dia.
+          </p>
+          <div class="actions">
+            <a class="button" href="registro.html">＋ Registrar refeição</a
+            ><a class="button secondary" href="perfil.html"
+              >Ajustar meu perfil</a
+            >
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <span>🍊</span><span>🥦</span><span>🥣</span>
+          <p>Pequenos passos.<br />Novas descobertas.</p>
+        </div>
+      </section>
+      <section>
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">SEU DIA EM FOCO</p>
+            <h2>Como está sua rotina hoje?</h2>
+          </div>
+          <a href="resumo.html">Ver meu resumo →</a>
+        </div>
+        <div id="dashboard" class="grid stats"></div>
+      </section>
+      <section class="card split">
+        <div>
+          <span class="tag">DO SEU JEITO</span>
+          <h2>O cuidado começa pelas suas preferências.</h2>
+          <p>
+            Intolerâncias, cores, texturas e alimentos que você prefere evitar
+            são considerados nas sugestões.
+          </p>
+        </div>
+        <a class="button secondary" href="perfil.html"
+          >Personalizar alimentação →</a
+        >
+      </section>
+    </main>
+    <footer class="container">
+      <div>
+        <a class="brand" href="../landingpage/index.html">NutriVibe</a>
+        <p>Alimentação com mais cuidado e possibilidades.</p>
+        <p class="muted">
+          Seus registros ficam neste navegador. Você controla seus dados.
+        </p>
+      </div>
+      <div>
+        <button id="exportar" class="secondary">Exportar meus dados</button
+        ><button id="importar-btn" class="secondary">Importar dados</button
+        ><input
+          id="importar"
+          type="file"
+          accept="application/json"
+          hidden
+        /><button id="limpar" class="text-button">Apagar meus dados</button>
+        <p id="global-status" role="status"></p>
+      </div>
+    </footer>
+  </body>
+</html>
