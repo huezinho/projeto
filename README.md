@@ -40,3 +40,10 @@ A câmera/envio de foto e confirmação manual funcionam sem chave. **Identifica
 ## Publicação na internet
 
 Configuração Vercel na raiz do repositório, com API serverless e PostgreSQL Neon para contatos. Execute `npm ci && npm test && npm run build` na raiz para validar a preparação. Veja [publicação e variáveis necessárias](NutriVibe/documentacoes/vercel.md). O deploy requer conta Vercel autorizada; banco e IA precisam das respectivas credenciais.
+
+## Endereços de produção
+
+- Landing page: https://nutrivibe-gamma.vercel.app
+- Aplicativo: https://nutrivibe-gamma.vercel.app/app
+
+Deploy de produção confirmado como READY na Vercel. Reconhecimento automático de imagem e contatos dependem das credenciais externas descritas na documentação. A navegação pública ainda precisa de validação fora da rede restrita deste ambiente.

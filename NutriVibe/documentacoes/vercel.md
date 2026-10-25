@@ -1,8 +1,16 @@
 # Publicação na Vercel
 
-## Estado desta preparação
+## Publicação confirmada
 
-O código está adaptado para Vercel, mas adaptação, integração à main e publicação são etapas diferentes. A configuração foi validada por build local e testes; não equivale a um deploy remoto confirmado. Esta sessão não tinha VERCEL_TOKEN nem login da Vercel e o login CLI não pôde ser concluído. A chamada de leitura à API Vercel respondeu que falta token de autenticação. Não foi criado projeto, URL pública ou banco remoto.
+Projeto Vercel `nutrivibe` criado e deploy de produção concluído com estado **READY** pela API oficial. Endereço de produção: https://nutrivibe-gamma.vercel.app . Aplicativo: https://nutrivibe-gamma.vercel.app/app . A exigência de login da Vercel foi removida do projeto (`ssoProtection: null`) para acesso público, conforme pedido do usuário.
+
+Deploy: `dpl_4QYXmYqPQGGFsE3G9HcFvsorqM2Z`. Commit do código publicado: `031ab3200174d72ea04d3cac87a6ac713799e662`. Node 24.x confirmado na configuração do projeto. O deploy foi feito por upload autenticado à API Vercel a partir dos arquivos versionados; não usa checkout de branch remota no build.
+
+Não havia credenciais de banco Neon nem de visão disponíveis nesta publicação. O diário local, a composição TACO e as sugestões por regras independem dessas credenciais. O formulário de contato informa indisponibilidade sem PostgreSQL; a identificação automática requer a chave OpenAI, com seleção manual disponível. Nenhum segredo foi incluído no Git ou no conteúdo publicado.
+
+A verificação pública por HTTP e navegador não pôde ser executada: o proxy de rede deste ambiente bloqueou o domínio `*.vercel.app` com 403 antes de chegar ao site. Esse bloqueio não é uma resposta observada da aplicação. A comprovação de publicação é o status READY e os aliases de produção retornados pela Vercel; não se afirma validação funcional remota. Os testes locais estão descritos abaixo.
+
+A conexão GitHub do projeto Vercel permanece não configurada: o deploy atual é manual via API. Pushes futuros na main não devem ser tratados como publicados automaticamente. Para ativar deploy contínuo, autorize a integração GitHub na Vercel e conecte `huezinho/projeto`, produção na branch main.
 
 ## Configuração versionada
 
