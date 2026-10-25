@@ -615,3 +615,39 @@ a {
 #custom-form button {
   margin-top: 16px;
 }
+dialog {
+  width: min(680px, calc(100% - 24px));
+  max-height: 90dvh;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 28px;
+  color: var(--ink);
+}
+dialog::backdrop {
+  background: #153b30a8;
+}
+dialog label {
+  margin-top: 16px;
+}
+#nutrition-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 16px;
+}
+#nutrition-preview p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+#nutrition-totals .stat {
+  font-size: 25px;
+  letter-spacing: -0.5px;
+}
+@media (max-width: 540px) {
+  dialog {
+    padding: 18px;
+  }
+  #nutrition-preview {
+    grid-template-columns: 1fr;
+  }
+}

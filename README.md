@@ -1,6 +1,6 @@
 # NutriVibe
 
-Aplicativo de diário alimentar e sugestões de variedade, com preferências, restrições e registro por foto. Landing page separada com formulário de interesse integrado a SQLite. HTML, CSS e JavaScript no frontend; Node.js 24 no servidor.
+Aplicativo de diário alimentar, estimativa nutricional com referência TACO e sugestões de variedade, com preferências, restrições e registro por foto. Landing page separada com formulário de interesse integrado a SQLite. HTML, CSS e JavaScript no frontend; Node.js 24 no servidor.
 
 ## Iniciar
 
@@ -31,6 +31,7 @@ Perfil e registros ficam no navegador, com exportação/importação e remoção
 
 A câmera/envio de foto e confirmação manual funcionam sem chave. **Identificação automática exige `NUTRIVIBE_VISION_KEY` no servidor**, com acesso à API OpenAI. Nunca coloque a chave no frontend. A integração está implementada, mas a inferência real permanece pendente de credencial e teste com o provedor. Consulte a configuração e as limitações no documento abaixo.
 
+- [Cálculo nutricional, fonte e confirmação de quantidade](NutriVibe/documentacoes/nutricao.md)
 - [Implementação, testes, configuração e limites](NutriVibe/documentacoes/implementacao.md)
 - [Backlog fornecido](NutriVibe/documentacoes/historico/backlog-jira.json)
 

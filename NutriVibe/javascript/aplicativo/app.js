@@ -1,3 +1,12 @@
+import {
+  nutritionReferences,
+  nutritionSource,
+  nutrientLabels,
+  recordNutrition,
+  calculateNutrition,
+  dailyNutrition,
+  formatNutrient,
+} from "./nutrition.js";
 import { foods, restrictions } from "../../dados/alimentos.js";
 import {
   normalize,
@@ -181,10 +190,7 @@ function addFoods(ids) {
     meal: $("#refeicao").value,
     portions: Number($("#quantidade").value),
   }));
-  if (!save({ ...state, records: [...state.records, ...records] }))
-    return false;
-  renderRecords();
-  message("#registro-status", `${records.length} alimento(s) registrado(s).`);
+  startNutrition(records);
   return true;
 }
 function renderRecords() {
@@ -211,7 +217,11 @@ function renderRecords() {
     const text = node("div");
     text.append(
       node("strong", `${food.icon} ${food.name}`),
-      node("p", `${r.meal} · ${r.portions} porção(ões)`, "muted"),
+      node(
+        "p",
+        `${r.meal} · ${r.nutrition ? "peso confirmado" : "sem peso confirmado"}`,
+        "muted",
+      ),
     );
     if (exclusionReasons(food, state.profile).length)
       text.append(
@@ -232,6 +242,38 @@ function renderRecords() {
         $("#busca").focus();
       }
     };
+    const nutrition = recordNutrition(r);
+    if (nutrition) {
+      text.append(
+        node(
+          "p",
+          `${r.nutrition.grams} g · ${nutrition.reference.description}`,
+          "muted",
+        ),
+      );
+      text.append(
+        node(
+          "p",
+          Object.entries(nutrition.values)
+            .filter(([key]) =>
+              ["energyKcal", "proteinG", "carbohydrateG", "fatG"].includes(key),
+            )
+            .map(
+              ([key, value]) =>
+                `${nutrientLabels[key][0]}: ${formatNutrient(value)} ${value === null ? "" : nutrientLabels[key][1]}`,
+            )
+            .join(" · "),
+          "food-meta",
+        ),
+      );
+    } else
+      text.append(
+        node(
+          "small",
+          "Sem estimativa nutricional: peso e referência não confirmados.",
+          "muted",
+        ),
+      );
     item.append(text, remove);
     list.append(item);
   }
@@ -322,6 +364,7 @@ if ($("#catalogo")) {
 function updateSummary() {
   const date = $("#dia-resumo").value;
   if (!date) return;
+  renderNutritionSummary(date);
   const day = dailyRecords(state.records, date);
   const groups = new Map();
   for (const r of day) {
@@ -545,4 +588,118 @@ function setupPhoto() {
       );
     if (addFoods(ids)) reset();
   };
+}
+
+// A identificação nunca escolhe preparo nem peso: ambos são confirmados nesta etapa.
+let nutritionQueue = [];
+let nutritionPosition = 0;
+function startNutrition(records) {
+  nutritionQueue = records;
+  nutritionPosition = 0;
+  showNutritionStep();
+  $("#nutrition-dialog").showModal();
+}
+function showNutritionStep() {
+  const record = nutritionQueue[nutritionPosition];
+  const food = foods.find((f) => f.id === record.foodId);
+  message(
+    "#nutrition-food",
+    `${food.name} · item ${nutritionPosition + 1} de ${nutritionQueue.length}`,
+  );
+  const select = $("#nutrition-reference");
+  select.replaceChildren(node("option", "Selecione a variedade e o preparo"));
+  select.firstChild.value = "";
+  for (const ref of nutritionReferences.filter(
+    (r) => r.foodId === record.foodId,
+  )) {
+    const option = node("option", ref.description);
+    option.value = ref.id;
+    select.append(option);
+  }
+  $("#nutrition-grams").value = "";
+  $("#nutrition-preview").replaceChildren();
+}
+function nutritionPreview() {
+  const record = nutritionQueue[nutritionPosition];
+  const preview = $("#nutrition-preview");
+  preview.replaceChildren();
+  if (
+    !$("#nutrition-reference").value ||
+    !$("#nutrition-grams").checkValidity()
+  )
+    return;
+  try {
+    const result = calculateNutrition(
+      record.foodId,
+      $("#nutrition-reference").value,
+      Number($("#nutrition-grams").value),
+    );
+    for (const [key, value] of Object.entries(result.values))
+      preview.append(
+        node(
+          "p",
+          `${nutrientLabels[key][0]}: ${formatNutrient(value)} ${value === null ? "" : nutrientLabels[key][1]}`,
+        ),
+      );
+  } catch {
+    preview.append(node("p", "Confira o peso e a referência."));
+  }
+}
+function finishNutritionStep(withEstimate) {
+  const record = nutritionQueue[nutritionPosition];
+  if (!withEstimate) delete record.nutrition;
+  if (withEstimate) {
+    if (!$("#nutrition-form").reportValidity()) return;
+    record.nutrition = {
+      referenceId: $("#nutrition-reference").value,
+      grams: Number($("#nutrition-grams").value),
+      sourceId: nutritionSource.id,
+    };
+  }
+  nutritionPosition++;
+  if (nutritionPosition < nutritionQueue.length) return showNutritionStep();
+  if (save({ ...state, records: [...state.records, ...nutritionQueue] })) {
+    $("#nutrition-dialog").close();
+    renderRecords();
+    message(
+      "#registro-status",
+      `${nutritionQueue.length} alimento(s) registrado(s).`,
+    );
+    nutritionQueue = [];
+  } else nutritionPosition--; // permite tentar salvar novamente após corrigir o armazenamento.
+}
+if ($("#nutrition-form")) {
+  $("#nutrition-reference").onchange = nutritionPreview;
+  $("#nutrition-grams").oninput = nutritionPreview;
+  $("#nutrition-form").onsubmit = (event) => {
+    event.preventDefault();
+    finishNutritionStep(true);
+  };
+  $("#nutrition-skip").onclick = () => finishNutritionStep(false);
+  $("#nutrition-cancel").onclick = () => {
+    $("#nutrition-dialog").close();
+    nutritionQueue = [];
+  };
+  $("#nutrition-dialog").addEventListener("cancel", () => {
+    nutritionQueue = [];
+  });
+}
+function renderNutritionSummary(date) {
+  const result = dailyNutrition(state.records, date);
+  const list = $("#nutrition-totals");
+  if (!list) return;
+  list.replaceChildren();
+  message(
+    "#nutrition-coverage",
+    `${result.calculated} de ${result.records} registros com referência e peso confirmados. ${result.missing} sem estimativa.`,
+  );
+  for (const [key, [label, unit]] of Object.entries(nutrientLabels)) {
+    const partial = result.coverage[key] < result.records;
+    stat(
+      list,
+      label,
+      `${formatNutrient(result.totals[key])}${result.totals[key] === null ? "" : " " + unit}`,
+      `${result.coverage[key]} de ${result.records} registros com valor informado${partial ? " · subtotal parcial" : ""}`,
+    );
+  }
 }

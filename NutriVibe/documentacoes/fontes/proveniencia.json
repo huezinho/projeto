@@ -1,0 +1,11 @@
+{
+  "id": "taco2011-original-v1",
+  "title": "TACO — 4ª edição revisada e ampliada, NEPA/UNICAMP, 2011",
+  "url": "https://www.nepa.unicamp.br/taco/",
+  "mirror": "https://github.com/raulfdm/taco-api",
+  "mirrorCommit": "06e466ad2f3d76064b587808b1804564b2c40f67",
+  "sha256": "b7369a767b14bfe06ff9973957c140b266f9bb7932f870481ef2d99ba0a15ace",
+  "sheet": "CMVCol taco3",
+  "basis": "100 g de parte comestível",
+  "note": "Recorte extraído da planilha original arquivada. Traços e NA não são convertidos em zero."
+}

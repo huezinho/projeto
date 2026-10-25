@@ -1,3 +1,4 @@
+import { calculateNutrition } from "./nutrition.js";
 import { foods } from "../../dados/alimentos.js";
 const KEY = "nutrivibe-v2";
 export function validState(s) {
@@ -42,6 +43,11 @@ export function validState(s) {
       r.portions > 20
     )
       throw Error("Registros inválidos.");
+    if (r.nutrition !== undefined) {
+      if (!r.nutrition || r.nutrition.sourceId !== "taco2011-original-v1")
+        throw Error("Fonte nutricional inválida.");
+      calculateNutrition(r.foodId, r.nutrition.referenceId, r.nutrition.grams);
+    }
     ids.add(r.id);
   }
   return { profile: s.profile, records: s.records };

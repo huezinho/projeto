@@ -1,4 +1,8 @@
-# NutriVibe — implementação e operação, versão 2
+# NutriVibe — implementação e operação
+
+Atualização nutricional: consulte [nutricao.md](nutricao.md), que substitui as limitações de cálculo de porções e nutrientes descritas na versão 2 abaixo. Os registros novos podem conter peso em gramas e referência TACO confirmada; registros anteriores não são convertidos automaticamente.
+
+## Histórico da versão 2
 
 ## O que mudou
 

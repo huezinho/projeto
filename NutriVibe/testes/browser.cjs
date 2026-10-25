@@ -41,12 +41,21 @@ const fs = require("node:fs");
     await page
       .getByRole("button", { name: "Registrar Banana", exact: true })
       .click();
+    await page.locator("#nutrition-reference").selectOption("taco2011-182");
+    await page.locator("#nutrition-grams").fill("100");
+    await page
+      .getByRole("button", { name: "Confirmar peso e registrar" })
+      .click();
     await page.reload();
     assert.equal(await page.locator("#registros strong").count(), 1);
     await page.goto(app + "resumo.html");
     assert.equal(
       await page.locator("#resumo .stat").first().textContent(),
       "1",
+    );
+    assert.equal(
+      await page.locator("#nutrition-totals .stat").first().textContent(),
+      "98,2 kcal",
     );
     const suggestions = await page.locator("#sugestoes h3").allTextContents();
     assert(!suggestions.includes("Leite"));
@@ -99,6 +108,12 @@ const fs = require("node:fs");
       .waitFor();
     await page.locator('#candidatos input[value="3"]').check();
     await page.locator("#confirmar-foto").click();
+    await page.locator("#nutrition-reference").selectOption("taco2011-109");
+    await page.locator("#nutrition-grams").fill("50");
+    await page
+      .getByRole("button", { name: "Confirmar peso e registrar" })
+      .click();
+
     assert.equal(await page.locator("#registros strong").count(), 2);
     assert(await page.locator("#photo-area").isHidden());
     await page
@@ -121,13 +136,11 @@ const fs = require("node:fs");
     for await (const c of stream) chunks.push(c);
     const backup = JSON.parse(Buffer.concat(chunks));
     assert.equal(backup.records.length, 2);
-    await page
-      .locator("#importar")
-      .setInputFiles({
-        name: "invalid.json",
-        mimeType: "application/json",
-        buffer: Buffer.from("{}"),
-      });
+    await page.locator("#importar").setInputFiles({
+      name: "invalid.json",
+      mimeType: "application/json",
+      buffer: Buffer.from("{}"),
+    });
     await page
       .getByText("Arquivo inválido. Seus dados atuais foram preservados.")
       .waitFor();
@@ -137,13 +150,11 @@ const fs = require("node:fs");
       .getByText("Nenhum alimento registrado neste dia.", { exact: false })
       .waitFor();
     page.once("dialog", (dialog) => dialog.accept());
-    await page
-      .locator("#importar")
-      .setInputFiles({
-        name: "backup.json",
-        mimeType: "application/json",
-        buffer: Buffer.from(JSON.stringify(backup)),
-      });
+    await page.locator("#importar").setInputFiles({
+      name: "backup.json",
+      mimeType: "application/json",
+      buffer: Buffer.from(JSON.stringify(backup)),
+    });
     await page.getByText("🍽 Sopa de legumes", { exact: true }).waitFor();
 
     for (const width of [360, 768, 1280]) {
