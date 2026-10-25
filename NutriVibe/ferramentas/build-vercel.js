@@ -24,3 +24,8 @@ await writeFile(
   '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>NutriVibe</title></head><body><a href="/html/landingpage/index.html">Conhecer NutriVibe</a><a href="/html/aplicativo/index.html">Abrir aplicativo</a></body></html>',
 );
 console.log("Arquivos públicos do NutriVibe preparados.");
+
+if(process.env.NUTRIVIBE_BENCHMARK==='1'){
+ const {prepareBenchmark}=await import('./prepare-vision-benchmark.js');
+ await prepareBenchmark(output);
+}
