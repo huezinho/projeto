@@ -48,3 +48,21 @@ test("erro do provedor é propagado sem expor segredos", async () => {
     /serviço/,
   );
 });
+test("Gateway Vercel usa rota OpenAI compatível e preserva modelo OpenAI", async () => {
+  let body;
+  await identify(image, {
+    key: "test-only",
+    provider: "vercel-gateway",
+    fetchImpl: async (url, options) => {
+      assert.equal(url, "https://ai-gateway.vercel.sh/v1/chat/completions");
+      body = JSON.parse(options.body);
+      return {
+        ok: true,
+        json: async () => ({
+          choices: [{ message: { content: '{"candidates":[]}' } }],
+        }),
+      };
+    },
+  });
+  assert.equal(body.model, "openai/gpt-4o-mini");
+});

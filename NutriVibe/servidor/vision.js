@@ -24,7 +24,11 @@ export function validateImage(image) {
 }
 export async function identify(
   image,
-  { key = process.env.NUTRIVIBE_VISION_KEY, fetchImpl = fetch } = {},
+  {
+    key = process.env.NUTRIVIBE_VISION_KEY,
+    fetchImpl = fetch,
+    provider = process.env.NUTRIVIBE_VISION_PROVIDER || "openai",
+  } = {},
 ) {
   validateImage(image);
   if (!key)
@@ -34,8 +38,12 @@ export async function identify(
       message:
         "Identificação automática indisponível. Qual alimento aparece na foto?",
     };
+  if (!["openai", "vercel-gateway"].includes(provider))
+    throw Error("Provedor de visão não suportado.");
   const response = await fetchImpl(
-    "https://api.openai.com/v1/chat/completions",
+    provider === "vercel-gateway"
+      ? "https://ai-gateway.vercel.sh/v1/chat/completions"
+      : "https://api.openai.com/v1/chat/completions",
     {
       method: "POST",
       headers: {
@@ -44,7 +52,11 @@ export async function identify(
       },
       signal: AbortSignal.timeout(25000),
       body: JSON.stringify({
-        model: process.env.NUTRIVIBE_VISION_MODEL || "gpt-4o-mini",
+        model:
+          process.env.NUTRIVIBE_VISION_MODEL ||
+          (provider === "vercel-gateway"
+            ? "openai/gpt-4o-mini"
+            : "gpt-4o-mini"),
         max_tokens: 700,
         messages: [
           {
