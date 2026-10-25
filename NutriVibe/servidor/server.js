@@ -94,11 +94,17 @@ export async function handler(req, res) {
         } catch (error) {
           return json(res, 422, {
             error:
-              error.providerStatus === 402 || error.providerStatus === 429
+              error.providerReason === "credits_required" ||
+              error.providerReason === "account_verification_required" ||
+              error.providerStatus === 402 ||
+              error.providerStatus === 429
                 ? "O serviço de identificação atingiu o limite de uso. Selecione o alimento manualmente."
                 : "Não foi possível analisar esta foto. Confira o formato ou selecione o alimento manualmente.",
             ...(Number.isInteger(error.providerStatus)
-              ? { providerStatus: error.providerStatus }
+              ? {
+                  providerStatus: error.providerStatus,
+                  providerReason: error.providerReason,
+                }
               : {}),
           });
         }

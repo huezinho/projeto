@@ -43,7 +43,11 @@ test("erro do provedor é propagado sem expor segredos", async () => {
   await assert.rejects(
     identify(image, {
       key: "test-only",
-      fetchImpl: async () => ({ ok: false }),
+      fetchImpl: async () => ({
+        ok: false,
+        status: 403,
+        json: async () => ({ error: { message: "Forbidden" } }),
+      }),
     }),
     /serviço/,
   );
@@ -65,4 +69,22 @@ test("Gateway Vercel usa rota OpenAI compatível e preserva modelo OpenAI", asyn
     },
   });
   assert.equal(body.model, "openai/gpt-4o-mini");
+});
+test("403 por créditos é distinguido sem expor mensagem externa ou segredo", async () => {
+  await assert.rejects(
+    identify(image, {
+      key: "test-secret",
+      fetchImpl: async () => ({
+        ok: false,
+        status: 403,
+        json: async () => ({
+          error: { message: "Account requires credits to use this service" },
+        }),
+      }),
+    }),
+    (error) =>
+      error.providerStatus === 403 &&
+      error.providerReason === "credits_required" &&
+      !error.message.includes("test-secret"),
+  );
 });

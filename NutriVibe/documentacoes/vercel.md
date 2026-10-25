@@ -61,3 +61,17 @@ Com CLI autenticada, a publicação usa `vercel --prod --yes` na raiz. Só decla
 Os testes locais verificaram o contrato de transação com Neon usando cliente controlado, não um banco Neon remoto. O limite de solicitações em memória é por instância e não garante limitação global em serverless; para maior tráfego, adote proteção distribuída/WAF. Não existe login nem sincronização centralizada de perfis. Backup, retenção dos contatos, exclusão por solicitação e revisão de privacidade continuam responsabilidades operacionais antes de uso em larga escala. Não há envio automático de e-mails.
 
 CI no GitHub valida instalação com lockfile, testes e build. Aprovação nessa CI não comprova publicação ou operação do banco/IA externos.
+
+## Integrações externas — atualização executada
+
+Criado um recurso Neon independente chamado **nutrivibe-production**, ID `store_0I9AEpbqX4GgKP77`, no plano **Free (`free_v3`)**, região `gru1`, sem ativar autenticação ou realtime adicionais. Foi usado o fluxo oficial de auto-provisionamento da CLI Vercel, pela API, com a instalação Neon existente. A conexão à Production do NutriVibe gerou as variáveis de banco diretamente no gerenciador Vercel; não foram copiadas para o Git, arquivos locais ou chat. O banco `mastcare-production` não foi reutilizado.
+
+Teste real no domínio público: `/api/status` retornou `contacts: true` e o formulário retornou **201** após gravar `integration-check@nutrivibe.invalid`, um contato técnico reservado sem envio de e-mail. Cadastros repetidos atualizam essa mesma linha. O registro técnico permanece no banco e pode ser removido pelo administrador.
+
+Foi criada uma chave exclusiva do **Vercel AI Gateway**, vinculada ao projeto, com quota solicitada de **US$ 1 total, sem renovação**. A chave foi salva diretamente como variável criptografada de Production. O servidor suporta dois provedores fixos: OpenAI direto (`openai`) ou OpenAI pelo Gateway (`vercel-gateway`); não aceita URLs arbitrárias. Na produção foi selecionado `vercel-gateway`, modelo `openai/gpt-4o-mini`.
+
+A chamada real de reconhecimento usando uma imagem de banana do dataset público Fruits-360 foi recusada pelo Gateway: status do provedor **403**, classificado como `credits_required`. Portanto, `vision: true` em `/api/status` significa apenas credencial presente, **não reconhecimento operacional**. A integração permanece bloqueada pela liberação de créditos na conta do Gateway, ou alternativamente pelo fornecimento de uma chave direta OpenAI com saldo e troca do provedor/modelo. Nenhum crédito ou plano pago foi comprado, nem recarga automática habilitada.
+
+Imagem do teste: `https://raw.githubusercontent.com/Horea94/Fruit-Images-Dataset/master/Training/Banana/0_100.jpg`. Não se afirma acerto de identificação: a inferência foi recusada. O catálogo manual, a confirmação do preparo/peso, os filtros e o cálculo TACO continuam disponíveis.
+
+As APIs de produção estão acessíveis desta sessão após atualização das regras de rede. Os testes HTTP acima substituem a limitação de acesso relatada na publicação inicial. Foram executados 18 testes automatizados, incluindo separação de provedor e classificação segura de recusa por crédito.

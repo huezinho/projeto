@@ -103,13 +103,29 @@ export async function identify(
       }),
     },
   );
-  if (!response.ok)
+  if (!response.ok) {
+    const diagnostic = await response.json().catch(() => ({}));
+    const detail = String(
+      diagnostic.error?.message || diagnostic.message || diagnostic.error || "",
+    ).toLowerCase();
+    const reason = /verif|valid payment|payment method/.test(detail)
+      ? "account_verification_required"
+      : /credit|balance|billing|payment/.test(detail)
+        ? "credits_required"
+        : /project/.test(detail)
+          ? "project_authorization_required"
+          : /api.?key|token|credential/.test(detail)
+            ? "credential_rejected"
+            : /permission|access|forbidden/.test(detail)
+              ? "provider_access_denied"
+              : "provider_unavailable";
     throw Object.assign(
       new Error(
         "O serviço de identificação não respondeu. Selecione os alimentos manualmente.",
       ),
-      { providerStatus: response.status },
+      { providerStatus: response.status, providerReason: reason },
     );
+  }
   const data = await response.json();
   const result = JSON.parse(data.choices?.[0]?.message?.content || "{}");
   const seen = new Set();
