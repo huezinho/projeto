@@ -34,6 +34,15 @@ for (const group of manifest.weightsManifest)
 hashes["model.json"] = createHash("sha256")
   .update(await readFile(path.join(modelDir, "model.json")))
   .digest("hex");
+const expected = JSON.parse(
+  await readFile(
+    path.join(root, "NutriVibe/dados/modelo-local-integridade.json"),
+    "utf8",
+  ),
+);
+for (const [name, hash] of Object.entries(hashes))
+  if (expected.hashes[name] !== hash)
+    throw Error(`Integridade do modelo divergente: ${name}`);
 await writeFile(
   path.join(modelDir, "provenance.json"),
   JSON.stringify(

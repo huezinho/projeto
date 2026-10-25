@@ -68,59 +68,66 @@ const fs = require("node:fs");
       "0",
     );
     await page.goto(app + "registro.html");
+    let paidRequests = 0;
+    page.on("request", (req) => {
+      if (req.url().includes("/api/identify")) paidRequests++;
+    });
     const png = await page.screenshot({
       clip: { x: 0, y: 0, width: 100, height: 100 },
     });
     await page
       .locator("#foto")
-      .setInputFiles({ name: "prato.png", mimeType: "image/png", buffer: png });
+      .setInputFiles({
+        name: "sem-alimento.png",
+        mimeType: "image/png",
+        buffer: png,
+      });
     await page.locator("#photo-area").waitFor();
     await page.locator("#analisar").click();
     await page
       .getByText(
-        "Autorize o envio da foto ou selecione o alimento no catálogo.",
+        "Confirme a análise local ou selecione o alimento no catálogo.",
       )
       .waitFor();
     await page.locator("#photo-consent").check();
     await page.locator("#analisar").click();
     await page
-      .getByText("Identificação automática indisponível.", { exact: false })
-      .waitFor();
-    // Provider response is intercepted only to verify the confirmation UX. Not a real inference test.
-    await page.route("**/api/identify", (route) =>
-      route.fulfill({
-        json: {
-          available: true,
-          message: "Confira os alimentos encontrados antes de registrar.",
-          candidates: [
-            { foodId: "3", confidence: 0.9 },
-            { foodId: "4", confidence: 0.92 },
-          ],
-        },
-      }),
+      .getByText("Não consegui reconhecer com segurança.", { exact: false })
+      .waitFor({ timeout: 120000 });
+    const testImage = process.env.NUTRIVIBE_TEST_IMAGE;
+    assert(
+      testImage && fs.existsSync(testImage),
+      "Defina NUTRIVIBE_TEST_IMAGE com uma foto de banana para teste real do modelo.",
     );
+    await page.locator("#foto").setInputFiles(testImage);
+    await page.locator("#photo-consent").check();
     await page.locator("#analisar").click();
-    await page.locator("#candidatos input").first().waitFor();
+    await page
+      .locator('#candidatos input[value="0"]')
+      .waitFor({ timeout: 120000 });
     assert.equal(await page.locator("#registros strong").count(), 1);
     await page.locator("#confirmar-foto").click();
     await page
       .getByText("Selecione ao menos um alimento", { exact: false })
       .waitFor();
-    await page.locator('#candidatos input[value="3"]').check();
+    await page.locator('#candidatos input[value="0"]').check();
     await page.locator("#confirmar-foto").click();
-    await page.locator("#nutrition-reference").selectOption("taco2011-109");
+    await page.locator("#nutrition-reference").selectOption("taco2011-182");
     await page.locator("#nutrition-grams").fill("50");
     await page
       .getByRole("button", { name: "Confirmar peso e registrar" })
       .click();
-
     assert.equal(await page.locator("#registros strong").count(), 2);
-    assert(await page.locator("#photo-area").isHidden());
     await page
-      .getByRole("button", { name: "Remover Cenoura", exact: true })
+      .getByRole("button", { name: "Remover Banana", exact: true })
+      .last()
       .click();
     assert.equal(await page.locator("#registros strong").count(), 1);
-    await page.unroute("**/api/identify");
+    assert.equal(
+      paidRequests,
+      0,
+      "A foto não deve ser enviada ao endpoint pago",
+    );
     await page.locator("#custom-name").fill("Sopa de legumes");
     await page
       .getByRole("button", { name: "Registrar alimento informado" })
@@ -210,7 +217,7 @@ const fs = require("node:fs");
     }
     // Real contact persistence API, using a dedicated test database (server started with NUTRIVIBE_DATA_DIR).
     await page.locator("#nome").fill("Teste de integração");
-    await page.locator("#email").fill("teste@example.com");
+    await page.locator("#email").fill("integration-check@nutrivibe.invalid");
     await page.locator("#consent").check();
     await page
       .getByRole("button", { name: "Quero acompanhar o NutriVibe" })

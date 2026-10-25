@@ -479,12 +479,10 @@ if ($("#dashboard")) {
 }
 function setupPhoto() {
   let image = "",
-    version = 0,
-    controller;
+    version = 0;
   const candidates = $("#candidatos");
   function reset() {
     version++;
-    controller?.abort();
     image = "";
     $("#foto").value = "";
     $("#photo-area").hidden = true;
@@ -542,9 +540,6 @@ function setupPhoto() {
         "Confirme a análise local ou selecione o alimento no catálogo.",
       );
     const current = version;
-    controller = new AbortController();
-    const requestController = controller;
-    const timeout = undefined;
     $("#analisar").disabled = true;
     candidates.replaceChildren();
     $("#confirmar-foto").hidden = true;
@@ -569,7 +564,6 @@ function setupPhoto() {
           `${error.name === "AbortError" ? "A análise demorou mais que o esperado." : error.message} Qual alimento aparece na foto? Selecione no catálogo.`,
         );
     } finally {
-      clearTimeout(timeout);
       if (current === version) $("#analisar").disabled = false;
     }
   };

@@ -179,18 +179,24 @@ export async function handler(req, res) {
       return res.end("Não encontrado");
     }
     const file = path.resolve(root, "." + pathname);
+    const fileMime =
+      mime[path.extname(file)] ||
+      (pathname.startsWith("/modelos/mobilenet/") &&
+      /^group\d+-shard\d+of\d+$/.test(path.basename(file))
+        ? "application/octet-stream"
+        : null);
     if (
       !["html", "css", "javascript", "dados", "imagens", "modelos"].some(
         (dir) => file.startsWith(path.join(root, dir) + path.sep),
       ) ||
-      !mime[path.extname(file)]
+      !fileMime
     ) {
       res.writeHead(404);
       return res.end("Não encontrado");
     }
     const content = await readFile(file);
     res.writeHead(200, {
-      "Content-Type": mime[path.extname(file)],
+      "Content-Type": fileMime,
       "Cache-Control": "no-cache",
     });
     res.end(req.method === "HEAD" ? undefined : content);

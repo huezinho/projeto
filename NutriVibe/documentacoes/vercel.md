@@ -75,3 +75,7 @@ A chamada real de reconhecimento usando uma imagem de banana do dataset público
 Imagem do teste: `https://raw.githubusercontent.com/Horea94/Fruit-Images-Dataset/master/Training/Banana/0_100.jpg`. Não se afirma acerto de identificação: a inferência foi recusada. O catálogo manual, a confirmação do preparo/peso, os filtros e o cálculo TACO continuam disponíveis.
 
 As APIs de produção estão acessíveis desta sessão após atualização das regras de rede. Os testes HTTP acima substituem a limitação de acesso relatada na publicação inicial. Foram executados 18 testes automatizados, incluindo separação de provedor e classificação segura de recusa por crédito.
+
+## Substituição da IA paga
+
+A implementação atual substitui OpenAI/Gateway por inferência gratuita no navegador com TensorFlow.js. A chave do Gateway foi revogada; não é necessário comprar créditos. O Neon continua conectado. O histórico acima descreve as etapas anteriores, não uma pendência atual de pagamento. Veja `reconhecimento-gratuito.md` para cobertura, incerteza, procedência do modelo e testes reais.

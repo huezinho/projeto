@@ -20,3 +20,23 @@ export function selectFood(predictions) {
     return [];
   return [{ foodId: id, confidence: best.probability }];
 }
+// Uma hipótese fraca é apresentada como pergunta, nunca como identificação confirmada.
+export function tentativeFood(predictions) {
+  const best = [...predictions].sort(
+    (a, b) => b.probability - a.probability,
+  )[0];
+  if (
+    !best ||
+    !labels.has(best.className) ||
+    !Number.isFinite(best.probability) ||
+    best.probability < 0.15
+  )
+    return [];
+  return [
+    {
+      foodId: labels.get(best.className),
+      confidence: best.probability,
+      tentative: true,
+    },
+  ];
+}
