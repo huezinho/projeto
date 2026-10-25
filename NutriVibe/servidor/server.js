@@ -1,17 +1,11 @@
-import http from "node:http";
 import { readFile } from "node:fs/promises";
-import { mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
-import { DatabaseSync } from "node:sqlite";
+import { createContactsStore } from "./contacts.js";
 import { identify } from "./vision.js";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const dataDir = process.env.NUTRIVIBE_DATA_DIR || path.join(root, ".data");
-mkdirSync(dataDir, { recursive: true });
-const db = new DatabaseSync(path.join(dataDir, "nutrivibe.sqlite"));
-db.exec(
-  "CREATE TABLE IF NOT EXISTS contacts (email TEXT PRIMARY KEY, name TEXT NOT NULL, consent_at TEXT NOT NULL)",
-);
+const contacts = createContactsStore({ localDirectory: dataDir });
 const rates = new Map();
 function json(res, status, data) {
   res.writeHead(status, {
@@ -21,6 +15,13 @@ function json(res, status, data) {
   res.end(JSON.stringify(data));
 }
 async function body(req, max) {
+  // O runtime Node da Vercel pode entregar JSON já processado.
+  if (req.body !== undefined) {
+    const raw =
+      typeof req.body === "string" ? req.body : JSON.stringify(req.body);
+    if (Buffer.byteLength(raw) > max) throw Error("Payload muito grande");
+    return JSON.parse(raw);
+  }
   let chunks = [],
     size = 0;
   for await (const chunk of req) {
@@ -38,7 +39,7 @@ const mime = {
   ".png": "image/png",
   ".svg": "image/svg+xml",
 };
-const server = http.createServer(async (req, res) => {
+export async function handler(req, res) {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("Referrer-Policy", "same-origin");
   res.setHeader("X-Frame-Options", "DENY");
@@ -48,8 +49,14 @@ const server = http.createServer(async (req, res) => {
   );
   try {
     const url = new URL(req.url, "http://localhost");
+    // A Vercel encaminha todas as rotas de API para uma função.
+    const endpoint = req.query?.endpoint || url.searchParams.get("endpoint");
+    if (endpoint) url.pathname = "/api/" + String(endpoint);
     if (url.pathname === "/api/status" && req.method === "GET")
-      return json(res, 200, { vision: !!process.env.NUTRIVIBE_VISION_KEY });
+      return json(res, 200, {
+        vision: !!process.env.NUTRIVIBE_VISION_KEY,
+        contacts: contacts.available,
+      });
     if (url.pathname.startsWith("/api/")) {
       if (req.method !== "POST")
         return json(res, 405, { error: "Método não permitido" });
@@ -107,9 +114,23 @@ const server = http.createServer(async (req, res) => {
           return json(res, 400, {
             error: "Confira nome, e-mail e consentimento.",
           });
-        db.prepare(
-          "INSERT INTO contacts(email,name,consent_at) VALUES(?,?,?) ON CONFLICT(email) DO UPDATE SET name=excluded.name,consent_at=excluded.consent_at",
-        ).run(email, name, new Date().toISOString());
+        if (!contacts.available)
+          return json(res, 503, {
+            error:
+              "O cadastro está temporariamente indisponível. Tente novamente mais tarde.",
+          });
+        try {
+          await contacts.save({
+            email,
+            name,
+            consentAt: new Date().toISOString(),
+          });
+        } catch {
+          return json(res, 503, {
+            error:
+              "Não foi possível salvar seu contato. Tente novamente mais tarde.",
+          });
+        }
         return json(res, 201, {
           message: "Interesse registrado. Obrigado por conhecer o NutriVibe!",
         });
@@ -120,10 +141,16 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(405);
       return res.end();
     }
-    const pathname =
-      url.pathname === "/"
-        ? "/html/landingpage/index.html"
-        : decodeURIComponent(url.pathname);
+    if (req.method === "GET" && ["/", "/app"].includes(url.pathname)) {
+      res.writeHead(307, {
+        Location:
+          url.pathname === "/"
+            ? "/html/landingpage/index.html"
+            : "/html/aplicativo/index.html",
+      });
+      return res.end();
+    }
+    const pathname = decodeURIComponent(url.pathname);
     if (
       !["/html/", "/css/", "/javascript/", "/dados/", "/imagens/"].some(
         (prefix) => pathname.startsWith(prefix),
@@ -153,17 +180,27 @@ const server = http.createServer(async (req, res) => {
       json(res, 400, { error: "Solicitação inválida ou arquivo indisponível" });
     else res.end();
   }
-});
-server.listen(
-  Number(process.env.PORT || 8080),
-  process.env.HOST || "127.0.0.1",
-  () => console.log("NutriVibe iniciado. Porta " + (process.env.PORT || 8080)),
-);
-function stop() {
-  server.close(() => {
-    db.close();
-    process.exit(0);
-  });
 }
-process.on("SIGTERM", stop);
-process.on("SIGINT", stop);
+export { contacts };
+
+import { pathToFileURL } from "node:url";
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href
+) {
+  const { createServer } = await import("node:http");
+  const server = createServer(handler);
+  server.listen(
+    Number(process.env.PORT || 8080),
+    process.env.HOST || "127.0.0.1",
+    () =>
+      console.log("NutriVibe iniciado. Porta " + (process.env.PORT || 8080)),
+  );
+  const stop = () =>
+    server.close(() => {
+      contacts.close();
+      process.exit(0);
+    });
+  process.on("SIGINT", stop);
+  process.on("SIGTERM", stop);
+}

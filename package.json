@@ -1,0 +1,16 @@
+{
+  "name": "nutrivibe-deployment",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "build": "node NutriVibe/ferramentas/build-vercel.js",
+    "test": "npm --prefix NutriVibe test",
+    "start": "npm --prefix NutriVibe start"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "1.0.2"
+  }
+}

@@ -1,0 +1,7 @@
+.git
+node_modules
+NutriVibe/.data
+**/.env
+**/.env.*
+NutriVibe/documentacoes
+NutriVibe/testes

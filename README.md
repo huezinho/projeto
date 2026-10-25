@@ -36,3 +36,7 @@ A câmera/envio de foto e confirmação manual funcionam sem chave. **Identifica
 - [Backlog fornecido](NutriVibe/documentacoes/historico/backlog-jira.json)
 
 `cd NutriVibe && npm test` executa os testes de regras. Para testes Chromium, siga o documento de implementação. Hospedagem completa requer Node 24 e disco persistente; GitHub Pages sozinho não executa a API.
+
+## Publicação na internet
+
+Configuração Vercel na raiz do repositório, com API serverless e PostgreSQL Neon para contatos. Execute `npm ci && npm test && npm run build` na raiz para validar a preparação. Veja [publicação e variáveis necessárias](NutriVibe/documentacoes/vercel.md). O deploy requer conta Vercel autorizada; banco e IA precisam das respectivas credenciais.
