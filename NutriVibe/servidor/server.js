@@ -91,10 +91,15 @@ export async function handler(req, res) {
           });
         try {
           return json(res, 200, await identify(input.image));
-        } catch {
+        } catch (error) {
           return json(res, 422, {
             error:
-              "Não foi possível analisar esta foto. Confira o formato ou selecione o alimento manualmente.",
+              error.providerStatus === 402 || error.providerStatus === 429
+                ? "O serviço de identificação atingiu o limite de uso. Selecione o alimento manualmente."
+                : "Não foi possível analisar esta foto. Confira o formato ou selecione o alimento manualmente.",
+            ...(Number.isInteger(error.providerStatus)
+              ? { providerStatus: error.providerStatus }
+              : {}),
           });
         }
       }

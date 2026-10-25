@@ -104,8 +104,11 @@ export async function identify(
     },
   );
   if (!response.ok)
-    throw new Error(
-      "O serviço de identificação não respondeu. Selecione os alimentos manualmente.",
+    throw Object.assign(
+      new Error(
+        "O serviço de identificação não respondeu. Selecione os alimentos manualmente.",
+      ),
+      { providerStatus: response.status },
     );
   const data = await response.json();
   const result = JSON.parse(data.choices?.[0]?.message?.content || "{}");
