@@ -6,7 +6,7 @@ import { build } from "esbuild";
 const root = fileURLToPath(new URL("../../", import.meta.url));
 const modelDir = path.join(root, "NutriVibe/modelos/mobilenet");
 const base =
-  "https://storage.googleapis.com/tfhub-tfjs-modules/google/imagenet/mobilenet_v2_050_224/classification/2/default/1/";
+  "https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_1.0_224/";
 await mkdir(modelDir, { recursive: true });
 async function asset(name) {
   if (!/^[a-zA-Z0-9_.-]+$/.test(name)) throw Error("Nome de artefato inválido");
@@ -37,7 +37,7 @@ hashes["model.json"] = createHash("sha256")
 await writeFile(
   path.join(modelDir, "provenance.json"),
   JSON.stringify(
-    { source: base, model: "MobileNet V2 0.5 224 ImageNet", hashes },
+    { source: base, model: "MobileNet V1 1.0 224 ImageNet", hashes },
     null,
     2,
   ),
