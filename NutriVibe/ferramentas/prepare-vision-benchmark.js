@@ -6,7 +6,7 @@ export async function prepareBenchmark(output){
  const dir=path.join(output,'imagens/benchmark');await mkdir(dir,{recursive:true});
  const models=[['clip','Xenova/clip-vit-base-patch32',['config.json','preprocessor_config.json','tokenizer.json','tokenizer_config.json','onnx/text_model_quantized.onnx','onnx/vision_model_quantized.onnx']],['siglip','Xenova/siglip-base-patch16-224',['config.json','preprocessor_config.json','tokenizer.json','tokenizer_config.json','onnx/text_model_quantized.onnx','onnx/vision_model_quantized.onnx']],['food101','Xenova/vit-base-patch16-224-in21k-finetuned-food101',['config.json','preprocessor_config.json','onnx/model_quantized.onnx']]];
  const provenance={models:[],photos:[]};
- for(const[name,repo,files]of models){
+ for(const[name,repo,files]of(process.env.NUTRIVIBE_BENCHMARK==='fresh'?[]:models)){
   try{
    const info=await fetch('https://huggingface.co/api/models/'+repo).then(r=>{if(!r.ok)throw Error(`metadata ${r.status}`);return r.json()});
    const modelDir=path.join(output,'modelos/benchmark',name);const record={name,repo,revision:info.sha,files:[]};
@@ -19,13 +19,13 @@ export async function prepareBenchmark(output){
   const[expected,topic]=topics[index];
   try{
    // Busca de acervo público. Os rótulos serão revisados visualmente antes de medir os modelos.
-   const params=new URLSearchParams({action:'query',format:'json',generator:'search',gsrsearch:`${topic} filetype:bitmap -diagram -map -logo -icon`,gsrnamespace:'6',gsrlimit:'3',prop:'imageinfo',iiprop:'url|extmetadata',iiurlwidth:'640'});
+   const params=new URLSearchParams({action:'query',format:'json',generator:'search',gsrsearch:`${topic} filetype:bitmap -diagram -map -logo -icon`,gsrnamespace:'6',gsrlimit:'6',prop:'imageinfo',iiprop:'url|extmetadata',iiurlwidth:'640'});
    const res=await fetch('https://commons.wikimedia.org/w/api.php?'+params,{headers:{'User-Agent':'NutriVibeResearch/1.0 (https://github.com/huezinho/projeto)'},signal:AbortSignal.timeout(30000)});
    if(!res.ok)throw Error(`Commons ${res.status}`);
    const meta=await res.json();const pages=Object.values(meta.query?.pages||{}).sort((a,b)=>a.index-b.index);
-   for(let j=0;j<Math.min(pages.length,2);j++){const page=pages[j];const image=page.imageinfo?.[0];if(!image)continue;const url=image.thumburl||image.url;const response=await fetch(url,{signal:AbortSignal.timeout(30000)});if(!response.ok)continue;const bytes=Buffer.from(await response.arrayBuffer());if(bytes.length>3_000_000)continue;const file=`${String(index).padStart(2,'0')}-${j}.jpg`;await writeFile(path.join(dir,file),bytes);provenance.photos.push({id:file,expected,topic,title:page.title,url,original:image.url,license:image.extmetadata?.LicenseShortName?.value,licenseUrl:image.extmetadata?.LicenseUrl?.value,artist:image.extmetadata?.Artist?.value,sha256:createHash('sha256').update(bytes).digest('hex'),split:j?'holdout':'development',reviewed:false});}
+   for(let j=process.env.NUTRIVIBE_BENCHMARK==='fresh'?2:0;j<Math.min(pages.length,process.env.NUTRIVIBE_BENCHMARK==='fresh'?4:2);j++){const page=pages[j];const image=page.imageinfo?.[0];if(!image)continue;const url=image.thumburl||image.url;const response=await fetch(url,{signal:AbortSignal.timeout(30000)});if(!response.ok)continue;const bytes=Buffer.from(await response.arrayBuffer());if(bytes.length>3_000_000)continue;const file=`${String(index).padStart(2,'0')}-${j}.jpg`;await writeFile(path.join(dir,file),bytes);provenance.photos.push({id:file,expected,topic,title:page.title,url,original:image.url,license:image.extmetadata?.LicenseShortName?.value,licenseUrl:image.extmetadata?.LicenseUrl?.value,artist:image.extmetadata?.Artist?.value,sha256:createHash('sha256').update(bytes).digest('hex'),split:process.env.NUTRIVIBE_BENCHMARK==='fresh'?'validation':j?'holdout':'development',reviewed:false});}
    console.log('Benchmark fotos',topic);
   }catch(error){console.log('Benchmark foto indisponível',topic,error.message);}
  }
- await writeFile(path.join(dir,'manifest.json'),JSON.stringify(provenance,null,2));
+ await writeFile(path.join(dir,process.env.NUTRIVIBE_BENCHMARK==='fresh'?'manifest-fresh.json':'manifest.json'),JSON.stringify(provenance,null,2));
 }

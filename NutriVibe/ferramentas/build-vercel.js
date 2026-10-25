@@ -25,7 +25,7 @@ await writeFile(
 );
 console.log("Arquivos públicos do NutriVibe preparados.");
 
-if(process.env.NUTRIVIBE_BENCHMARK==='1'){
+if(['1','fresh'].includes(process.env.NUTRIVIBE_BENCHMARK)){
  const {prepareBenchmark}=await import('./prepare-vision-benchmark.js');
  await prepareBenchmark(output);
 }
