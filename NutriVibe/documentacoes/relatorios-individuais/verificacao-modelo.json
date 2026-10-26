@@ -10,7 +10,15 @@
       ],
       "tabelas_preservadas": 47,
       "linhas_preservadas": 97,
-      "datas_e_horas": "pendentes de validação individual"
+      "datas_e_horas": "estimativas para revisão individual, não apontamentos comprovados",
+      "total_horas_estimadas": 56,
+      "marcacoes": {
+        "PIE": "III - Saúde e Meio Ambiente",
+        "apoio": "Nenhuma das opções anteriores",
+        "parceiro": "Outra: sem parceiro formalizado",
+        "interlocucao": "Outra: não se aplica à fase interna documentada",
+        "acao_externa": "Outra: desenvolvimento interno preparatório, sem ação externa documentada"
+      }
     },
     {
       "estudante": "Davi Pioli",
@@ -21,7 +29,15 @@
       ],
       "tabelas_preservadas": 47,
       "linhas_preservadas": 97,
-      "datas_e_horas": "pendentes de validação individual"
+      "datas_e_horas": "estimativas para revisão individual, não apontamentos comprovados",
+      "total_horas_estimadas": 38,
+      "marcacoes": {
+        "PIE": "III - Saúde e Meio Ambiente",
+        "apoio": "Nenhuma das opções anteriores",
+        "parceiro": "Outra: sem parceiro formalizado",
+        "interlocucao": "Outra: não se aplica à fase interna documentada",
+        "acao_externa": "Outra: desenvolvimento interno preparatório, sem ação externa documentada"
+      }
     },
     {
       "estudante": "Victor Almeida",
@@ -32,7 +48,15 @@
       ],
       "tabelas_preservadas": 47,
       "linhas_preservadas": 97,
-      "datas_e_horas": "pendentes de validação individual"
+      "datas_e_horas": "estimativas para revisão individual, não apontamentos comprovados",
+      "total_horas_estimadas": 42,
+      "marcacoes": {
+        "PIE": "III - Saúde e Meio Ambiente",
+        "apoio": "Nenhuma das opções anteriores",
+        "parceiro": "Outra: sem parceiro formalizado",
+        "interlocucao": "Outra: não se aplica à fase interna documentada",
+        "acao_externa": "Outra: desenvolvimento interno preparatório, sem ação externa documentada"
+      }
     },
     {
       "estudante": "Marcelo Dalbone",
@@ -43,7 +67,15 @@
       ],
       "tabelas_preservadas": 47,
       "linhas_preservadas": 97,
-      "datas_e_horas": "pendentes de validação individual"
+      "datas_e_horas": "estimativas para revisão individual, não apontamentos comprovados",
+      "total_horas_estimadas": 34,
+      "marcacoes": {
+        "PIE": "III - Saúde e Meio Ambiente",
+        "apoio": "Nenhuma das opções anteriores",
+        "parceiro": "Outra: sem parceiro formalizado",
+        "interlocucao": "Outra: não se aplica à fase interna documentada",
+        "acao_externa": "Outra: desenvolvimento interno preparatório, sem ação externa documentada"
+      }
     },
     {
       "estudante": "Akiane Merbach",
@@ -54,7 +86,15 @@
       ],
       "tabelas_preservadas": 47,
       "linhas_preservadas": 97,
-      "datas_e_horas": "pendentes de validação individual"
+      "datas_e_horas": "estimativas para revisão individual, não apontamentos comprovados",
+      "total_horas_estimadas": 40,
+      "marcacoes": {
+        "PIE": "III - Saúde e Meio Ambiente",
+        "apoio": "Nenhuma das opções anteriores",
+        "parceiro": "Outra: sem parceiro formalizado",
+        "interlocucao": "Outra: não se aplica à fase interna documentada",
+        "acao_externa": "Outra: desenvolvimento interno preparatório, sem ação externa documentada"
+      }
     }
   ]
 }

@@ -1,0 +1,13 @@
+﻿data_estimada,atividade,horas_estimadas,natureza
+07/08/2026,Levantamento inicial dos fluxos e interações previstos.,2,Estimativa para revisão individual; não é apontamento comprovado
+14/08/2026,Discussão dos requisitos funcionais com a equipe.,3,Estimativa para revisão individual; não é apontamento comprovado
+11/09/2026,Organização das interações e validações para implementação.,3,Estimativa para revisão individual; não é apontamento comprovado
+02/10/2026,Organização dos módulos JavaScript do aplicativo.,5,Estimativa para revisão individual; não é apontamento comprovado
+05/10/2026,Validação dos formulários de perfil e preferências.,4,Estimativa para revisão individual; não é apontamento comprovado
+08/10/2026,"Registro, remoção, pesquisa e filtros do catálogo.",6,Estimativa para revisão individual; não é apontamento comprovado
+10/10/2026,"Persistência, exportação, importação e exclusão de dados.",4,Estimativa para revisão individual; não é apontamento comprovado
+13/10/2026,Resumo diário e regras de sugestões compatíveis com o perfil.,5,Estimativa para revisão individual; não é apontamento comprovado
+16/10/2026,Confirmação de referência e peso para cálculo nutricional.,5,Estimativa para revisão individual; não é apontamento comprovado
+19/10/2026,Integração do registro por foto e correção manual.,7,Estimativa para revisão individual; não é apontamento comprovado
+22/10/2026,Integração do modelo selecionado e tratamento de incerteza.,7,Estimativa para revisão individual; não é apontamento comprovado
+26/10/2026,"Revisão das interações, mensagens e fluxo completo.",5,Estimativa para revisão individual; não é apontamento comprovado

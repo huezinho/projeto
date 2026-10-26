@@ -3,7 +3,7 @@ from pathlib import Path
 from copy import deepcopy
 from zipfile import ZipFile
 from lxml import etree as E
-import hashlib,json,shutil
+import hashlib,json,csv
 ROOT=Path(__file__).resolve().parents[2]
 BASE=ROOT/'documentacoes/relatorios-individuais'
 TEMPLATE=BASE/'modelo-original/2s2026_Modelo_Relatorio_Curricularizacao_Extensao_PROGRAD.docx'
@@ -26,6 +26,21 @@ people=[
  ('Ago/2026*','Pesquisa sobre alimentação infantil e necessidades do público.'),('Ago/2026*','Levantamento de fontes e limites de orientação alimentar.'),('A confirmar','Organização das referências utilizadas pelo grupo.'),('A confirmar','Revisão dos materiais de contextualização do projeto.'),('Out/2026*','Pesquisa de restrições, seletividade e cuidados de uso.'),('Out/2026*','Conferência de fontes de composição nutricional.'),('Out/2026*','Revisão da rastreabilidade do recorte TACO.'),('Out/2026*','Pesquisa de alternativas de reconhecimento por imagem.'),('Out/2026*','Análise dos resultados e limites do benchmark do projeto.'),('Out/2026*','Distinção entre alimento, preparo, peso e nutrientes.'),('Out/2026*','Organização das limitações e cuidados com dados.'),('Out/2026*','Revisão das evidências e das pendências de avaliação externa.')],
  'evidencias':[('Fonte, referências e cálculo da estimativa nutricional.','documentacoes/nutricao.md'),('Comparação de reconhecedores, fotos e resultados individuais.','documentacoes/avaliacao-imagens/README.md'),('Proveniência da planilha original TACO.','documentacoes/fontes/proveniencia.json')]},
 ]
+
+# Cronograma proposto: datas e horas são estimativas solicitadas pela equipe.
+# Não representam apontamento comprovado nem a carga curricular oficial.
+SCHEDULES = {
+ 'paulo': (['07/08/2026','14/08/2026','11/09/2026','02/10/2026','05/10/2026','08/10/2026','10/10/2026','13/10/2026','16/10/2026','19/10/2026','22/10/2026','26/10/2026'], [2,3,3,5,4,6,4,5,5,7,7,5]),
+ 'davi': (['07/08/2026','14/08/2026','11/09/2026','02/10/2026','05/10/2026','08/10/2026','10/10/2026','13/10/2026','16/10/2026','19/10/2026','22/10/2026','26/10/2026'], [3,2,3,4,4,3,3,4,3,3,3,3]),
+ 'victor': (['07/08/2026','14/08/2026','11/09/2026','02/10/2026','05/10/2026','08/10/2026','10/10/2026','13/10/2026','16/10/2026','22/10/2026','25/10/2026','26/10/2026'], [2,2,3,4,4,4,4,5,3,4,3,4]),
+ 'marcelo': (['07/08/2026','14/08/2026','21/08/2026','04/09/2026','18/09/2026','02/10/2026','05/10/2026','08/10/2026','13/10/2026','16/10/2026','22/10/2026','26/10/2026'], [3,3,2,4,3,3,3,3,2,3,3,2]),
+ 'akiane': (['07/08/2026','14/08/2026','04/09/2026','18/09/2026','02/10/2026','05/10/2026','08/10/2026','13/10/2026','19/10/2026','22/10/2026','25/10/2026','26/10/2026'], [3,3,3,3,3,4,4,4,4,3,3,3]),
+}
+
+def mark(cell, index):
+ choices = cell.findall('w:tbl', NS)
+ fill(tc(choices[index], 0, 0), 'X')
+ assert sum(''.join(tc(choice, 0, 0).xpath('.//w:t/text()', namespaces=NS)) == 'X' for choice in choices) == 1
 
 def text(p):return ''.join(p.xpath('.//w:t/text()',namespaces=NS))
 def run(p,value):
@@ -52,40 +67,60 @@ with ZipFile(TEMPLATE)as zin:
  stats={'original_sha256':hashlib.sha256(TEMPLATE.read_bytes()).hexdigest(),'relatorios':[]}
  original_texts=xml.xpath('//w:t/text()',namespaces=NS)
  for person in people:
+  dates,hours=SCHEDULES[person['slug']];total_hours=sum(hours)
+  assert len(dates)==len(hours)==len(person['atividades'])
   x=deepcopy(xml);tables=x.find('w:body',NS).findall('w:tbl',NS);t=tables[0]
   inline(tc(t,0),': Centro de Ciências Exatas, Ambientais e de Tecnologias')
   inline(tc(t,1),'Engenharia da Computação')
   inline(tc(t,2),'PI - Desenvolvimento de Sistemas Web');inline(tc(t,2,1),'218040')
-  inline(tc(t,3),' A confirmar com o docente')
-  for col in range(1,5):fill(tc(t,3,col),'A confirmar')
+  inline(tc(t,3),f' {total_hours} h*')
+  for col,value in enumerate([0,0,total_hours,0],1):fill(tc(t,3,col),f'{value} h*')
   inline(tc(t,4),'Fernando Luiz de Almeida Silveira');inline(tc(t,5),person['nome']);inline(tc(t,6),person['ra'])
-  fill(tc(t,7),'Enquadramento sugerido pelo tema: PIE III - Saúde e Meio Ambiente. A seleção oficial deve ser confirmada pelo docente.')
-  fill(tc(t,8),'Forma de desenvolvimento e eventual vínculo institucional: a confirmar com o docente. Não foram informados apoios institucionais específicos.')
-  fill(tc(tables[1],1),'NutriVibe: desenvolvimento de recurso digital de educação alimentar e organização de registros alimentares')
-  inline(tc(tables[2],1),'A confirmar: comunidade externa/parceiro não identificado nos registros fornecidos.')
-  fill(tc(tables[2],2),'Classificação do parceiro a confirmar; nenhuma opção foi assinalada sem comprovação.')
+  mark(tc(t,7),2)
+  fill(tc(t,7),'PIE III selecionado pelo foco em educação alimentar e saúde; validar com o docente. * Datas e horas estimadas. A CH indicada resume trabalho individual e não substitui a carga curricular oficial.')
+  mark(tc(t,8),5)
+  field(tc(t,8),'Docente extensionista responsável pelo projeto:','Não se aplica: nenhuma articulação institucional informada.')
+  field(tc(t,8),'Nome do projeto:','Não se aplica a projeto institucional de extensão informado.')
+  fill(tc(t,8),'Nenhum dos apoios institucionais listados foi informado. * Datas e horas são estimadas para revisão. Os valores de CH acima resumem apenas o trabalho individual estimado, classificado como autônomo; não substituem a carga horária oficial do componente. Zero significa ausência de horas supervisionadas ou comunitárias comprovadas nesta estimativa.')
+  fill(tc(tables[1],1),'NutriVibe: desenvolvimento de recurso digital de educação alimentar e organização de registros alimentares — relatório com datas e horas estimadas para revisão individual')
+  inline(tc(tables[2],1),'Sem parceiro externo formalizado nos registros disponíveis. Público-alvo: responsáveis e crianças com seletividade alimentar.')
+  mark(tc(tables[2],2),6)
+  field(tc(tables[2],2),'Especifique:','Sem parceiro externo formalizado nesta etapa.')
+  fill(tc(tables[2],2),'Outra: não se aplica à fase interna documentada; não há entidade externa identificada. A escolha não indica atendimento comunitário já realizado.')
   fill(tc(tables[2],3),'Público-alvo previsto: responsáveis e crianças com seletividade alimentar. A participação externa efetiva não foi informada; o público-alvo não é apresentado como público já atendido.')
-  fill(tc(tables[3],1),'Equipe do projeto: 5 estudantes. Total institucional e participação docente/técnica: confirmar com o docente.')
-  inline(tc(tables[3],2),'A confirmar com o docente; não informado.')
-  inline(tc(tables[3],3),'A confirmar; não há dados suficientes para totalizar.')
-  fill(tc(tables[4],1),'Não foram fornecidos registros que permitam assinalar interlocução externa já realizada.')
+  participants=tc(tables[3],1).findall('w:tbl',NS)
+  fill(tc(participants[0],0,1),'1')
+  fill(tc(participants[1],0,1),'5');fill(tc(participants[1],1,1),'0')
+  fill(tc(tables[3],1),'Contagem dos vínculos identificados: 1 docente responsável e 5 estudantes. Não é lista de presença; nenhum técnico foi informado.')
+  inline(tc(tables[3],2),'0 participantes externos documentados.')
+  inline(tc(tables[3],3),'6 pessoas identificadas: 1 docente responsável e 5 estudantes; sem presença externa documentada.')
+  mark(tc(tables[4],1),7)
+  field(tc(tables[4],1),'Especifique:','Não se aplica: sem interlocução externa documentada.')
+  fill(tc(tables[4],1),'Outra: não se aplica nesta etapa; pesquisa documental e organização interna, sem interlocução externa documentada. Não houve indicação de reunião, entrevista ou validação externa realizada.')
   fill(tc(tables[4],2),'Não foram informadas datas, participantes ou evidências de contato com comunidade externa. A apresentação online e os testes técnicos não substituem interlocução comunitária. Este campo deve ser completado pelo estudante com ações efetivamente realizadas e seus registros.')
-  fill(tc(tables[5],1),'O produto digital foi desenvolvido tecnicamente. A vinculação desse desenvolvimento a demandas externas, oficinas ou ações comunitárias deve ser confirmada; essas ações não foram presumidas.')
+  mark(tc(tables[5],1),5)
+  field(tc(tables[5],1),'Especifique:','Desenvolvimento interno preparatório, sem ação externa documentada.')
+  fill(tc(tables[5],1),'Outra: desenvolvimento interno preparatório de recurso digital educativo. Não há ação com comunidade externa documentada. A alternativa de desenvolvimento em resposta a demandas externas não foi marcada porque essa interlocução não está comprovada.')
   fill(tc(tables[6],1),'O NutriVibe é um projeto acadêmico iniciado em agosto, com implementação do aplicativo concentrada em outubro, conforme informação da equipe. Foram organizadas uma landing page e uma aplicação em HTML, CSS e JavaScript. O fluxo inclui perfil, preferências, registro alimentar, resumo e conteúdo educativo. A solução evoluiu para estimativa nutricional com referências TACO, processamento local de fotos, regras de sugestões e publicação na Vercel com contatos no Neon. O foco é apoio educativo, sem diagnóstico ou prescrição.')
   fill(tc(tables[6],2),'1. Desenvolver uma interface de educação alimentar compreensível.\n2. Organizar registros por refeição e dia.\n3. Considerar restrições e preferências nas sugestões.\n4. Apresentar estimativas com referência e peso confirmados.\n5. Avaliar o funcionamento e documentar limites, fontes e pendências.')
   fill(tc(tables[7],1),'Não foram disponibilizados relatos ou registros de participação da comunidade externa. Não se atribuem ao público demandas ou feedbacks que não estejam documentados. A contribuição externa deverá ser descrita após confirmação pelo estudante e pelo docente.')
   fill(tc(tables[7],2),person['participacao'])
   activitycell=tc(tables[8],1);grid=activitycell.findall('w:tbl',NS)[0]
-  for idx,(period,activity)in enumerate(person['atividades'],1):
-   fill(tc(grid,idx,0),period);fill(tc(grid,idx,1),activity);fill(tc(grid,idx,2),'A confirmar')
-  fill(activitycell,'* Referências mensais: início em agosto e aplicativo em outubro, conforme informado. Os dias e as horas não foram fornecidos. Conferir atividades individuais e substituir os campos pendentes pelos registros reais antes da entrega.')
+  estimated_rows=[]
+  for idx,((period,activity),date,hour)in enumerate(zip(person['atividades'],dates,hours),1):
+   fill(tc(grid,idx,0),date+'*');fill(tc(grid,idx,1),activity);fill(tc(grid,idx,2),str(hour)+' h*')
+   estimated_rows.append({'data_estimada':date,'atividade':activity,'horas_estimadas':hour,'natureza':'Estimativa para revisão individual; não é apontamento comprovado'})
+  for idx in range(len(estimated_rows)+1,len(grid.findall('w:tr',NS))):
+   for col in range(3):fill(tc(grid,idx,col),'—')
+  total=activitycell.findall('w:tbl',NS)[1];fill(tc(total,0,1),str(total_hours))
+  fill(activitycell,f'* CRONOGRAMA ESTIMADO PARA REVISÃO. Todas as datas e cargas horárias desta ficha, inclusive o total de {total_hours} h, são estimativas solicitadas pela equipe, não registros comprovados. A distribuição considera início em agosto e implementação do aplicativo em outubro. Os valores representam trabalho autônomo proposto; não comprovam presença ou horas de extensão junto à comunidade. Validar individualmente antes da entrega.')
   fill(tc(tables[9],1),'Produtos do grupo: landing page com cadastro consentido de contatos; aplicativo com perfil, filtros, diário, resumo, educação e backup local; recorte TACO com 43 referências e cálculo por peso; reconhecimento local SigLIP selecionado após comparação com MobileNet e CLIP; código organizado e publicado. Na amostra de 148 imagens, houve 94 acertos do alimento/prato principal entre 108 fotos de comida (87%) e 40/50 na segunda coleta (80%). Foram executados 25 testes automatizados e verificações em Chromium, inclusive em 360, 768 e 1280 pixels.')
   fill(tc(tables[9],2),'Não há dados fornecidos que comprovem impactos mensurados ou validação com comunidade externa. Como benefício potencial, o recurso pode apoiar organização de registros e acesso a conteúdo educativo. Não se afirma melhora clínica, mudança de hábitos ou satisfação dos participantes. Esses efeitos dependem de avaliação com usuários, revisão profissional e evidências de interlocução.')
   fill(tc(tables[10],1),person['reflexao'])
   for idx,(desc,url)in enumerate(person['evidencias'],1):
    cell=tc(tables[11],idx)
    full=url if url.startswith('https://')else'https://github.com/huezinho/projeto/tree/main/NutriVibe/'+url
-   field(cell,'Descrição:',desc);field(cell,'Anexo ou link:',full);field(cell,'Data (se aplicável):','Outubro/2026: referência técnica do material. Data do trabalho individual a confirmar.')
+   field(cell,'Descrição:',desc);field(cell,'Anexo ou link:',full);field(cell,'Data (se aplicável):','26/10/2026*: data estimada de organização das evidências; validar individualmente.')
   # Verificação de preservação: todas as partes originais, salvo o texto preenchido, permanecem idênticas.
   assert len(x.xpath('//w:tbl',namespaces=NS))==len(xml.xpath('//w:tbl',namespaces=NS))
   assert len(x.xpath('//w:tr',namespaces=NS))==len(xml.xpath('//w:tr',namespaces=NS))
@@ -97,6 +132,8 @@ with ZipFile(TEMPLATE)as zin:
    for info in infos:zout.writestr(info,E.tostring(x,encoding='UTF-8',xml_declaration=True,standalone=True)if info.filename=='word/document.xml'else original[info.filename])
   with ZipFile(out)as check:
    assert all(check.read(n)==data for n,data in original.items()if n!='word/document.xml')
-  stats['relatorios'].append({'estudante':person['nome'],'frente':person['frente'],'arquivo':str(out.relative_to(ROOT)),'partes_alteradas':['word/document.xml'],'tabelas_preservadas':len(x.xpath('//w:tbl',namespaces=NS)),'linhas_preservadas':len(x.xpath('//w:tr',namespaces=NS)),'datas_e_horas':'pendentes de validação individual'})
+  with (outdir/'atividades-estimadas.csv').open('w',encoding='utf-8-sig',newline='') as csvfile:
+   writer=csv.DictWriter(csvfile,fieldnames=estimated_rows[0].keys(),lineterminator='\n');writer.writeheader();writer.writerows(estimated_rows)
+  stats['relatorios'].append({'estudante':person['nome'],'frente':person['frente'],'arquivo':str(out.relative_to(ROOT)),'partes_alteradas':['word/document.xml'],'tabelas_preservadas':len(x.xpath('//w:tbl',namespaces=NS)),'linhas_preservadas':len(x.xpath('//w:tr',namespaces=NS)),'datas_e_horas':'estimativas para revisão individual, não apontamentos comprovados','total_horas_estimadas':total_hours,'marcacoes':{'PIE':'III - Saúde e Meio Ambiente','apoio':'Nenhuma das opções anteriores','parceiro':'Outra: sem parceiro formalizado','interlocucao':'Outra: não se aplica à fase interna documentada','acao_externa':'Outra: desenvolvimento interno preparatório, sem ação externa documentada'}})
  (BASE/'verificacao-modelo.json').write_text(json.dumps(stats,ensure_ascii=False,indent=2))
 print('Gerados cinco relatórios com estrutura e partes do modelo preservadas.')
