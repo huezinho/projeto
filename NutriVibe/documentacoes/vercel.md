@@ -79,3 +79,7 @@ As APIs de produção estão acessíveis desta sessão após atualização das r
 ## Substituição da IA paga
 
 A implementação atual substitui OpenAI/Gateway por inferência gratuita no navegador com TensorFlow.js. A chave do Gateway foi revogada; não é necessário comprar créditos. O Neon continua conectado. O histórico acima descreve as etapas anteriores, não uma pendência atual de pagamento. Veja `reconhecimento-gratuito.md` para cobertura, incerteza, procedência do modelo e testes reais.
+
+## Reconhecedor selecionado por comparação
+
+A versão atual usa SigLIP com ONNX Runtime Web, sem serviços pagos de visão. A decisão e os resultados das 148 avaliações estão em `avaliacao-imagens/README.md`. O download inicial é de aproximadamente 112 MB e a análise fica no aparelho. O modo de coleta `NUTRIVIBE_BENCHMARK` é somente pesquisa e deve permanecer removido da produção normal. As fotos da pesquisa e os encoders não selecionados não integram o build normal. O CSP habilita apenas a compilação WASM necessária.

@@ -481,6 +481,7 @@ function setupPhoto() {
   let image = "",
     version = 0;
   const candidates = $("#candidatos");
+  const recognizedItems = new Map();
   function reset() {
     version++;
     image = "";
@@ -488,6 +489,7 @@ function setupPhoto() {
     $("#photo-area").hidden = true;
     $("#preview").removeAttribute("src");
     candidates.replaceChildren();
+    recognizedItems.clear();
     $("#confirmar-foto").hidden = true;
     $("#photo-consent").checked = false;
     $("#analisar").disabled = false;
@@ -542,6 +544,7 @@ function setupPhoto() {
     const current = version;
     $("#analisar").disabled = true;
     candidates.replaceChildren();
+    recognizedItems.clear();
     $("#confirmar-foto").hidden = true;
     message("#photo-status", "Analisando a imagem…");
     try {
@@ -554,7 +557,12 @@ function setupPhoto() {
       message("#photo-status", result.message);
       for (const c of result.candidates || []) {
         const f = foods.find((f) => f.id === c.foodId);
-        if (f) choice("#candidatos", f.id, f.name, "candidate");
+        const value = f ? f.id : `other:${c.recognizedId}`;
+        const label = c.label || f?.name;
+        if (label) {
+          recognizedItems.set(value, c);
+          choice("#candidatos", value, label, "candidate");
+        }
       }
       $("#confirmar-foto").hidden = !candidates.children.length;
     } catch (error) {
@@ -576,7 +584,24 @@ function setupPhoto() {
         "#photo-status",
         "Selecione ao menos um alimento ou corrija a identificação no catálogo.",
       );
-    if (addFoods(ids)) reset();
+    const known = ids.filter((id) => foods.some((f) => f.id === id));
+    if (known.length) {
+      if (addFoods(known)) reset();
+      return;
+    }
+    const item = recognizedItems.get(ids[0]);
+    if (item?.label) {
+      const before = state.records.length;
+      $("#custom-name").value = item.label;
+      $("#custom-form").requestSubmit();
+      if (state.records.length > before) {
+        reset();
+        message(
+          "#registro-status",
+          `${item.label} registrado sem composição presumida. Adicione os ingredientes conhecidos e seus pesos para estimar nutrientes.`,
+        );
+      }
+    }
   };
 }
 

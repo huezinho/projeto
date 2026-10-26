@@ -1,0 +1,88 @@
+{
+  "implementation": "SigLIP base patch16 224, quantizado, ONNX Runtime Web CPU/WASM",
+  "policy": {
+    "minimumMargin": 0.01,
+    "minimumScore": 0.05
+  },
+  "initialFood": {
+    "n": 45,
+    "top1Correct": 42,
+    "suggestions": 39,
+    "suggestionsCorrect": 38,
+    "manual": 6
+  },
+  "initialDishes": {
+    "n": 13,
+    "top1Correct": 12,
+    "suggestions": 12,
+    "suggestionsCorrect": 12,
+    "manual": 1
+  },
+  "validationFood": {
+    "n": 36,
+    "top1Correct": 29,
+    "suggestions": 25,
+    "suggestionsCorrect": 24,
+    "manual": 11
+  },
+  "validationDishes": {
+    "n": 14,
+    "top1Correct": 11,
+    "suggestions": 12,
+    "suggestionsCorrect": 10,
+    "manual": 2
+  },
+  "allFood": {
+    "n": 81,
+    "top1Correct": 71,
+    "suggestions": 64,
+    "suggestionsCorrect": 62,
+    "manual": 17
+  },
+  "allDishes": {
+    "n": 27,
+    "top1Correct": 23,
+    "suggestions": 24,
+    "suggestionsCorrect": 22,
+    "manual": 3
+  },
+  "allPositive": {
+    "n": 108,
+    "top1Correct": 94,
+    "suggestions": 88,
+    "suggestionsCorrect": 84,
+    "manual": 20
+  },
+  "allControls": {
+    "n": 37,
+    "top1Correct": 26,
+    "suggestions": 7,
+    "suggestionsCorrect": 0,
+    "manual": 30
+  },
+  "all": {
+    "n": 148,
+    "top1Correct": 123,
+    "suggestions": 98,
+    "suggestionsCorrect": 87,
+    "manual": 50
+  },
+  "latencyBrowserSeconds": {
+    "median": 0.671,
+    "p95": 0.731
+  },
+  "botanicalControls": {
+    "n": 12,
+    "top1Correct": 3,
+    "suggestions": 7,
+    "suggestionsCorrect": 0,
+    "manual": 5
+  },
+  "ordinaryControls": {
+    "n": 25,
+    "top1Correct": 23,
+    "suggestions": 0,
+    "suggestionsCorrect": 0,
+    "manual": 25
+  }
+}

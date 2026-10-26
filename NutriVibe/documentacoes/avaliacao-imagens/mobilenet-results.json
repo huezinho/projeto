@@ -1,0 +1,1829 @@
+{
+  "model": "mobilenet-v1",
+  "rows": [
+    {
+      "photo": "00-0.jpg",
+      "expected": "0",
+      "scope": "food",
+      "split": "development",
+      "prediction": "0",
+      "correct": true,
+      "abstained": false,
+      "predictions": [
+        {
+          "probability": 0.9994969367980957,
+          "className": "banana"
+        },
+        {
+          "probability": 0.00018875396926887333,
+          "className": "grocery store, grocery, food market, market"
+        },
+        {
+          "probability": 0.0001486606488469988,
+          "className": "spaghetti squash"
+        }
+      ],
+      "timeSeconds": 1.657
+    },
+    {
+      "photo": "00-1.jpg",
+      "expected": "0",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "0",
+      "correct": true,
+      "abstained": false,
+      "predictions": [
+        {
+          "probability": 0.6798738837242126,
+          "className": "banana"
+        },
+        {
+          "probability": 0.1846599131822586,
+          "className": "slug"
+        },
+        {
+          "probability": 0.017161868512630463,
+          "className": "hornbill"
+        }
+      ],
+      "timeSeconds": 1.343
+    },
+    {
+      "photo": "01-0.jpg",
+      "expected": "1",
+      "scope": "food",
+      "split": "development",
+      "prediction": "1",
+      "correct": true,
+      "abstained": false,
+      "predictions": [
+        {
+          "probability": 0.9653218388557434,
+          "className": "Granny Smith"
+        },
+        {
+          "probability": 0.016996802762150764,
+          "className": "pomegranate"
+        },
+        {
+          "probability": 0.006182296667248011,
+          "className": "buckeye, horse chestnut, conker"
+        }
+      ],
+      "timeSeconds": 1.274
+    },
+    {
+      "photo": "01-1.jpg",
+      "expected": "1",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.5649164915084839,
+          "className": "earthstar"
+        },
+        {
+          "probability": 0.42338138818740845,
+          "className": "stinkhorn, carrion fungus"
+        },
+        {
+          "probability": 0.0034374408423900604,
+          "className": "bagel, beigel"
+        }
+      ],
+      "timeSeconds": 1.249
+    },
+    {
+      "photo": "02-0.jpg",
+      "expected": "2",
+      "scope": "food",
+      "split": "development",
+      "prediction": "2",
+      "correct": true,
+      "abstained": false,
+      "predictions": [
+        {
+          "probability": 0.9999819993972778,
+          "className": "broccoli"
+        },
+        {
+          "probability": 1.562123725307174e-05,
+          "className": "cauliflower"
+        },
+        {
+          "probability": 8.022996667023108e-07,
+          "className": "hen-of-the-woods, hen of the woods, Polyporus frondosus, Grifola frondosa"
+        }
+      ],
+      "timeSeconds": 1.272
+    },
+    {
+      "photo": "02-1.jpg",
+      "expected": "2",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.6163787841796875,
+          "className": "cauliflower"
+        },
+        {
+          "probability": 0.07438056915998459,
+          "className": "hair slide"
+        },
+        {
+          "probability": 0.038164034485816956,
+          "className": "ear, spike, capitulum"
+        }
+      ],
+      "timeSeconds": 1.286
+    },
+    {
+      "photo": "03-0.jpg",
+      "expected": "3",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.4257600009441376,
+          "className": "sea urchin"
+        },
+        {
+          "probability": 0.2678084075450897,
+          "className": "sea anemone, anemone"
+        },
+        {
+          "probability": 0.15154744684696198,
+          "className": "daisy"
+        }
+      ],
+      "timeSeconds": 1.312
+    },
+    {
+      "photo": "03-1.jpg",
+      "expected": "3",
+      "scope": "challenge",
+      "split": "holdout",
+      "prediction": "0",
+      "correct": false,
+      "abstained": false,
+      "predictions": [
+        {
+          "probability": 0.6138400435447693,
+          "className": "banana"
+        },
+        {
+          "probability": 0.0757889673113823,
+          "className": "macaw"
+        },
+        {
+          "probability": 0.07310879975557327,
+          "className": "lorikeet"
+        }
+      ],
+      "timeSeconds": 1.26
+    },
+    {
+      "photo": "04-0.jpg",
+      "expected": "4",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.7569286227226257,
+          "className": "wooden spoon"
+        },
+        {
+          "probability": 0.07268708199262619,
+          "className": "mixing bowl"
+        },
+        {
+          "probability": 0.030852526426315308,
+          "className": "espresso"
+        }
+      ],
+      "timeSeconds": 1.231
+    },
+    {
+      "photo": "04-1.jpg",
+      "expected": "4",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.5777425765991211,
+          "className": "mashed potato"
+        },
+        {
+          "probability": 0.13670171797275543,
+          "className": "plate"
+        },
+        {
+          "probability": 0.06276484578847885,
+          "className": "ice cream, icecream"
+        }
+      ],
+      "timeSeconds": 1.27
+    },
+    {
+      "photo": "05-0.jpg",
+      "expected": "5",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.27634063363075256,
+          "className": "carbonara"
+        },
+        {
+          "probability": 0.16812953352928162,
+          "className": "plate"
+        },
+        {
+          "probability": 0.14890991151332855,
+          "className": "mashed potato"
+        }
+      ],
+      "timeSeconds": 1.238
+    },
+    {
+      "photo": "05-1.jpg",
+      "expected": "5",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.4417216181755066,
+          "className": "plate"
+        },
+        {
+          "probability": 0.187801331281662,
+          "className": "mashed potato"
+        },
+        {
+          "probability": 0.1787310689687729,
+          "className": "ice cream, icecream"
+        }
+      ],
+      "timeSeconds": 1.247
+    },
+    {
+      "photo": "06-0.jpg",
+      "expected": "6",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.7068599462509155,
+          "className": "espresso"
+        },
+        {
+          "probability": 0.05638554319739342,
+          "className": "chain"
+        },
+        {
+          "probability": 0.05226679891347885,
+          "className": "nail"
+        }
+      ],
+      "timeSeconds": 1.271
+    },
+    {
+      "photo": "06-1.jpg",
+      "expected": "6",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.4714388847351074,
+          "className": "soup bowl"
+        },
+        {
+          "probability": 0.24285373091697693,
+          "className": "consomme"
+        },
+        {
+          "probability": 0.20710033178329468,
+          "className": "espresso"
+        }
+      ],
+      "timeSeconds": 1.274
+    },
+    {
+      "photo": "07-0.jpg",
+      "expected": "7",
+      "scope": "food",
+      "split": "development",
+      "prediction": "2",
+      "correct": false,
+      "abstained": false,
+      "predictions": [
+        {
+          "probability": 0.9600664973258972,
+          "className": "broccoli"
+        },
+        {
+          "probability": 0.028888000175356865,
+          "className": "honeycomb"
+        },
+        {
+          "probability": 0.0017748979153111577,
+          "className": "matchstick"
+        }
+      ],
+      "timeSeconds": 1.267
+    },
+    {
+      "photo": "07-1.jpg",
+      "expected": "7",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.18009455502033234,
+          "className": "dishrag, dishcloth"
+        },
+        {
+          "probability": 0.11238604038953781,
+          "className": "velvet"
+        },
+        {
+          "probability": 0.0693286880850792,
+          "className": "wool, woolen, woollen"
+        }
+      ],
+      "timeSeconds": 1.314
+    },
+    {
+      "photo": "08-0.jpg",
+      "expected": "8",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.9137218594551086,
+          "className": "eggnog"
+        },
+        {
+          "probability": 0.03832324221730232,
+          "className": "beaker"
+        },
+        {
+          "probability": 0.019153663888573647,
+          "className": "candle, taper, wax light"
+        }
+      ],
+      "timeSeconds": 1.235
+    },
+    {
+      "photo": "08-1.jpg",
+      "expected": "casein",
+      "scope": "other_food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.42740702629089355,
+          "className": "ice cream, icecream"
+        },
+        {
+          "probability": 0.13045498728752136,
+          "className": "chocolate sauce, chocolate syrup"
+        },
+        {
+          "probability": 0.11090677976608276,
+          "className": "mashed potato"
+        }
+      ],
+      "timeSeconds": 1.282
+    },
+    {
+      "photo": "09-0.jpg",
+      "expected": "9",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.6897138953208923,
+          "className": "ice cream, icecream"
+        },
+        {
+          "probability": 0.0655415877699852,
+          "className": "face powder"
+        },
+        {
+          "probability": 0.04448439180850983,
+          "className": "pretzel"
+        }
+      ],
+      "timeSeconds": 1.248
+    },
+    {
+      "photo": "09-1.jpg",
+      "expected": "9",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.23798511922359467,
+          "className": "fig"
+        },
+        {
+          "probability": 0.13851265609264374,
+          "className": "burrito"
+        },
+        {
+          "probability": 0.10524672269821167,
+          "className": "hotdog, hot dog, red hot"
+        }
+      ],
+      "timeSeconds": 1.29
+    },
+    {
+      "photo": "10-0.jpg",
+      "expected": "10",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.5592811107635498,
+          "className": "butternut squash"
+        },
+        {
+          "probability": 0.17275644838809967,
+          "className": "spaghetti squash"
+        },
+        {
+          "probability": 0.04716205969452858,
+          "className": "soup bowl"
+        }
+      ],
+      "timeSeconds": 1.242
+    },
+    {
+      "photo": "10-1.jpg",
+      "expected": "10",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.4084276854991913,
+          "className": "ping-pong ball"
+        },
+        {
+          "probability": 0.17417557537555695,
+          "className": "eggnog"
+        },
+        {
+          "probability": 0.041510146111249924,
+          "className": "mouse, computer mouse"
+        }
+      ],
+      "timeSeconds": 1.265
+    },
+    {
+      "photo": "11-0.jpg",
+      "expected": "11",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.9999206066131592,
+          "className": "butcher shop, meat market"
+        },
+        {
+          "probability": 2.849150769179687e-05,
+          "className": "scale, weighing machine"
+        },
+        {
+          "probability": 7.1483618739875965e-06,
+          "className": "pretzel"
+        }
+      ],
+      "timeSeconds": 1.251
+    },
+    {
+      "photo": "11-1.jpg",
+      "expected": "11",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.7714630365371704,
+          "className": "clog, geta, patten, sabot"
+        },
+        {
+          "probability": 0.04780801013112068,
+          "className": "bakery, bakeshop, bakehouse"
+        },
+        {
+          "probability": 0.02423282153904438,
+          "className": "chiton, coat-of-mail shell, sea cradle, polyplacophore"
+        }
+      ],
+      "timeSeconds": 1.311
+    },
+    {
+      "photo": "12-0.jpg",
+      "expected": "12",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.48474279046058655,
+          "className": "soup bowl"
+        },
+        {
+          "probability": 0.06880703568458557,
+          "className": "hot pot, hotpot"
+        },
+        {
+          "probability": 0.06248775124549866,
+          "className": "bagel, beigel"
+        }
+      ],
+      "timeSeconds": 1.298
+    },
+    {
+      "photo": "12-1.jpg",
+      "expected": "12",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.32714247703552246,
+          "className": "meat loaf, meatloaf"
+        },
+        {
+          "probability": 0.15831591188907623,
+          "className": "plate"
+        },
+        {
+          "probability": 0.11657262593507767,
+          "className": "broccoli"
+        }
+      ],
+      "timeSeconds": 1.264
+    },
+    {
+      "photo": "13-0.jpg",
+      "expected": "13",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.5284011960029602,
+          "className": "jackfruit, jak, jack"
+        },
+        {
+          "probability": 0.348268985748291,
+          "className": "custard apple"
+        },
+        {
+          "probability": 0.022272715345025063,
+          "className": "lemon"
+        }
+      ],
+      "timeSeconds": 1.285
+    },
+    {
+      "photo": "13-1.jpg",
+      "expected": "green_peas",
+      "scope": "other_food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.31506970524787903,
+          "className": "corn"
+        },
+        {
+          "probability": 0.14252957701683044,
+          "className": "jackfruit, jak, jack"
+        },
+        {
+          "probability": 0.1052873283624649,
+          "className": "pineapple, ananas"
+        }
+      ],
+      "timeSeconds": 1.269
+    },
+    {
+      "photo": "14-0.jpg",
+      "expected": "14",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.38865941762924194,
+          "className": "acorn squash"
+        },
+        {
+          "probability": 0.3365514576435089,
+          "className": "spaghetti squash"
+        },
+        {
+          "probability": 0.18866263329982758,
+          "className": "butternut squash"
+        }
+      ],
+      "timeSeconds": 1.265
+    },
+    {
+      "photo": "14-1.jpg",
+      "expected": "14",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.6751071810722351,
+          "className": "grocery store, grocery, food market, market"
+        },
+        {
+          "probability": 0.09845846146345139,
+          "className": "earthstar"
+        },
+        {
+          "probability": 0.05706959217786789,
+          "className": "artichoke, globe artichoke"
+        }
+      ],
+      "timeSeconds": 1.26
+    },
+    {
+      "photo": "15-0.jpg",
+      "expected": "15",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.845151424407959,
+          "className": "pot, flowerpot"
+        },
+        {
+          "probability": 0.12031278759241104,
+          "className": "vase"
+        },
+        {
+          "probability": 0.025059882551431656,
+          "className": "cup"
+        }
+      ],
+      "timeSeconds": 1.294
+    },
+    {
+      "photo": "15-1.jpg",
+      "expected": "15",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.39497214555740356,
+          "className": "lemon"
+        },
+        {
+          "probability": 0.10811374336481094,
+          "className": "Granny Smith"
+        },
+        {
+          "probability": 0.08852610737085342,
+          "className": "butternut squash"
+        }
+      ],
+      "timeSeconds": 1.303
+    },
+    {
+      "photo": "16-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.23144716024398804,
+          "className": "bell pepper"
+        },
+        {
+          "probability": 0.16541555523872375,
+          "className": "mantis, mantid"
+        },
+        {
+          "probability": 0.07488642632961273,
+          "className": "cucumber, cuke"
+        }
+      ],
+      "timeSeconds": 1.279
+    },
+    {
+      "photo": "16-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.7386313080787659,
+          "className": "pineapple, ananas"
+        },
+        {
+          "probability": 0.16139738261699677,
+          "className": "cucumber, cuke"
+        },
+        {
+          "probability": 0.03128717839717865,
+          "className": "artichoke, globe artichoke"
+        }
+      ],
+      "timeSeconds": 1.279
+    },
+    {
+      "photo": "17-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.41557320952415466,
+          "className": "cabbage butterfly"
+        },
+        {
+          "probability": 0.1607590913772583,
+          "className": "bee"
+        },
+        {
+          "probability": 0.08969634026288986,
+          "className": "pot, flowerpot"
+        }
+      ],
+      "timeSeconds": 1.284
+    },
+    {
+      "photo": "17-1.jpg",
+      "expected": "17",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.19670480489730835,
+          "className": "French loaf"
+        },
+        {
+          "probability": 0.09348250925540924,
+          "className": "pencil sharpener"
+        },
+        {
+          "probability": 0.08332429826259613,
+          "className": "bagel, beigel"
+        }
+      ],
+      "timeSeconds": 1.262
+    },
+    {
+      "photo": "18-0.jpg",
+      "expected": "18",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.99956876039505,
+          "className": "French loaf"
+        },
+        {
+          "probability": 0.00012506493658293039,
+          "className": "dough"
+        },
+        {
+          "probability": 6.358543032547459e-05,
+          "className": "honeycomb"
+        }
+      ],
+      "timeSeconds": 1.281
+    },
+    {
+      "photo": "18-1.jpg",
+      "expected": "18",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.8793107867240906,
+          "className": "French loaf"
+        },
+        {
+          "probability": 0.06241127476096153,
+          "className": "megalith, megalithic structure"
+        },
+        {
+          "probability": 0.013192416168749332,
+          "className": "wooden spoon"
+        }
+      ],
+      "timeSeconds": 1.304
+    },
+    {
+      "photo": "19-0.jpg",
+      "expected": "19",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.8980934619903564,
+          "className": "burrito"
+        },
+        {
+          "probability": 0.025992747396230698,
+          "className": "acorn squash"
+        },
+        {
+          "probability": 0.012366262264549732,
+          "className": "chocolate sauce, chocolate syrup"
+        }
+      ],
+      "timeSeconds": 1.284
+    },
+    {
+      "photo": "19-1.jpg",
+      "expected": "19",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.37901464104652405,
+          "className": "acorn squash"
+        },
+        {
+          "probability": 0.20611444115638733,
+          "className": "bell pepper"
+        },
+        {
+          "probability": 0.19024820625782013,
+          "className": "butternut squash"
+        }
+      ],
+      "timeSeconds": 1.295
+    },
+    {
+      "photo": "20-0.jpg",
+      "expected": "20",
+      "scope": "food",
+      "split": "development",
+      "prediction": "20",
+      "correct": true,
+      "abstained": false,
+      "predictions": [
+        {
+          "probability": 0.9996942281723022,
+          "className": "strawberry"
+        },
+        {
+          "probability": 8.456553769065067e-05,
+          "className": "custard apple"
+        },
+        {
+          "probability": 5.620025331154466e-05,
+          "className": "honeycomb"
+        }
+      ],
+      "timeSeconds": 1.284
+    },
+    {
+      "photo": "20-1.jpg",
+      "expected": "20",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.32404443621635437,
+          "className": "lemon"
+        },
+        {
+          "probability": 0.2595413029193878,
+          "className": "orange"
+        },
+        {
+          "probability": 0.11708252876996994,
+          "className": "strawberry"
+        }
+      ],
+      "timeSeconds": 1.266
+    },
+    {
+      "photo": "21-0.jpg",
+      "expected": "21",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.4305480420589447,
+          "className": "packet"
+        },
+        {
+          "probability": 0.1810006946325302,
+          "className": "burrito"
+        },
+        {
+          "probability": 0.10893374681472778,
+          "className": "potpie"
+        }
+      ],
+      "timeSeconds": 1.322
+    },
+    {
+      "photo": "21-1.jpg",
+      "expected": "21",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.8957631587982178,
+          "className": "cradle"
+        },
+        {
+          "probability": 0.04463869705796242,
+          "className": "bassinet"
+        },
+        {
+          "probability": 0.021771809086203575,
+          "className": "mosquito net"
+        }
+      ],
+      "timeSeconds": 1.276
+    },
+    {
+      "photo": "22-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.27542832493782043,
+          "className": "cash machine, cash dispenser, automated teller machine, automatic teller machine, automated teller, automatic teller, ATM"
+        },
+        {
+          "probability": 0.24875307083129883,
+          "className": "television, television system"
+        },
+        {
+          "probability": 0.21433795988559723,
+          "className": "home theater, home theatre"
+        }
+      ],
+      "timeSeconds": 1.297
+    },
+    {
+      "photo": "22-1.jpg",
+      "expected": "22",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.24872654676437378,
+          "className": "butternut squash"
+        },
+        {
+          "probability": 0.16666842997074127,
+          "className": "pineapple, ananas"
+        },
+        {
+          "probability": 0.09620946645736694,
+          "className": "acorn squash"
+        }
+      ],
+      "timeSeconds": 1.269
+    },
+    {
+      "photo": "23-0.jpg",
+      "expected": "23",
+      "scope": "food",
+      "split": "development",
+      "prediction": "23",
+      "correct": true,
+      "abstained": false,
+      "predictions": [
+        {
+          "probability": 0.27299201488494873,
+          "className": "cucumber, cuke"
+        },
+        {
+          "probability": 0.09878575801849365,
+          "className": "toucan"
+        },
+        {
+          "probability": 0.09596181660890579,
+          "className": "lemon"
+        }
+      ],
+      "timeSeconds": 1.346
+    },
+    {
+      "photo": "23-1.jpg",
+      "expected": "23",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "23",
+      "correct": true,
+      "abstained": false,
+      "predictions": [
+        {
+          "probability": 0.9726164937019348,
+          "className": "cucumber, cuke"
+        },
+        {
+          "probability": 0.026468349620699883,
+          "className": "zucchini, courgette"
+        },
+        {
+          "probability": 0.00019345185137353837,
+          "className": "pop bottle, soda bottle"
+        }
+      ],
+      "timeSeconds": 1.271
+    },
+    {
+      "photo": "24-0.jpg",
+      "expected": "24",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.7060935497283936,
+          "className": "orange"
+        },
+        {
+          "probability": 0.12555329501628876,
+          "className": "lemon"
+        },
+        {
+          "probability": 0.10440506786108017,
+          "className": "pomegranate"
+        }
+      ],
+      "timeSeconds": 1.278
+    },
+    {
+      "photo": "24-1.jpg",
+      "expected": "24",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.4126060903072357,
+          "className": "lemon"
+        },
+        {
+          "probability": 0.3282090127468109,
+          "className": "orange"
+        },
+        {
+          "probability": 0.06311368197202682,
+          "className": "butternut squash"
+        }
+      ],
+      "timeSeconds": 1.259
+    },
+    {
+      "photo": "25-0.jpg",
+      "expected": "25",
+      "scope": "food",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.7554174661636353,
+          "className": "ear, spike, capitulum"
+        },
+        {
+          "probability": 0.24448685348033905,
+          "className": "corn"
+        },
+        {
+          "probability": 2.96227699436713e-05,
+          "className": "tick"
+        }
+      ],
+      "timeSeconds": 1.3
+    },
+    {
+      "photo": "25-1.jpg",
+      "expected": "25",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.29844069480895996,
+          "className": "plastic bag"
+        },
+        {
+          "probability": 0.08748806267976761,
+          "className": "corn"
+        },
+        {
+          "probability": 0.0797051414847374,
+          "className": "hotdog, hot dog, red hot"
+        }
+      ],
+      "timeSeconds": 1.36
+    },
+    {
+      "photo": "26-0.jpg",
+      "expected": "pizza",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.4157957136631012,
+          "className": "pizza, pizza pie"
+        },
+        {
+          "probability": 0.1555641144514084,
+          "className": "plate"
+        },
+        {
+          "probability": 0.13993515074253082,
+          "className": "carbonara"
+        }
+      ],
+      "timeSeconds": 1.307
+    },
+    {
+      "photo": "26-1.jpg",
+      "expected": "pizza",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.9997057318687439,
+          "className": "pizza, pizza pie"
+        },
+        {
+          "probability": 0.00019912600691895932,
+          "className": "potpie"
+        },
+        {
+          "probability": 2.256194238725584e-05,
+          "className": "French loaf"
+        }
+      ],
+      "timeSeconds": 1.281
+    },
+    {
+      "photo": "27-0.jpg",
+      "expected": "salad",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.3656277358531952,
+          "className": "plate"
+        },
+        {
+          "probability": 0.17883625626564026,
+          "className": "broccoli"
+        },
+        {
+          "probability": 0.08536312729120255,
+          "className": "guacamole"
+        }
+      ],
+      "timeSeconds": 1.288
+    },
+    {
+      "photo": "27-1.jpg",
+      "expected": "salad",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.34619659185409546,
+          "className": "king crab, Alaska crab, Alaskan king crab, Alaska king crab, Paralithodes camtschatica"
+        },
+        {
+          "probability": 0.21902979910373688,
+          "className": "crayfish, crawfish, crawdad, crawdaddy"
+        },
+        {
+          "probability": 0.1483292430639267,
+          "className": "Dungeness crab, Cancer magister"
+        }
+      ],
+      "timeSeconds": 1.273
+    },
+    {
+      "photo": "28-0.jpg",
+      "expected": "rice_beans",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.9433118104934692,
+          "className": "meat loaf, meatloaf"
+        },
+        {
+          "probability": 0.03320809081196785,
+          "className": "mashed potato"
+        },
+        {
+          "probability": 0.017402708530426025,
+          "className": "plate"
+        }
+      ],
+      "timeSeconds": 1.228
+    },
+    {
+      "photo": "28-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.9064728617668152,
+          "className": "menu"
+        },
+        {
+          "probability": 0.05832061171531677,
+          "className": "packet"
+        },
+        {
+          "probability": 0.007608199957758188,
+          "className": "guacamole"
+        }
+      ],
+      "timeSeconds": 1.239
+    },
+    {
+      "photo": "29-0.jpg",
+      "expected": "pasta",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.9970356225967407,
+          "className": "carbonara"
+        },
+        {
+          "probability": 0.001815333147533238,
+          "className": "plate"
+        },
+        {
+          "probability": 0.00020294415298849344,
+          "className": "burrito"
+        }
+      ],
+      "timeSeconds": 1.298
+    },
+    {
+      "photo": "29-1.jpg",
+      "expected": "pasta",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.598789632320404,
+          "className": "carbonara"
+        },
+        {
+          "probability": 0.060036174952983856,
+          "className": "mixing bowl"
+        },
+        {
+          "probability": 0.0435405857861042,
+          "className": "wooden spoon"
+        }
+      ],
+      "timeSeconds": 1.248
+    },
+    {
+      "photo": "30-0.jpg",
+      "expected": "sandwich",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.22097758948802948,
+          "className": "packet"
+        },
+        {
+          "probability": 0.2175997793674469,
+          "className": "bath towel"
+        },
+        {
+          "probability": 0.16756683588027954,
+          "className": "hotdog, hot dog, red hot"
+        }
+      ],
+      "timeSeconds": 1.244
+    },
+    {
+      "photo": "30-1.jpg",
+      "expected": "sandwich",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.3888423442840576,
+          "className": "plate"
+        },
+        {
+          "probability": 0.1726631373167038,
+          "className": "restaurant, eating house, eating place, eatery"
+        },
+        {
+          "probability": 0.11362911760807037,
+          "className": "tray"
+        }
+      ],
+      "timeSeconds": 1.255
+    },
+    {
+      "photo": "31-0.jpg",
+      "expected": "sushi",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.3963857591152191,
+          "className": "zucchini, courgette"
+        },
+        {
+          "probability": 0.24605722725391388,
+          "className": "plate"
+        },
+        {
+          "probability": 0.1142323836684227,
+          "className": "pineapple, ananas"
+        }
+      ],
+      "timeSeconds": 1.27
+    },
+    {
+      "photo": "31-1.jpg",
+      "expected": "sushi",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.28179317712783813,
+          "className": "pineapple, ananas"
+        },
+        {
+          "probability": 0.16836479306221008,
+          "className": "hotdog, hot dog, red hot"
+        },
+        {
+          "probability": 0.10851647704839706,
+          "className": "candle, taper, wax light"
+        }
+      ],
+      "timeSeconds": 1.237
+    },
+    {
+      "photo": "32-0.jpg",
+      "expected": "fries",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.555672287940979,
+          "className": "packet"
+        },
+        {
+          "probability": 0.1607721596956253,
+          "className": "guacamole"
+        },
+        {
+          "probability": 0.04367825761437416,
+          "className": "sunscreen, sunblock, sun blocker"
+        }
+      ],
+      "timeSeconds": 1.286
+    },
+    {
+      "photo": "32-1.jpg",
+      "expected": "fries",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": false,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.22654928267002106,
+          "className": "strainer"
+        },
+        {
+          "probability": 0.12389075011014938,
+          "className": "wooden spoon"
+        },
+        {
+          "probability": 0.12070627510547638,
+          "className": "carbonara"
+        }
+      ],
+      "timeSeconds": 1.261
+    },
+    {
+      "photo": "33-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.8662594556808472,
+          "className": "dhole, Cuon alpinus"
+        },
+        {
+          "probability": 0.0929858535528183,
+          "className": "coyote, prairie wolf, brush wolf, Canis latrans"
+        },
+        {
+          "probability": 0.03439367562532425,
+          "className": "dingo, warrigal, warragal, Canis dingo"
+        }
+      ],
+      "timeSeconds": 1.29
+    },
+    {
+      "photo": "33-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.9961723685264587,
+          "className": "German shepherd, German shepherd dog, German police dog, alsatian"
+        },
+        {
+          "probability": 0.0016181033570319414,
+          "className": "Norwegian elkhound, elkhound"
+        },
+        {
+          "probability": 0.0014621915761381388,
+          "className": "malinois"
+        }
+      ],
+      "timeSeconds": 1.271
+    },
+    {
+      "photo": "34-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.33309823274612427,
+          "className": "Komodo dragon, Komodo lizard, dragon lizard, giant lizard, Varanus komodoensis"
+        },
+        {
+          "probability": 0.1473749577999115,
+          "className": "starfish, sea star"
+        },
+        {
+          "probability": 0.07992367446422577,
+          "className": "Airedale, Airedale terrier"
+        }
+      ],
+      "timeSeconds": 1.32
+    },
+    {
+      "photo": "34-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.7482126951217651,
+          "className": "Egyptian cat"
+        },
+        {
+          "probability": 0.12329384684562683,
+          "className": "tiger cat"
+        },
+        {
+          "probability": 0.05348435789346695,
+          "className": "tabby, tabby cat"
+        }
+      ],
+      "timeSeconds": 1.246
+    },
+    {
+      "photo": "35-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.5158318281173706,
+          "className": "cellular telephone, cellular phone, cellphone, cell, mobile phone"
+        },
+        {
+          "probability": 0.24805031716823578,
+          "className": "iPod"
+        },
+        {
+          "probability": 0.052742745727300644,
+          "className": "wine bottle"
+        }
+      ],
+      "timeSeconds": 1.224
+    },
+    {
+      "photo": "35-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.18456101417541504,
+          "className": "switch, electric switch, electrical switch"
+        },
+        {
+          "probability": 0.09795121103525162,
+          "className": "combination lock"
+        },
+        {
+          "probability": 0.09173232316970825,
+          "className": "hair spray"
+        }
+      ],
+      "timeSeconds": 1.228
+    },
+    {
+      "photo": "36-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.9837446212768555,
+          "className": "throne"
+        },
+        {
+          "probability": 0.014695416204631329,
+          "className": "rocking chair, rocker"
+        },
+        {
+          "probability": 0.0005602944293059409,
+          "className": "prayer rug, prayer mat"
+        }
+      ],
+      "timeSeconds": 1.229
+    },
+    {
+      "photo": "36-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.6938444972038269,
+          "className": "park bench"
+        },
+        {
+          "probability": 0.28286266326904297,
+          "className": "rocking chair, rocker"
+        },
+        {
+          "probability": 0.013337671756744385,
+          "className": "tricycle, trike, velocipede"
+        }
+      ],
+      "timeSeconds": 1.258
+    },
+    {
+      "photo": "37-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.2586055099964142,
+          "className": "breakwater, groin, groyne, mole, bulwark, seawall, jetty"
+        },
+        {
+          "probability": 0.1814548820257187,
+          "className": "dock, dockage, docking facility"
+        },
+        {
+          "probability": 0.08024835586547852,
+          "className": "schooner"
+        }
+      ],
+      "timeSeconds": 1.225
+    },
+    {
+      "photo": "37-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "none",
+      "correct": true,
+      "abstained": true,
+      "predictions": [
+        {
+          "probability": 0.42688748240470886,
+          "className": "corn"
+        },
+        {
+          "probability": 0.25470882654190063,
+          "className": "jigsaw puzzle"
+        },
+        {
+          "probability": 0.06748082488775253,
+          "className": "balloon"
+        }
+      ],
+      "timeSeconds": 1.25
+    }
+  ]
+}

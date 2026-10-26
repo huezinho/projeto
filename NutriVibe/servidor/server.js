@@ -40,6 +40,9 @@ const mime = {
   ".svg": "image/svg+xml",
   ".json": "application/json",
   ".bin": "application/octet-stream",
+  ".onnx": "application/octet-stream",
+  ".wasm": "application/wasm",
+  ".mjs": "text/javascript",
 };
 export async function handler(req, res) {
   res.setHeader("X-Content-Type-Options", "nosniff");
@@ -47,7 +50,7 @@ export async function handler(req, res) {
   res.setHeader("X-Frame-Options", "DENY");
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; img-src 'self' data: blob:; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+    "default-src 'self'; img-src 'self' data: blob:; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
   );
   try {
     const url = new URL(req.url, "http://localhost");
@@ -58,6 +61,7 @@ export async function handler(req, res) {
       return json(res, 200, {
         vision: true,
         visionMode: "browser-local",
+        visionModel: "siglip-base-patch16-224-q8",
         contacts: contacts.available,
       });
     if (url.pathname.startsWith("/api/")) {
@@ -197,7 +201,11 @@ export async function handler(req, res) {
     const content = await readFile(file);
     res.writeHead(200, {
       "Content-Type": fileMime,
-      "Cache-Control": "no-cache",
+      "Cache-Control":
+        pathname.startsWith("/modelos/siglip/vision-") ||
+        pathname.startsWith("/modelos/ort/1.24.3/")
+          ? "public, max-age=31536000, immutable"
+          : "no-cache",
     });
     res.end(req.method === "HEAD" ? undefined : content);
   } catch {

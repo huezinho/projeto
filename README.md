@@ -30,8 +30,9 @@ NutriVibe/
 
 Perfil e registros ficam no navegador, com exportação/importação e remoção. Contatos ficam no Neon em produção e no SQLite local no desenvolvimento. Fotos são analisadas no aparelho e não são enviadas ao servidor. Recomendações consideram o dia e excluem opções incompatíveis; são sugestões de variedade, sem prescrição nutricional.
 
-O reconhecimento usa a API gratuita do TensorFlow.js no próprio navegador, sem chave, créditos ou cobrança por foto. A cobertura automática é limitada a banana, maçã, brócolis, pepino e morango. Fotos ambíguas pedem confirmação ou cadastro manual. Não identifica de forma confiável pratos misturados, ingredientes ocultos ou alergênicos.
+O reconhecimento gratuito usa SigLIP e ONNX Runtime Web no navegador, escolhido após 148 avaliações com fotos da internet. O primeiro rótulo acertou 94 de 108 fotos de comida/pratos (87%); em 50 fotos novas, foram 40 acertos (80%). Ele sugere o alimento ou prato principal, não todos os ingredientes. Exige confirmação e pode pedir identificação manual. O primeiro download é maior (~112 MB); não há envio de fotos nem cobrança por inferência.
 
+- [Comparação dos modelos, resultados e fontes](NutriVibe/documentacoes/avaliacao-imagens/README.md)
 - [Reconhecimento gratuito, testes e limitações](NutriVibe/documentacoes/reconhecimento-gratuito.md)
 - [Cálculo nutricional, fonte e confirmação de quantidade](NutriVibe/documentacoes/nutricao.md)
 - [Implementação, testes, configuração e limites](NutriVibe/documentacoes/implementacao.md)

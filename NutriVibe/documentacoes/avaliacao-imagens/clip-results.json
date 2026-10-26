@@ -1,0 +1,2514 @@
+{
+  "model": "clip",
+  "rows": [
+    {
+      "photo": "00-0.jpg",
+      "expected": "0",
+      "scope": "food",
+      "split": "development",
+      "prediction": "0",
+      "correct": true,
+      "margin": 0.024700403213500977,
+      "timeSeconds": 0.027017069999601517,
+      "top5": [
+        {
+          "id": "0",
+          "score": 0.30594515800476074
+        },
+        {
+          "id": "24",
+          "score": 0.28124475479125977
+        },
+        {
+          "id": "23",
+          "score": 0.27746495604515076
+        },
+        {
+          "id": "17",
+          "score": 0.26451805233955383
+        },
+        {
+          "id": "25",
+          "score": 0.2592453956604004
+        }
+      ]
+    },
+    {
+      "photo": "00-1.jpg",
+      "expected": "0",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "0",
+      "correct": true,
+      "margin": 0.03170943260192871,
+      "timeSeconds": 0.02401483699941309,
+      "top5": [
+        {
+          "id": "0",
+          "score": 0.31839925050735474
+        },
+        {
+          "id": "24",
+          "score": 0.286689817905426
+        },
+        {
+          "id": "1",
+          "score": 0.26171281933784485
+        },
+        {
+          "id": "25",
+          "score": 0.2535060942173004
+        },
+        {
+          "id": "19",
+          "score": 0.24202501773834229
+        }
+      ]
+    },
+    {
+      "photo": "01-0.jpg",
+      "expected": "1",
+      "scope": "food",
+      "split": "development",
+      "prediction": "1",
+      "correct": true,
+      "margin": 0.03175416588783264,
+      "timeSeconds": 0.02565289300036966,
+      "top5": [
+        {
+          "id": "1",
+          "score": 0.3060825765132904
+        },
+        {
+          "id": "24",
+          "score": 0.27432841062545776
+        },
+        {
+          "id": "negative_object",
+          "score": 0.2503201365470886
+        },
+        {
+          "id": "20",
+          "score": 0.25008782744407654
+        },
+        {
+          "id": "15",
+          "score": 0.24990873038768768
+        }
+      ]
+    },
+    {
+      "photo": "01-1.jpg",
+      "expected": "1",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "14",
+      "correct": false,
+      "margin": 0.00608709454536438,
+      "timeSeconds": 0.05083467999975255,
+      "top5": [
+        {
+          "id": "14",
+          "score": 0.26530686020851135
+        },
+        {
+          "id": "17",
+          "score": 0.259219765663147
+        },
+        {
+          "id": "1",
+          "score": 0.25624632835388184
+        },
+        {
+          "id": "negative_object",
+          "score": 0.25333213806152344
+        },
+        {
+          "id": "13",
+          "score": 0.25255411863327026
+        }
+      ]
+    },
+    {
+      "photo": "02-0.jpg",
+      "expected": "2",
+      "scope": "food",
+      "split": "development",
+      "prediction": "2",
+      "correct": true,
+      "margin": 0.04225030541419983,
+      "timeSeconds": 0.032588998000392166,
+      "top5": [
+        {
+          "id": "2",
+          "score": 0.33135583996772766
+        },
+        {
+          "id": "salad",
+          "score": 0.28910553455352783
+        },
+        {
+          "id": "3",
+          "score": 0.28144174814224243
+        },
+        {
+          "id": "16",
+          "score": 0.2721119523048401
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.26580163836479187
+        }
+      ]
+    },
+    {
+      "photo": "02-1.jpg",
+      "expected": "2",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "2",
+      "correct": true,
+      "margin": 0.02597731351852417,
+      "timeSeconds": 0.028804684000533598,
+      "top5": [
+        {
+          "id": "2",
+          "score": 0.301754355430603
+        },
+        {
+          "id": "salad",
+          "score": 0.27577704191207886
+        },
+        {
+          "id": "16",
+          "score": 0.2719781696796417
+        },
+        {
+          "id": "23",
+          "score": 0.26742783188819885
+        },
+        {
+          "id": "25",
+          "score": 0.25992363691329956
+        }
+      ]
+    },
+    {
+      "photo": "03-0.jpg",
+      "expected": "3",
+      "scope": "food",
+      "split": "development",
+      "prediction": "3",
+      "correct": true,
+      "margin": 0.04593339562416077,
+      "timeSeconds": 0.026982145000147284,
+      "top5": [
+        {
+          "id": "3",
+          "score": 0.3301536440849304
+        },
+        {
+          "id": "salad",
+          "score": 0.28422024846076965
+        },
+        {
+          "id": "17",
+          "score": 0.26840823888778687
+        },
+        {
+          "id": "fries",
+          "score": 0.2675178647041321
+        },
+        {
+          "id": "23",
+          "score": 0.2655893564224243
+        }
+      ]
+    },
+    {
+      "photo": "03-1.jpg",
+      "expected": "3",
+      "scope": "challenge",
+      "split": "holdout",
+      "prediction": "3",
+      "correct": true,
+      "margin": 0.0047248899936676025,
+      "timeSeconds": 0.03142073700018955,
+      "top5": [
+        {
+          "id": "3",
+          "score": 0.2407931238412857
+        },
+        {
+          "id": "11",
+          "score": 0.2360682338476181
+        },
+        {
+          "id": "12",
+          "score": 0.23521050810813904
+        },
+        {
+          "id": "0",
+          "score": 0.23334826529026031
+        },
+        {
+          "id": "25",
+          "score": 0.23245684802532196
+        }
+      ]
+    },
+    {
+      "photo": "04-0.jpg",
+      "expected": "4",
+      "scope": "food",
+      "split": "development",
+      "prediction": "4",
+      "correct": true,
+      "margin": 0.017020732164382935,
+      "timeSeconds": 0.024248998999610194,
+      "top5": [
+        {
+          "id": "4",
+          "score": 0.283234179019928
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.26621344685554504
+        },
+        {
+          "id": "9",
+          "score": 0.24932321906089783
+        },
+        {
+          "id": "sushi",
+          "score": 0.24794186651706696
+        },
+        {
+          "id": "21",
+          "score": 0.24597789347171783
+        }
+      ]
+    },
+    {
+      "photo": "04-1.jpg",
+      "expected": "4",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "rice_beans",
+      "correct": false,
+      "margin": 0.01175495982170105,
+      "timeSeconds": 0.01565614999981335,
+      "top5": [
+        {
+          "id": "rice_beans",
+          "score": 0.28502294421195984
+        },
+        {
+          "id": "4",
+          "score": 0.2732679843902588
+        },
+        {
+          "id": "12",
+          "score": 0.2698054313659668
+        },
+        {
+          "id": "21",
+          "score": 0.2626333236694336
+        },
+        {
+          "id": "16",
+          "score": 0.26153019070625305
+        }
+      ]
+    },
+    {
+      "photo": "05-0.jpg",
+      "expected": "5",
+      "scope": "food",
+      "split": "development",
+      "prediction": "5",
+      "correct": true,
+      "margin": 0.0488758385181427,
+      "timeSeconds": 0.013653195000188134,
+      "top5": [
+        {
+          "id": "5",
+          "score": 0.2933752238750458
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.24449938535690308
+        },
+        {
+          "id": "9",
+          "score": 0.24339216947555542
+        },
+        {
+          "id": "4",
+          "score": 0.24052608013153076
+        },
+        {
+          "id": "8",
+          "score": 0.22965987026691437
+        }
+      ]
+    },
+    {
+      "photo": "05-1.jpg",
+      "expected": "5",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "5",
+      "correct": true,
+      "margin": 0.04628396034240723,
+      "timeSeconds": 0.013539401999878464,
+      "top5": [
+        {
+          "id": "5",
+          "score": 0.28896984457969666
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.24268588423728943
+        },
+        {
+          "id": "9",
+          "score": 0.24096253514289856
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.2365105152130127
+        },
+        {
+          "id": "24",
+          "score": 0.23330116271972656
+        }
+      ]
+    },
+    {
+      "photo": "06-0.jpg",
+      "expected": "6",
+      "scope": "food",
+      "split": "development",
+      "prediction": "6",
+      "correct": true,
+      "margin": 0.015569865703582764,
+      "timeSeconds": 0.014972816999943461,
+      "top5": [
+        {
+          "id": "6",
+          "score": 0.30925625562667847
+        },
+        {
+          "id": "17",
+          "score": 0.2936863899230957
+        },
+        {
+          "id": "7",
+          "score": 0.28021830320358276
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.27795085310935974
+        },
+        {
+          "id": "23",
+          "score": 0.27678540349006653
+        }
+      ]
+    },
+    {
+      "photo": "06-1.jpg",
+      "expected": "6",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "7",
+      "correct": false,
+      "margin": 0.01583448052406311,
+      "timeSeconds": 0.01663720199940144,
+      "top5": [
+        {
+          "id": "7",
+          "score": 0.2585277855396271
+        },
+        {
+          "id": "9",
+          "score": 0.24269330501556396
+        },
+        {
+          "id": "12",
+          "score": 0.23962515592575073
+        },
+        {
+          "id": "13",
+          "score": 0.23885661363601685
+        },
+        {
+          "id": "18",
+          "score": 0.2379360944032669
+        }
+      ]
+    },
+    {
+      "photo": "07-0.jpg",
+      "expected": "7",
+      "scope": "food",
+      "split": "development",
+      "prediction": "green_peas",
+      "correct": false,
+      "margin": 0.0024245381355285645,
+      "timeSeconds": 0.018530139999711537,
+      "top5": [
+        {
+          "id": "green_peas",
+          "score": 0.2986157536506653
+        },
+        {
+          "id": "6",
+          "score": 0.2961912155151367
+        },
+        {
+          "id": "3",
+          "score": 0.27867844700813293
+        },
+        {
+          "id": "7",
+          "score": 0.278148889541626
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.27760079503059387
+        }
+      ]
+    },
+    {
+      "photo": "07-1.jpg",
+      "expected": "7",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "6",
+      "correct": false,
+      "margin": 0.008586466312408447,
+      "timeSeconds": 0.02600821000032738,
+      "top5": [
+        {
+          "id": "6",
+          "score": 0.29237183928489685
+        },
+        {
+          "id": "7",
+          "score": 0.2837853729724884
+        },
+        {
+          "id": "25",
+          "score": 0.2788841128349304
+        },
+        {
+          "id": "4",
+          "score": 0.27770859003067017
+        },
+        {
+          "id": "13",
+          "score": 0.2763575613498688
+        }
+      ]
+    },
+    {
+      "photo": "08-0.jpg",
+      "expected": "8",
+      "scope": "food",
+      "split": "development",
+      "prediction": "8",
+      "correct": true,
+      "margin": 0.026291966438293457,
+      "timeSeconds": 0.016283584000120754,
+      "top5": [
+        {
+          "id": "8",
+          "score": 0.3195251226425171
+        },
+        {
+          "id": "casein",
+          "score": 0.29323315620422363
+        },
+        {
+          "id": "5",
+          "score": 0.27016681432724
+        },
+        {
+          "id": "4",
+          "score": 0.26530691981315613
+        },
+        {
+          "id": "9",
+          "score": 0.262691855430603
+        }
+      ]
+    },
+    {
+      "photo": "08-1.jpg",
+      "expected": "casein",
+      "scope": "other_food",
+      "split": "holdout",
+      "prediction": "5",
+      "correct": false,
+      "margin": 0.021179378032684326,
+      "timeSeconds": 0.016973908999716514,
+      "top5": [
+        {
+          "id": "5",
+          "score": 0.2757434844970703
+        },
+        {
+          "id": "9",
+          "score": 0.254564106464386
+        },
+        {
+          "id": "negative_empty",
+          "score": 0.2533611059188843
+        },
+        {
+          "id": "11",
+          "score": 0.25278863310813904
+        },
+        {
+          "id": "18",
+          "score": 0.25161826610565186
+        }
+      ]
+    },
+    {
+      "photo": "09-0.jpg",
+      "expected": "9",
+      "scope": "food",
+      "split": "development",
+      "prediction": "9",
+      "correct": true,
+      "margin": 0.004244774580001831,
+      "timeSeconds": 0.015000002000306267,
+      "top5": [
+        {
+          "id": "9",
+          "score": 0.25839465856552124
+        },
+        {
+          "id": "casein",
+          "score": 0.2541498839855194
+        },
+        {
+          "id": "5",
+          "score": 0.2507338523864746
+        },
+        {
+          "id": "negative_empty",
+          "score": 0.25072187185287476
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.2493760734796524
+        }
+      ]
+    },
+    {
+      "photo": "09-1.jpg",
+      "expected": "9",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "9",
+      "correct": true,
+      "margin": 0.015454471111297607,
+      "timeSeconds": 0.021309858999302378,
+      "top5": [
+        {
+          "id": "9",
+          "score": 0.29453200101852417
+        },
+        {
+          "id": "20",
+          "score": 0.27907752990722656
+        },
+        {
+          "id": "5",
+          "score": 0.2666237950325012
+        },
+        {
+          "id": "24",
+          "score": 0.26438426971435547
+        },
+        {
+          "id": "negative_empty",
+          "score": 0.26037776470184326
+        }
+      ]
+    },
+    {
+      "photo": "10-0.jpg",
+      "expected": "10",
+      "scope": "food",
+      "split": "development",
+      "prediction": "10",
+      "correct": true,
+      "margin": 0.05395570397377014,
+      "timeSeconds": 0.017724370999530947,
+      "top5": [
+        {
+          "id": "10",
+          "score": 0.3148878216743469
+        },
+        {
+          "id": "11",
+          "score": 0.2609321177005768
+        },
+        {
+          "id": "24",
+          "score": 0.25896838307380676
+        },
+        {
+          "id": "13",
+          "score": 0.2532002627849579
+        },
+        {
+          "id": "sandwich",
+          "score": 0.24818137288093567
+        }
+      ]
+    },
+    {
+      "photo": "10-1.jpg",
+      "expected": "10",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "10",
+      "correct": true,
+      "margin": 0.04078257083892822,
+      "timeSeconds": 0.01570788899971376,
+      "top5": [
+        {
+          "id": "10",
+          "score": 0.2988145351409912
+        },
+        {
+          "id": "9",
+          "score": 0.258031964302063
+        },
+        {
+          "id": "5",
+          "score": 0.25326260924339294
+        },
+        {
+          "id": "13",
+          "score": 0.2531222999095917
+        },
+        {
+          "id": "11",
+          "score": 0.252928763628006
+        }
+      ]
+    },
+    {
+      "photo": "11-0.jpg",
+      "expected": "11",
+      "scope": "food",
+      "split": "development",
+      "prediction": "11",
+      "correct": true,
+      "margin": 0.04716135561466217,
+      "timeSeconds": 0.015676869000344595,
+      "top5": [
+        {
+          "id": "11",
+          "score": 0.28539830446243286
+        },
+        {
+          "id": "13",
+          "score": 0.2382369488477707
+        },
+        {
+          "id": "12",
+          "score": 0.22740761935710907
+        },
+        {
+          "id": "sandwich",
+          "score": 0.22614775598049164
+        },
+        {
+          "id": "10",
+          "score": 0.22555406391620636
+        }
+      ]
+    },
+    {
+      "photo": "11-1.jpg",
+      "expected": "11",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "11",
+      "correct": true,
+      "margin": 0.03023245930671692,
+      "timeSeconds": 0.020999727999878814,
+      "top5": [
+        {
+          "id": "11",
+          "score": 0.29010480642318726
+        },
+        {
+          "id": "13",
+          "score": 0.25987234711647034
+        },
+        {
+          "id": "10",
+          "score": 0.24861019849777222
+        },
+        {
+          "id": "12",
+          "score": 0.24845264852046967
+        },
+        {
+          "id": "3",
+          "score": 0.23259542882442474
+        }
+      ]
+    },
+    {
+      "photo": "12-0.jpg",
+      "expected": "12",
+      "scope": "food",
+      "split": "development",
+      "prediction": "22",
+      "correct": false,
+      "margin": 0.0006310045719146729,
+      "timeSeconds": 0.01594890900014434,
+      "top5": [
+        {
+          "id": "22",
+          "score": 0.25631922483444214
+        },
+        {
+          "id": "pizza",
+          "score": 0.25568822026252747
+        },
+        {
+          "id": "7",
+          "score": 0.25126057863235474
+        },
+        {
+          "id": "21",
+          "score": 0.2498251348733902
+        },
+        {
+          "id": "17",
+          "score": 0.246800035238266
+        }
+      ]
+    },
+    {
+      "photo": "12-1.jpg",
+      "expected": "12",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "12",
+      "correct": true,
+      "margin": 0.021784275770187378,
+      "timeSeconds": 0.01622125500034599,
+      "top5": [
+        {
+          "id": "12",
+          "score": 0.27590179443359375
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.25411751866340637
+        },
+        {
+          "id": "7",
+          "score": 0.244881734251976
+        },
+        {
+          "id": "sushi",
+          "score": 0.24334090948104858
+        },
+        {
+          "id": "4",
+          "score": 0.24223117530345917
+        }
+      ]
+    },
+    {
+      "photo": "13-0.jpg",
+      "expected": "13",
+      "scope": "food",
+      "split": "development",
+      "prediction": "6",
+      "correct": false,
+      "margin": 0.008794456720352173,
+      "timeSeconds": 0.016688499999872874,
+      "top5": [
+        {
+          "id": "6",
+          "score": 0.30802398920059204
+        },
+        {
+          "id": "green_peas",
+          "score": 0.29922953248023987
+        },
+        {
+          "id": "7",
+          "score": 0.2805248498916626
+        },
+        {
+          "id": "13",
+          "score": 0.2752175033092499
+        },
+        {
+          "id": "16",
+          "score": 0.26982682943344116
+        }
+      ]
+    },
+    {
+      "photo": "13-1.jpg",
+      "expected": "green_peas",
+      "scope": "other_food",
+      "split": "holdout",
+      "prediction": "green_peas",
+      "correct": true,
+      "margin": 0.03471222519874573,
+      "timeSeconds": 0.01466457599963178,
+      "top5": [
+        {
+          "id": "green_peas",
+          "score": 0.3032371401786804
+        },
+        {
+          "id": "6",
+          "score": 0.2685249149799347
+        },
+        {
+          "id": "16",
+          "score": 0.2662550210952759
+        },
+        {
+          "id": "2",
+          "score": 0.25923898816108704
+        },
+        {
+          "id": "7",
+          "score": 0.24838221073150635
+        }
+      ]
+    },
+    {
+      "photo": "14-0.jpg",
+      "expected": "14",
+      "scope": "food",
+      "split": "development",
+      "prediction": "14",
+      "correct": true,
+      "margin": 0.0452839732170105,
+      "timeSeconds": 0.014546160000463715,
+      "top5": [
+        {
+          "id": "14",
+          "score": 0.29282379150390625
+        },
+        {
+          "id": "23",
+          "score": 0.24753981828689575
+        },
+        {
+          "id": "salad",
+          "score": 0.23963972926139832
+        },
+        {
+          "id": "15",
+          "score": 0.2354634702205658
+        },
+        {
+          "id": "16",
+          "score": 0.2322687804698944
+        }
+      ]
+    },
+    {
+      "photo": "14-1.jpg",
+      "expected": "14",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "17",
+      "correct": false,
+      "margin": 0.00565338134765625,
+      "timeSeconds": 0.01499345699994592,
+      "top5": [
+        {
+          "id": "17",
+          "score": 0.2853432297706604
+        },
+        {
+          "id": "18",
+          "score": 0.27968984842300415
+        },
+        {
+          "id": "6",
+          "score": 0.2741008698940277
+        },
+        {
+          "id": "13",
+          "score": 0.27380937337875366
+        },
+        {
+          "id": "7",
+          "score": 0.26569420099258423
+        }
+      ]
+    },
+    {
+      "photo": "15-0.jpg",
+      "expected": "15",
+      "scope": "food",
+      "split": "development",
+      "prediction": "negative_plant",
+      "correct": false,
+      "margin": 0.004680633544921875,
+      "timeSeconds": 0.015385443000013765,
+      "top5": [
+        {
+          "id": "negative_plant",
+          "score": 0.2679642140865326
+        },
+        {
+          "id": "15",
+          "score": 0.2632835805416107
+        },
+        {
+          "id": "1",
+          "score": 0.2503592371940613
+        },
+        {
+          "id": "20",
+          "score": 0.25002312660217285
+        },
+        {
+          "id": "24",
+          "score": 0.24594421684741974
+        }
+      ]
+    },
+    {
+      "photo": "15-1.jpg",
+      "expected": "15",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "15",
+      "correct": true,
+      "margin": 0.009261071681976318,
+      "timeSeconds": 0.0148451559998648,
+      "top5": [
+        {
+          "id": "15",
+          "score": 0.29437416791915894
+        },
+        {
+          "id": "20",
+          "score": 0.2851130962371826
+        },
+        {
+          "id": "3",
+          "score": 0.27627798914909363
+        },
+        {
+          "id": "13",
+          "score": 0.2751607894897461
+        },
+        {
+          "id": "24",
+          "score": 0.26841458678245544
+        }
+      ]
+    },
+    {
+      "photo": "16-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "green_peas",
+      "correct": false,
+      "margin": 0.00012603402137756348,
+      "timeSeconds": 0.014970060999985435,
+      "top5": [
+        {
+          "id": "green_peas",
+          "score": 0.27502983808517456
+        },
+        {
+          "id": "16",
+          "score": 0.274903804063797
+        },
+        {
+          "id": "negative_plant",
+          "score": 0.26502445340156555
+        },
+        {
+          "id": "25",
+          "score": 0.26271340250968933
+        },
+        {
+          "id": "13",
+          "score": 0.2575441896915436
+        }
+      ]
+    },
+    {
+      "photo": "16-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "16",
+      "correct": false,
+      "margin": 0.01748603582382202,
+      "timeSeconds": 0.014940576999833866,
+      "top5": [
+        {
+          "id": "16",
+          "score": 0.2733243703842163
+        },
+        {
+          "id": "2",
+          "score": 0.2558383345603943
+        },
+        {
+          "id": "23",
+          "score": 0.2505453824996948
+        },
+        {
+          "id": "19",
+          "score": 0.24666985869407654
+        },
+        {
+          "id": "negative_plant",
+          "score": 0.24334649741649628
+        }
+      ]
+    },
+    {
+      "photo": "17-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "negative_plant",
+      "correct": true,
+      "margin": 0.02484130859375,
+      "timeSeconds": 0.016718331999982183,
+      "top5": [
+        {
+          "id": "negative_plant",
+          "score": 0.272392213344574
+        },
+        {
+          "id": "16",
+          "score": 0.24755090475082397
+        },
+        {
+          "id": "25",
+          "score": 0.24346990883350372
+        },
+        {
+          "id": "19",
+          "score": 0.24341432750225067
+        },
+        {
+          "id": "3",
+          "score": 0.24205568432807922
+        }
+      ]
+    },
+    {
+      "photo": "17-1.jpg",
+      "expected": "17",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "17",
+      "correct": true,
+      "margin": 0.021159976720809937,
+      "timeSeconds": 0.02234300500003883,
+      "top5": [
+        {
+          "id": "17",
+          "score": 0.2954854965209961
+        },
+        {
+          "id": "24",
+          "score": 0.27432551980018616
+        },
+        {
+          "id": "0",
+          "score": 0.27006566524505615
+        },
+        {
+          "id": "3",
+          "score": 0.26473838090896606
+        },
+        {
+          "id": "1",
+          "score": 0.26102495193481445
+        }
+      ]
+    },
+    {
+      "photo": "18-0.jpg",
+      "expected": "18",
+      "scope": "food",
+      "split": "development",
+      "prediction": "18",
+      "correct": true,
+      "margin": 0.03584247827529907,
+      "timeSeconds": 0.014346853999995801,
+      "top5": [
+        {
+          "id": "18",
+          "score": 0.2936455011367798
+        },
+        {
+          "id": "5",
+          "score": 0.2578030228614807
+        },
+        {
+          "id": "sandwich",
+          "score": 0.24471375346183777
+        },
+        {
+          "id": "7",
+          "score": 0.23834024369716644
+        },
+        {
+          "id": "21",
+          "score": 0.23389503359794617
+        }
+      ]
+    },
+    {
+      "photo": "18-1.jpg",
+      "expected": "18",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "18",
+      "correct": true,
+      "margin": 0.029998719692230225,
+      "timeSeconds": 0.014648680000391323,
+      "top5": [
+        {
+          "id": "18",
+          "score": 0.29421481490135193
+        },
+        {
+          "id": "5",
+          "score": 0.2642160952091217
+        },
+        {
+          "id": "sandwich",
+          "score": 0.2441752552986145
+        },
+        {
+          "id": "22",
+          "score": 0.2435581088066101
+        },
+        {
+          "id": "7",
+          "score": 0.23456625640392303
+        }
+      ]
+    },
+    {
+      "photo": "19-0.jpg",
+      "expected": "19",
+      "scope": "food",
+      "split": "development",
+      "prediction": "13",
+      "correct": false,
+      "margin": 0.006697297096252441,
+      "timeSeconds": 0.014654573999905551,
+      "top5": [
+        {
+          "id": "13",
+          "score": 0.27842310070991516
+        },
+        {
+          "id": "24",
+          "score": 0.2717258036136627
+        },
+        {
+          "id": "6",
+          "score": 0.27166256308555603
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.27017343044281006
+        },
+        {
+          "id": "7",
+          "score": 0.2700279653072357
+        }
+      ]
+    },
+    {
+      "photo": "19-1.jpg",
+      "expected": "19",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "19",
+      "correct": true,
+      "margin": 0.0012428760528564453,
+      "timeSeconds": 0.014613048000683193,
+      "top5": [
+        {
+          "id": "19",
+          "score": 0.2738664746284485
+        },
+        {
+          "id": "24",
+          "score": 0.27262359857559204
+        },
+        {
+          "id": "14",
+          "score": 0.26760953664779663
+        },
+        {
+          "id": "25",
+          "score": 0.2535400986671448
+        },
+        {
+          "id": "23",
+          "score": 0.24861501157283783
+        }
+      ]
+    },
+    {
+      "photo": "20-0.jpg",
+      "expected": "20",
+      "scope": "food",
+      "split": "development",
+      "prediction": "20",
+      "correct": true,
+      "margin": 0.04990720748901367,
+      "timeSeconds": 0.01956886999960261,
+      "top5": [
+        {
+          "id": "20",
+          "score": 0.32312339544296265
+        },
+        {
+          "id": "9",
+          "score": 0.273216187953949
+        },
+        {
+          "id": "1",
+          "score": 0.2727556526660919
+        },
+        {
+          "id": "24",
+          "score": 0.2719232141971588
+        },
+        {
+          "id": "salad",
+          "score": 0.2670748233795166
+        }
+      ]
+    },
+    {
+      "photo": "20-1.jpg",
+      "expected": "20",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "20",
+      "correct": true,
+      "margin": 0.0012634098529815674,
+      "timeSeconds": 0.01625822000005428,
+      "top5": [
+        {
+          "id": "20",
+          "score": 0.3012334704399109
+        },
+        {
+          "id": "1",
+          "score": 0.2999700605869293
+        },
+        {
+          "id": "15",
+          "score": 0.29226797819137573
+        },
+        {
+          "id": "salad",
+          "score": 0.28486165404319763
+        },
+        {
+          "id": "24",
+          "score": 0.28290727734565735
+        }
+      ]
+    },
+    {
+      "photo": "21-0.jpg",
+      "expected": "21",
+      "scope": "food",
+      "split": "development",
+      "prediction": "11",
+      "correct": false,
+      "margin": 0.016259729862213135,
+      "timeSeconds": 0.016078927999842563,
+      "top5": [
+        {
+          "id": "11",
+          "score": 0.285581111907959
+        },
+        {
+          "id": "pizza",
+          "score": 0.26932138204574585
+        },
+        {
+          "id": "12",
+          "score": 0.256796658039093
+        },
+        {
+          "id": "negative_empty",
+          "score": 0.2546805143356323
+        },
+        {
+          "id": "21",
+          "score": 0.25346213579177856
+        }
+      ]
+    },
+    {
+      "photo": "21-1.jpg",
+      "expected": "21",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "5",
+      "correct": false,
+      "margin": 0.002429395914077759,
+      "timeSeconds": 0.017670747000011033,
+      "top5": [
+        {
+          "id": "5",
+          "score": 0.2633019983768463
+        },
+        {
+          "id": "4",
+          "score": 0.26087260246276855
+        },
+        {
+          "id": "18",
+          "score": 0.25887542963027954
+        },
+        {
+          "id": "pasta",
+          "score": 0.2553781270980835
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.2503923177719116
+        }
+      ]
+    },
+    {
+      "photo": "22-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "negative_document",
+      "correct": true,
+      "margin": 0.04327167570590973,
+      "timeSeconds": 0.016888805000235152,
+      "top5": [
+        {
+          "id": "negative_document",
+          "score": 0.2640983462333679
+        },
+        {
+          "id": "casein",
+          "score": 0.2208266705274582
+        },
+        {
+          "id": "negative_object",
+          "score": 0.22034373879432678
+        },
+        {
+          "id": "19",
+          "score": 0.2186814695596695
+        },
+        {
+          "id": "9",
+          "score": 0.21750688552856445
+        }
+      ]
+    },
+    {
+      "photo": "22-1.jpg",
+      "expected": "22",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "22",
+      "correct": true,
+      "margin": 0.01876804232597351,
+      "timeSeconds": 0.018073462999382173,
+      "top5": [
+        {
+          "id": "22",
+          "score": 0.29230770468711853
+        },
+        {
+          "id": "18",
+          "score": 0.273539662361145
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.2694803774356842
+        },
+        {
+          "id": "sandwich",
+          "score": 0.2589203119277954
+        },
+        {
+          "id": "casein",
+          "score": 0.2565907835960388
+        }
+      ]
+    },
+    {
+      "photo": "23-0.jpg",
+      "expected": "23",
+      "scope": "food",
+      "split": "development",
+      "prediction": "23",
+      "correct": true,
+      "margin": 0.01323428750038147,
+      "timeSeconds": 0.015614042000379413,
+      "top5": [
+        {
+          "id": "23",
+          "score": 0.2969634532928467
+        },
+        {
+          "id": "0",
+          "score": 0.2837291657924652
+        },
+        {
+          "id": "24",
+          "score": 0.2704087197780609
+        },
+        {
+          "id": "25",
+          "score": 0.26627418398857117
+        },
+        {
+          "id": "green_peas",
+          "score": 0.26498231291770935
+        }
+      ]
+    },
+    {
+      "photo": "23-1.jpg",
+      "expected": "23",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "23",
+      "correct": true,
+      "margin": 0.025549352169036865,
+      "timeSeconds": 0.01633441500052868,
+      "top5": [
+        {
+          "id": "23",
+          "score": 0.2744719982147217
+        },
+        {
+          "id": "2",
+          "score": 0.24892264604568481
+        },
+        {
+          "id": "green_peas",
+          "score": 0.24631227552890778
+        },
+        {
+          "id": "0",
+          "score": 0.2416771501302719
+        },
+        {
+          "id": "16",
+          "score": 0.24117529392242432
+        }
+      ]
+    },
+    {
+      "photo": "24-0.jpg",
+      "expected": "24",
+      "scope": "food",
+      "split": "development",
+      "prediction": "24",
+      "correct": true,
+      "margin": 0.015416502952575684,
+      "timeSeconds": 0.019996974000605405,
+      "top5": [
+        {
+          "id": "24",
+          "score": 0.3075851500034332
+        },
+        {
+          "id": "1",
+          "score": 0.29216864705085754
+        },
+        {
+          "id": "19",
+          "score": 0.261443555355072
+        },
+        {
+          "id": "3",
+          "score": 0.25855788588523865
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.25583112239837646
+        }
+      ]
+    },
+    {
+      "photo": "24-1.jpg",
+      "expected": "24",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "24",
+      "correct": true,
+      "margin": 0.0013189911842346191,
+      "timeSeconds": 0.015336809000473295,
+      "top5": [
+        {
+          "id": "24",
+          "score": 0.29417282342910767
+        },
+        {
+          "id": "17",
+          "score": 0.29285383224487305
+        },
+        {
+          "id": "0",
+          "score": 0.2817336916923523
+        },
+        {
+          "id": "1",
+          "score": 0.2695191502571106
+        },
+        {
+          "id": "25",
+          "score": 0.26709485054016113
+        }
+      ]
+    },
+    {
+      "photo": "25-0.jpg",
+      "expected": "25",
+      "scope": "food",
+      "split": "development",
+      "prediction": "25",
+      "correct": true,
+      "margin": 0.044658809900283813,
+      "timeSeconds": 0.015976296999724582,
+      "top5": [
+        {
+          "id": "25",
+          "score": 0.2992250919342041
+        },
+        {
+          "id": "0",
+          "score": 0.2545662820339203
+        },
+        {
+          "id": "casein",
+          "score": 0.24821683764457703
+        },
+        {
+          "id": "3",
+          "score": 0.24705937504768372
+        },
+        {
+          "id": "18",
+          "score": 0.2419419139623642
+        }
+      ]
+    },
+    {
+      "photo": "25-1.jpg",
+      "expected": "25",
+      "scope": "food",
+      "split": "holdout",
+      "prediction": "25",
+      "correct": true,
+      "margin": 0.0014028847217559814,
+      "timeSeconds": 0.016527176000636246,
+      "top5": [
+        {
+          "id": "25",
+          "score": 0.26612114906311035
+        },
+        {
+          "id": "0",
+          "score": 0.26471826434135437
+        },
+        {
+          "id": "11",
+          "score": 0.2567431926727295
+        },
+        {
+          "id": "24",
+          "score": 0.25070756673812866
+        },
+        {
+          "id": "19",
+          "score": 0.24708065390586853
+        }
+      ]
+    },
+    {
+      "photo": "26-0.jpg",
+      "expected": "pizza",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "pizza",
+      "correct": true,
+      "margin": 0.009352684020996094,
+      "timeSeconds": 0.0172006410002723,
+      "top5": [
+        {
+          "id": "pizza",
+          "score": 0.2689480185508728
+        },
+        {
+          "id": "salad",
+          "score": 0.2595953345298767
+        },
+        {
+          "id": "sandwich",
+          "score": 0.24296903610229492
+        },
+        {
+          "id": "negative_empty",
+          "score": 0.24144312739372253
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.2405446171760559
+        }
+      ]
+    },
+    {
+      "photo": "26-1.jpg",
+      "expected": "pizza",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "pizza",
+      "correct": true,
+      "margin": 0.02903786301612854,
+      "timeSeconds": 0.015483561000110058,
+      "top5": [
+        {
+          "id": "pizza",
+          "score": 0.286056250333786
+        },
+        {
+          "id": "pasta",
+          "score": 0.25701838731765747
+        },
+        {
+          "id": "22",
+          "score": 0.24623322486877441
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.23472799360752106
+        },
+        {
+          "id": "fries",
+          "score": 0.23126879334449768
+        }
+      ]
+    },
+    {
+      "photo": "27-0.jpg",
+      "expected": "salad",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "salad",
+      "correct": true,
+      "margin": 0.026804476976394653,
+      "timeSeconds": 0.014609834000111732,
+      "top5": [
+        {
+          "id": "salad",
+          "score": 0.3004351854324341
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.27363070845603943
+        },
+        {
+          "id": "sandwich",
+          "score": 0.25788813829421997
+        },
+        {
+          "id": "16",
+          "score": 0.25380226969718933
+        },
+        {
+          "id": "negative_empty",
+          "score": 0.2513270974159241
+        }
+      ]
+    },
+    {
+      "photo": "27-1.jpg",
+      "expected": "salad",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "salad",
+      "correct": true,
+      "margin": 0.04590576887130737,
+      "timeSeconds": 0.016034932000366098,
+      "top5": [
+        {
+          "id": "salad",
+          "score": 0.3080447316169739
+        },
+        {
+          "id": "16",
+          "score": 0.2621389627456665
+        },
+        {
+          "id": "3",
+          "score": 0.260219931602478
+        },
+        {
+          "id": "23",
+          "score": 0.2561531960964203
+        },
+        {
+          "id": "fries",
+          "score": 0.25200968980789185
+        }
+      ]
+    },
+    {
+      "photo": "28-0.jpg",
+      "expected": "rice_beans",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "rice_beans",
+      "correct": true,
+      "margin": 0.024327844381332397,
+      "timeSeconds": 0.016428152999651502,
+      "top5": [
+        {
+          "id": "rice_beans",
+          "score": 0.2644140422344208
+        },
+        {
+          "id": "12",
+          "score": 0.24008619785308838
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.23789799213409424
+        },
+        {
+          "id": "11",
+          "score": 0.23768530786037445
+        },
+        {
+          "id": "21",
+          "score": 0.2309071570634842
+        }
+      ]
+    },
+    {
+      "photo": "28-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "negative_packaging",
+      "correct": true,
+      "margin": 0.01106327772140503,
+      "timeSeconds": 0.01728109099985886,
+      "top5": [
+        {
+          "id": "negative_packaging",
+          "score": 0.27336084842681885
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.2622975707054138
+        },
+        {
+          "id": "5",
+          "score": 0.24998128414154053
+        },
+        {
+          "id": "6",
+          "score": 0.249368354678154
+        },
+        {
+          "id": "4",
+          "score": 0.24419578909873962
+        }
+      ]
+    },
+    {
+      "photo": "29-0.jpg",
+      "expected": "pasta",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "pasta",
+      "correct": true,
+      "margin": 0.06802323460578918,
+      "timeSeconds": 0.015740867000204162,
+      "top5": [
+        {
+          "id": "pasta",
+          "score": 0.3114263117313385
+        },
+        {
+          "id": "7",
+          "score": 0.24340307712554932
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.24031323194503784
+        },
+        {
+          "id": "fries",
+          "score": 0.24028706550598145
+        },
+        {
+          "id": "12",
+          "score": 0.23785974085330963
+        }
+      ]
+    },
+    {
+      "photo": "29-1.jpg",
+      "expected": "pasta",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "pasta",
+      "correct": true,
+      "margin": 0.046504437923431396,
+      "timeSeconds": 0.024948577000031946,
+      "top5": [
+        {
+          "id": "pasta",
+          "score": 0.29068273305892944
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.24417829513549805
+        },
+        {
+          "id": "21",
+          "score": 0.24019461870193481
+        },
+        {
+          "id": "4",
+          "score": 0.239720419049263
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.23226270079612732
+        }
+      ]
+    },
+    {
+      "photo": "30-0.jpg",
+      "expected": "sandwich",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "sandwich",
+      "correct": true,
+      "margin": 0.03756433725357056,
+      "timeSeconds": 0.015719760000138194,
+      "top5": [
+        {
+          "id": "sandwich",
+          "score": 0.3033568859100342
+        },
+        {
+          "id": "18",
+          "score": 0.2657925486564636
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.25920969247817993
+        },
+        {
+          "id": "22",
+          "score": 0.24885067343711853
+        },
+        {
+          "id": "pasta",
+          "score": 0.23953984677791595
+        }
+      ]
+    },
+    {
+      "photo": "30-1.jpg",
+      "expected": "sandwich",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "sandwich",
+      "correct": true,
+      "margin": 0.03349810838699341,
+      "timeSeconds": 0.015064256999721692,
+      "top5": [
+        {
+          "id": "sandwich",
+          "score": 0.2958785891532898
+        },
+        {
+          "id": "18",
+          "score": 0.2623804807662964
+        },
+        {
+          "id": "8",
+          "score": 0.2562147378921509
+        },
+        {
+          "id": "22",
+          "score": 0.25283515453338623
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.2499840408563614
+        }
+      ]
+    },
+    {
+      "photo": "31-0.jpg",
+      "expected": "sushi",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "sushi",
+      "correct": true,
+      "margin": 0.020591259002685547,
+      "timeSeconds": 0.017218936999597645,
+      "top5": [
+        {
+          "id": "sushi",
+          "score": 0.3002057373523712
+        },
+        {
+          "id": "12",
+          "score": 0.27961447834968567
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.26678597927093506
+        },
+        {
+          "id": "4",
+          "score": 0.2646771967411041
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.2580470144748688
+        }
+      ]
+    },
+    {
+      "photo": "31-1.jpg",
+      "expected": "sushi",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "sushi",
+      "correct": true,
+      "margin": 0.014847099781036377,
+      "timeSeconds": 0.020916317999763123,
+      "top5": [
+        {
+          "id": "sushi",
+          "score": 0.3025002181529999
+        },
+        {
+          "id": "12",
+          "score": 0.2876531183719635
+        },
+        {
+          "id": "4",
+          "score": 0.2617267966270447
+        },
+        {
+          "id": "rice_beans",
+          "score": 0.2613917291164398
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.2577986419200897
+        }
+      ]
+    },
+    {
+      "photo": "32-0.jpg",
+      "expected": "fries",
+      "scope": "dish",
+      "split": "development",
+      "prediction": "fries",
+      "correct": true,
+      "margin": 0.052202463150024414,
+      "timeSeconds": 0.03105309800048417,
+      "top5": [
+        {
+          "id": "fries",
+          "score": 0.3092314600944519
+        },
+        {
+          "id": "3",
+          "score": 0.2570289969444275
+        },
+        {
+          "id": "17",
+          "score": 0.2551974952220917
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.2546323835849762
+        },
+        {
+          "id": "13",
+          "score": 0.251030832529068
+        }
+      ]
+    },
+    {
+      "photo": "32-1.jpg",
+      "expected": "fries",
+      "scope": "dish",
+      "split": "holdout",
+      "prediction": "fries",
+      "correct": true,
+      "margin": 0.02917391061782837,
+      "timeSeconds": 0.015868990999479138,
+      "top5": [
+        {
+          "id": "fries",
+          "score": 0.30732277035713196
+        },
+        {
+          "id": "17",
+          "score": 0.2781488597393036
+        },
+        {
+          "id": "pasta",
+          "score": 0.26364830136299133
+        },
+        {
+          "id": "3",
+          "score": 0.2596278190612793
+        },
+        {
+          "id": "13",
+          "score": 0.2554421126842499
+        }
+      ]
+    },
+    {
+      "photo": "33-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "negative_dog",
+      "correct": true,
+      "margin": 0.07599802315235138,
+      "timeSeconds": 0.015571285999612883,
+      "top5": [
+        {
+          "id": "negative_dog",
+          "score": 0.294562965631485
+        },
+        {
+          "id": "19",
+          "score": 0.2185649424791336
+        },
+        {
+          "id": "21",
+          "score": 0.2135496586561203
+        },
+        {
+          "id": "22",
+          "score": 0.20777378976345062
+        },
+        {
+          "id": "negative_person",
+          "score": 0.20569974184036255
+        }
+      ]
+    },
+    {
+      "photo": "33-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "negative_dog",
+      "correct": true,
+      "margin": 0.052771806716918945,
+      "timeSeconds": 0.015341262000220013,
+      "top5": [
+        {
+          "id": "negative_dog",
+          "score": 0.2621282935142517
+        },
+        {
+          "id": "sandwich",
+          "score": 0.20935648679733276
+        },
+        {
+          "id": "19",
+          "score": 0.20890755951404572
+        },
+        {
+          "id": "negative_person",
+          "score": 0.20811885595321655
+        },
+        {
+          "id": "fries",
+          "score": 0.20483511686325073
+        }
+      ]
+    },
+    {
+      "photo": "34-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "negative_cat",
+      "correct": true,
+      "margin": 0.032894209027290344,
+      "timeSeconds": 0.015645668000615842,
+      "top5": [
+        {
+          "id": "negative_cat",
+          "score": 0.2665689289569855
+        },
+        {
+          "id": "sushi",
+          "score": 0.23367471992969513
+        },
+        {
+          "id": "6",
+          "score": 0.233352392911911
+        },
+        {
+          "id": "21",
+          "score": 0.22948850691318512
+        },
+        {
+          "id": "19",
+          "score": 0.2261408418416977
+        }
+      ]
+    },
+    {
+      "photo": "34-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "negative_cat",
+      "correct": true,
+      "margin": 0.035760506987571716,
+      "timeSeconds": 0.015056356000059168,
+      "top5": [
+        {
+          "id": "negative_cat",
+          "score": 0.2738701403141022
+        },
+        {
+          "id": "19",
+          "score": 0.23810963332653046
+        },
+        {
+          "id": "21",
+          "score": 0.2373219132423401
+        },
+        {
+          "id": "7",
+          "score": 0.23030342161655426
+        },
+        {
+          "id": "negative_person",
+          "score": 0.23027746379375458
+        }
+      ]
+    },
+    {
+      "photo": "35-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "negative_phone",
+      "correct": true,
+      "margin": 0.04039604961872101,
+      "timeSeconds": 0.02163004199974239,
+      "top5": [
+        {
+          "id": "negative_phone",
+          "score": 0.27094221115112305
+        },
+        {
+          "id": "negative_document",
+          "score": 0.23054616153240204
+        },
+        {
+          "id": "negative_packaging",
+          "score": 0.2215041071176529
+        },
+        {
+          "id": "19",
+          "score": 0.22108599543571472
+        },
+        {
+          "id": "7",
+          "score": 0.22099542617797852
+        }
+      ]
+    },
+    {
+      "photo": "35-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "negative_phone",
+      "correct": true,
+      "margin": 0.03894692659378052,
+      "timeSeconds": 0.015340989999458543,
+      "top5": [
+        {
+          "id": "negative_phone",
+          "score": 0.2921249568462372
+        },
+        {
+          "id": "1",
+          "score": 0.25317803025245667
+        },
+        {
+          "id": "negative_document",
+          "score": 0.24830879271030426
+        },
+        {
+          "id": "6",
+          "score": 0.24617131054401398
+        },
+        {
+          "id": "7",
+          "score": 0.24464237689971924
+        }
+      ]
+    },
+    {
+      "photo": "36-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "negative_chair",
+      "correct": true,
+      "margin": 0.05004890263080597,
+      "timeSeconds": 0.015506318000007013,
+      "top5": [
+        {
+          "id": "negative_chair",
+          "score": 0.2856401801109314
+        },
+        {
+          "id": "negative_document",
+          "score": 0.23559127748012543
+        },
+        {
+          "id": "negative_object",
+          "score": 0.2244611531496048
+        },
+        {
+          "id": "negative_phone",
+          "score": 0.22107669711112976
+        },
+        {
+          "id": "7",
+          "score": 0.22039951384067535
+        }
+      ]
+    },
+    {
+      "photo": "36-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "negative_chair",
+      "correct": true,
+      "margin": 0.05383974313735962,
+      "timeSeconds": 0.01538415699997131,
+      "top5": [
+        {
+          "id": "negative_chair",
+          "score": 0.3024827241897583
+        },
+        {
+          "id": "negative_object",
+          "score": 0.24864298105239868
+        },
+        {
+          "id": "negative_person",
+          "score": 0.23265385627746582
+        },
+        {
+          "id": "negative_document",
+          "score": 0.23136451840400696
+        },
+        {
+          "id": "negative_empty",
+          "score": 0.22594113647937775
+        }
+      ]
+    },
+    {
+      "photo": "37-0.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "development",
+      "prediction": "negative_sunset",
+      "correct": true,
+      "margin": 0.017619013786315918,
+      "timeSeconds": 0.01567479299956176,
+      "top5": [
+        {
+          "id": "negative_sunset",
+          "score": 0.229153573513031
+        },
+        {
+          "id": "negative_object",
+          "score": 0.2115345597267151
+        },
+        {
+          "id": "negative_chair",
+          "score": 0.2107255756855011
+        },
+        {
+          "id": "19",
+          "score": 0.20569968223571777
+        },
+        {
+          "id": "25",
+          "score": 0.2032175064086914
+        }
+      ]
+    },
+    {
+      "photo": "37-1.jpg",
+      "expected": "negative",
+      "scope": "ood",
+      "split": "holdout",
+      "prediction": "negative_sunset",
+      "correct": true,
+      "margin": 0.028998970985412598,
+      "timeSeconds": 0.020423496999683266,
+      "top5": [
+        {
+          "id": "negative_sunset",
+          "score": 0.26478588581085205
+        },
+        {
+          "id": "13",
+          "score": 0.23578691482543945
+        },
+        {
+          "id": "4",
+          "score": 0.23510468006134033
+        },
+        {
+          "id": "11",
+          "score": 0.23209935426712036
+        },
+        {
+          "id": "25",
+          "score": 0.23033064603805542
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "food_all": {
+      "total": 45,
+      "correct": 33,
+      "accuracy": 0.7333333333333333
+    },
+    "food_development": {
+      "total": 23,
+      "correct": 17,
+      "accuracy": 0.7391304347826086
+    },
+    "food_holdout": {
+      "total": 22,
+      "correct": 16,
+      "accuracy": 0.7272727272727273
+    },
+    "dish_all": {
+      "total": 13,
+      "correct": 13,
+      "accuracy": 1.0
+    },
+    "dish_development": {
+      "total": 7,
+      "correct": 7,
+      "accuracy": 1.0
+    },
+    "dish_holdout": {
+      "total": 6,
+      "correct": 6,
+      "accuracy": 1.0
+    },
+    "ood_all": {
+      "total": 15,
+      "correct": 13,
+      "accuracy": 0.8666666666666667
+    },
+    "ood_development": {
+      "total": 8,
+      "correct": 7,
+      "accuracy": 0.875
+    },
+    "ood_holdout": {
+      "total": 7,
+      "correct": 6,
+      "accuracy": 0.8571428571428571
+    },
+    "other_food_all": {
+      "total": 2,
+      "correct": 1,
+      "accuracy": 0.5
+    },
+    "other_food_development": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "other_food_holdout": {
+      "total": 2,
+      "correct": 1,
+      "accuracy": 0.5
+    },
+    "challenge_all": {
+      "total": 1,
+      "correct": 1,
+      "accuracy": 1.0
+    },
+    "challenge_development": {
+      "total": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "challenge_holdout": {
+      "total": 1,
+      "correct": 1,
+      "accuracy": 1.0
+    }
+  }
+}

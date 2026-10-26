@@ -75,13 +75,11 @@ const fs = require("node:fs");
     const png = await page.screenshot({
       clip: { x: 0, y: 0, width: 100, height: 100 },
     });
-    await page
-      .locator("#foto")
-      .setInputFiles({
-        name: "sem-alimento.png",
-        mimeType: "image/png",
-        buffer: png,
-      });
+    await page.locator("#foto").setInputFiles({
+      name: "sem-alimento.png",
+      mimeType: "image/png",
+      buffer: png,
+    });
     await page.locator("#photo-area").waitFor();
     await page.locator("#analisar").click();
     await page
@@ -91,9 +89,15 @@ const fs = require("node:fs");
       .waitFor();
     await page.locator("#photo-consent").check();
     await page.locator("#analisar").click();
-    await page
-      .getByText("Não consegui reconhecer com segurança.", { exact: false })
-      .waitFor({ timeout: 120000 });
+    await page.waitForFunction(
+      () => !document.querySelector("#analisar").disabled,
+      undefined,
+      { timeout: 120000 },
+    );
+    assert.match(
+      await page.locator("#photo-status").innerText(),
+      /Não tenho segurança na identificação/,
+    );
     const testImage = process.env.NUTRIVIBE_TEST_IMAGE;
     assert(
       testImage && fs.existsSync(testImage),
@@ -128,6 +132,28 @@ const fs = require("node:fs");
       0,
       "A foto não deve ser enviada ao endpoint pago",
     );
+    if (process.env.NUTRIVIBE_TEST_DISH_IMAGE) {
+      await page
+        .locator("#foto")
+        .setInputFiles(process.env.NUTRIVIBE_TEST_DISH_IMAGE);
+      await page.locator("#photo-consent").check();
+      await page.locator("#analisar").click();
+      await page
+        .locator('#candidatos input[value="other:pizza"]')
+        .waitFor({ timeout: 120000 });
+      await page.locator('#candidatos input[value="other:pizza"]').check();
+      await page.locator("#confirmar-foto").click();
+      await page
+        .getByText("Pizza registrado sem composição presumida.", {
+          exact: false,
+        })
+        .waitFor();
+      assert(await page.locator("#nutrition-dialog").isHidden());
+      await page
+        .getByRole("button", { name: "Remover Pizza", exact: true })
+        .click();
+      assert.equal(await page.locator("#registros strong").count(), 1);
+    }
     await page.locator("#custom-name").fill("Sopa de legumes");
     await page
       .getByRole("button", { name: "Registrar alimento informado" })

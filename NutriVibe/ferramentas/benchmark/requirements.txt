@@ -1,0 +1,6 @@
+transformers==4.57.6
+onnxruntime==1.24.4
+sentencepiece==0.2.1
+tokenizers==0.22.2
+numpy==2.5.4
+Pillow==12.3.0
