@@ -14,23 +14,23 @@ As pastas contêm cópias preenchidas do modelo PROGRAD em DOCX e versões em PD
 
 Os textos descrevem a implementação e as evidências técnicas disponíveis. A distribuição de responsabilidades segue a informação da equipe; o detalhamento entre as duas frentes de pesquisa é uma proposta de redação que Marcelo e Akiane devem validar. As reflexões em primeira pessoa também precisam de leitura e concordância de cada estudante.
 
-A equipe informou início em **agosto de 2026** e implementação do aplicativo em **outubro de 2026**. A pedido da equipe, as fichas agora contêm **dias específicos e horas estimados**, com asterisco em cada lançamento e nota explícita dentro de cada relatório. Os valores não são apresentados como apontamentos comprovados.
+A equipe informou início em **agosto de 2026** e implementação do aplicativo em **outubro de 2026**. A pedido da equipe, as fichas agora contêm **dias específicos e horas estimados**, sem asteriscos nos lançamentos, com identificação de cronograma proposto para conferência dentro de cada relatório. Os valores não são apresentados como apontamentos comprovados.
 
 | Integrante | Atividades | Total individual estimado |
 | --- | --- | --- |
-| Paulo | 12 | 56 h |
-| Davi | 12 | 38 h |
-| Victor | 12 | 42 h |
-| Marcelo | 12 | 34 h |
-| Akiane | 12 | 40 h |
+| Paulo | 12 | 60 h |
+| Davi | 12 | 54 h |
+| Victor | 12 | 57 h |
+| Marcelo | 12 | 53 h |
+| Akiane | 12 | 56 h |
 
-A soma das estimativas individuais é **210 h**. Cada total é calculado pelas linhas da própria ficha; não representa duração cronológica do projeto nem carga curricular oficial. Cada pasta também contém `atividades-estimadas.csv`, com datas, descrições, horas e indicação de que são estimativas. O planejamento cobre pesquisa e definição inicial em agosto, organização em setembro e implementação/revisão do aplicativo em outubro, até 26/10/2026.
+Os quatro integrantes além de Paulo têm média proposta de **55 h**, com totais diferentes entre si. A soma das estimativas individuais é **280 h**. Cada total é calculado pelas linhas da própria ficha; não representa duração cronológica do projeto nem carga curricular oficial. Cada pasta também contém `atividades-estimadas.csv`, com datas, descrições, horas e indicação de que são estimativas. O planejamento cobre pesquisa e definição inicial em agosto, organização em setembro e implementação/revisão do aplicativo em outubro, até 26/10/2026.
 
-Nos campos iniciais de CH, o total do trabalho individual estimado foi distribuído como autônomo. Teoria, prática supervisionada e extensão comunitária aparecem com zero por não haver registros dessas horas nesta estimativa. **Esses números não substituem a carga oficial do componente e não comprovam horas de extensão.** A nota com asterisco acompanha esses campos no documento.
+Nos campos iniciais de CH, o total do trabalho individual estimado foi distribuído como autônomo. Teoria, prática supervisionada e extensão comunitária aparecem com zero por não haver registros dessas horas nesta estimativa. **Esses números não substituem a carga oficial do componente e não comprovam horas de extensão.** A identificação de versão para conferência acompanha esses campos no documento.
 
 ## Questões de assinalar
 
-As marcações são feitas com **X nas caixas originais**, sem recriar as tabelas:
+As marcações são feitas com **X nas caixas originais**, sem recriar as tabelas. “Outra” já consta no original nas seções 2.2, 4.1 e 5; nenhuma alternativa foi criada. Na seção de PIE e na de apoio institucional foram usadas suas opções originais correspondentes:
 
 - **PIE III — Saúde e Meio Ambiente:** enquadramento adotado pelo tema de educação alimentar, sujeito à validação do docente.
 - **Forma de desenvolvimento — Nenhuma das opções anteriores:** não foram informados os apoios institucionais listados.
