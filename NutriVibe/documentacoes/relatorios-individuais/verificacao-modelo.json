@@ -1,0 +1,60 @@
+{
+  "original_sha256": "69f3fad719346312bee00f8c5cb2819e010444085c34336334513aa47cb9698a",
+  "relatorios": [
+    {
+      "estudante": "Paulo Capreti",
+      "frente": "JavaScript",
+      "arquivo": "documentacoes/relatorios-individuais/paulo/relatorio-paulo-nutrivibe.docx",
+      "partes_alteradas": [
+        "word/document.xml"
+      ],
+      "tabelas_preservadas": 47,
+      "linhas_preservadas": 97,
+      "datas_e_horas": "pendentes de validação individual"
+    },
+    {
+      "estudante": "Davi Pioli",
+      "frente": "HTML e acompanhamento do Kanban",
+      "arquivo": "documentacoes/relatorios-individuais/davi/relatorio-davi-nutrivibe.docx",
+      "partes_alteradas": [
+        "word/document.xml"
+      ],
+      "tabelas_preservadas": 47,
+      "linhas_preservadas": 97,
+      "datas_e_horas": "pendentes de validação individual"
+    },
+    {
+      "estudante": "Victor Almeida",
+      "frente": "CSS e identidade visual",
+      "arquivo": "documentacoes/relatorios-individuais/victor/relatorio-victor-nutrivibe.docx",
+      "partes_alteradas": [
+        "word/document.xml"
+      ],
+      "tabelas_preservadas": 47,
+      "linhas_preservadas": 97,
+      "datas_e_horas": "pendentes de validação individual"
+    },
+    {
+      "estudante": "Marcelo Dalbone",
+      "frente": "Pesquisas: problema, público-alvo e requisitos",
+      "arquivo": "documentacoes/relatorios-individuais/marcelo/relatorio-marcelo-nutrivibe.docx",
+      "partes_alteradas": [
+        "word/document.xml"
+      ],
+      "tabelas_preservadas": 47,
+      "linhas_preservadas": 97,
+      "datas_e_horas": "pendentes de validação individual"
+    },
+    {
+      "estudante": "Akiane Merbach",
+      "frente": "Pesquisas: fontes alimentares, avaliação e limitações",
+      "arquivo": "documentacoes/relatorios-individuais/akiane/relatorio-akiane-nutrivibe.docx",
+      "partes_alteradas": [
+        "word/document.xml"
+      ],
+      "tabelas_preservadas": 47,
+      "linhas_preservadas": 97,
+      "datas_e_horas": "pendentes de validação individual"
+    }
+  ]
+}

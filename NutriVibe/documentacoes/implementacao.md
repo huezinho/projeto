@@ -81,3 +81,13 @@ Oito testes unitários passaram: restrições, escopo diário, prioridade por gr
 Pronto para testes locais dos fluxos implementados. A aplicação não foi publicada em domínio público nem homologada clinicamente. GitHub Pages hospeda HTML/CSS/JS, mas **não executa Node/SQLite**; para usar IA e contatos é preciso publicar o servidor em hospedagem Node 24, com HTTPS, segredo e disco persistente. Antes de exposição pública, revisar consentimento/retenção/LGPD, política do provedor de imagens, autenticação se houver sincronização, backups e proteção antispam. O backend permanece em loopback por padrão para testes locais.
 
 A ampliação com servidor e SQLite segue o pedido atual do usuário; ela ultrapassa o escopo exclusivamente frontend do enunciado acadêmico anterior. Confirme com o professor como apresentar essas funcionalidades adicionais. PDF no modelo oficial, submissão no Canvas e ensaio não foram executados.
+
+## Revisão visual e relatórios individuais — outubro de 2026
+
+As duas interfaces passaram a usar uma versão PNG com fundo transparente e margens reduzidas da identidade NutriVibe. O arquivo compartilhado fica em `imagens/logo-nutrivibe-transparente.png`; os JPEGs de origem foram mantidos. A preparação da imagem usou ferramenta de edição de imagens. A marca é exibida com proporção preservada e texto alternativo, incluindo referências de favicon atualizadas.
+
+Foram removidos emojis do catálogo, dos registros, das sugestões e das páginas educativas, além de setas e símbolos decorativos dos links. O destaque inicial do aplicativo agora explica o fluxo de perfil, registro e resumo com conteúdo textual. As regras de identificação de alimentos, confirmação de peso e restrições permanecem verificadas pelos testes existentes.
+
+Os relatórios em `documentacoes/relatorios-individuais/` são separados por estudante e incluem DOCX e PDF. O original institucional foi preservado integralmente. O gerador em `ferramentas/relatorios/gerar_relatorios.py` preenche cópias e verifica a estrutura do pacote. Dias, horas reais e dados de participação comunitária ainda dependem da validação de cada estudante; o README da pasta registra as pendências e a divergência de período presente no rodapé do modelo original.
+
+Verificação desta revisão: 25 testes unitários aprovados, fluxo Chromium com cadastro de perfil, filtros, diário, foto, confirmação nutricional, persistência, remoção e contatos aprovado; larguras de 360, 768 e 1280 pixels sem transbordamento horizontal nas duas páginas iniciais. Os cinco PDFs foram exportados, e a estrutura das cópias foi comparada ao modelo original.

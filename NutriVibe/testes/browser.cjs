@@ -158,9 +158,9 @@ const fs = require("node:fs");
     await page
       .getByRole("button", { name: "Registrar alimento informado" })
       .click();
-    await page.getByText("🍽 Sopa de legumes", { exact: true }).waitFor();
+    await page.getByText("Sopa de legumes", { exact: true }).waitFor();
     await page.reload();
-    await page.getByText("🍽 Sopa de legumes", { exact: true }).waitFor();
+    await page.getByText("Sopa de legumes", { exact: true }).waitFor();
     const downloadPromise = page.waitForEvent("download");
     await page.locator("#exportar").click();
     const download = await downloadPromise;
@@ -188,7 +188,7 @@ const fs = require("node:fs");
       mimeType: "application/json",
       buffer: Buffer.from(JSON.stringify(backup)),
     });
-    await page.getByText("🍽 Sopa de legumes", { exact: true }).waitFor();
+    await page.getByText("Sopa de legumes", { exact: true }).waitFor();
 
     for (const width of [360, 768, 1280]) {
       await page.setViewportSize({ width, height: 900 });

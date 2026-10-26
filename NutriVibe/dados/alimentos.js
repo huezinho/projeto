@@ -1,8 +1,8 @@
 // Catálogo de alimentos simples. Preparações e produtos industrializados exigem conferência do rótulo.
 export const foods = [
-  ["0", "Banana", "Frutas", "amarelo", "macio", [], ["fibras"], "🍌"],
-  ["1", "Maçã", "Frutas", "vermelho", "crocante", [], ["fibras"], "🍎"],
-  ["2", "Brócolis", "Vegetais", "verde", "macio", [], ["fibras"], "🥦"],
+  ["0", "Banana", "Frutas", "amarelo", "macio", [], ["fibras"]],
+  ["1", "Maçã", "Frutas", "vermelho", "crocante", [], ["fibras"]],
+  ["2", "Brócolis", "Vegetais", "verde", "macio", [], ["fibras"]],
   [
     "3",
     "Cenoura",
@@ -11,7 +11,6 @@ export const foods = [
     "crocante",
     [],
     ["carotenoides"],
-    "🥕",
   ],
   [
     "4",
@@ -21,7 +20,6 @@ export const foods = [
     "macio",
     [],
     ["carboidratos"],
-    "🍚",
   ],
   [
     "5",
@@ -31,7 +29,6 @@ export const foods = [
     "macio",
     ["gluten"],
     ["fibras"],
-    "🌾",
   ],
   [
     "6",
@@ -41,7 +38,6 @@ export const foods = [
     "macio",
     [],
     ["proteínas vegetais", "fibras"],
-    "🫘",
   ],
   [
     "7",
@@ -51,7 +47,6 @@ export const foods = [
     "macio",
     [],
     ["proteínas vegetais", "fibras"],
-    "🫘",
   ],
   [
     "8",
@@ -61,7 +56,6 @@ export const foods = [
     "liquido",
     ["lactose", "leite"],
     ["cálcio", "proteínas"],
-    "🥛",
   ],
   [
     "9",
@@ -71,7 +65,6 @@ export const foods = [
     "cremoso",
     ["lactose", "leite"],
     ["cálcio", "proteínas"],
-    "🥣",
   ],
   [
     "10",
@@ -81,7 +74,6 @@ export const foods = [
     "macio",
     ["ovo"],
     ["proteínas"],
-    "🥚",
   ],
   [
     "11",
@@ -91,7 +83,6 @@ export const foods = [
     "firme",
     [],
     ["proteínas"],
-    "🍗",
   ],
   [
     "12",
@@ -101,7 +92,6 @@ export const foods = [
     "macio",
     ["peixe"],
     ["proteínas"],
-    "🐟",
   ],
   [
     "13",
@@ -111,11 +101,10 @@ export const foods = [
     "macio",
     [],
     ["proteínas vegetais", "fibras"],
-    "🫘",
   ],
-  ["14", "Abóbora", "Vegetais", "laranja", "macio", [], ["carotenoides"], "🎃"],
-  ["15", "Tomate", "Vegetais", "vermelho", "macio", [], ["fibras"], "🍅"],
-  ["16", "Espinafre", "Vegetais", "verde", "macio", [], ["fibras"], "🥬"],
+  ["14", "Abóbora", "Vegetais", "laranja", "macio", [], ["carotenoides"]],
+  ["15", "Tomate", "Vegetais", "vermelho", "macio", [], ["fibras"]],
+  ["16", "Espinafre", "Vegetais", "verde", "macio", [], ["fibras"]],
   [
     "17",
     "Batata",
@@ -124,7 +113,6 @@ export const foods = [
     "macio",
     [],
     ["carboidratos"],
-    "🥔",
   ],
   [
     "18",
@@ -134,10 +122,9 @@ export const foods = [
     "firme",
     ["gluten"],
     ["carboidratos", "fibras"],
-    "🍞",
   ],
-  ["19", "Mamão", "Frutas", "laranja", "macio", [], ["fibras"], "🍈"],
-  ["20", "Morango", "Frutas", "vermelho", "macio", [], ["vitamina C"], "🍓"],
+  ["19", "Mamão", "Frutas", "laranja", "macio", [], ["fibras"]],
+  ["20", "Morango", "Frutas", "vermelho", "macio", [], ["vitamina C"]],
   [
     "21",
     "Tofu",
@@ -146,7 +133,6 @@ export const foods = [
     "macio",
     ["soja"],
     ["proteínas vegetais"],
-    "◻",
   ],
   [
     "22",
@@ -156,10 +142,9 @@ export const foods = [
     "firme",
     ["lactose", "leite"],
     ["cálcio", "proteínas"],
-    "🧀",
   ],
-  ["23", "Pepino", "Vegetais", "verde", "crocante", [], ["fibras"], "🥒"],
-  ["24", "Manga", "Frutas", "amarelo", "macio", [], ["fibras"], "🥭"],
+  ["23", "Pepino", "Vegetais", "verde", "crocante", [], ["fibras"]],
+  ["24", "Manga", "Frutas", "amarelo", "macio", [], ["fibras"]],
   [
     "25",
     "Milho",
@@ -168,9 +153,8 @@ export const foods = [
     "firme",
     [],
     ["carboidratos"],
-    "🌽",
   ],
-].map(([id, name, group, color, texture, allergens, highlights, icon]) => ({
+].map(([id, name, group, color, texture, allergens, highlights]) => ({
   id,
   name,
   group,
@@ -178,7 +162,6 @@ export const foods = [
   texture,
   allergens,
   highlights,
-  icon,
 }));
 export const restrictions = {
   lactose: "Intolerância à lactose",

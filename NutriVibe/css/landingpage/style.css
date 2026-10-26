@@ -88,8 +88,9 @@ a {
 }
 
 .brand-logo {
-  width: 42px;
-  height: 42px;
+  width: 180px;
+  height: auto;
+  display: block;
 }
 
 .nav-links {

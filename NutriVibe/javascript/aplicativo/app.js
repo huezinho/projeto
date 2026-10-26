@@ -208,7 +208,6 @@ function renderRecords() {
   for (const r of records) {
     const food = foods.find((f) => f.id === r.foodId) || {
       name: r.customName,
-      icon: "🍽",
       allergens: [],
       color: "",
       texture: "",
@@ -216,7 +215,7 @@ function renderRecords() {
     const item = node("li");
     const text = node("div");
     text.append(
-      node("strong", `${food.icon} ${food.name}`),
+      node("strong", food.name),
       node(
         "p",
         `${r.meal} · ${r.nutrition ? "peso confirmado" : "sem peso confirmado"}`,
@@ -299,7 +298,6 @@ function renderCatalog() {
   for (const f of filtered) {
     const card = node("article", undefined, "card");
     card.append(
-      node("span", f.icon, "food-icon"),
       node("h3", f.name),
       node("span", f.group, "tag"),
       node("p", `${f.color} · ${f.texture}`, "food-meta"),
@@ -432,7 +430,6 @@ function updateSummary() {
   for (const { food, reason } of suggestions) {
     const card = node("article", undefined, "card");
     card.append(
-      node("span", food.icon, "food-icon"),
       node("h3", food.name),
       node("span", food.group, "tag"),
       node("p", reason),
@@ -441,7 +438,7 @@ function updateSummary() {
         `Destaque do alimento: ${food.highlights.join(", ")}. Confira ingredientes e preparo.`,
       ),
     );
-    const a = node("a", "Adicionar ao diário →");
+    const a = node("a", "Adicionar ao diário");
     a.href = `registro.html?food=${encodeURIComponent(food.id)}&date=${encodeURIComponent(date)}`;
     card.append(a);
     list.append(card);

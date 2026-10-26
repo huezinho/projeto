@@ -96,12 +96,10 @@ header {
   text-decoration: none;
   letter-spacing: -0.8px;
 }
-.brand-mark {
-  font-size: 40px;
-  line-height: 1;
-}
-.brand-mark span {
-  color: #d19248;
+.brand-logo {
+  width: 185px;
+  height: auto;
+  display: block;
 }
 .brand-label {
   display: none;
@@ -160,33 +158,7 @@ small {
 .hero p {
   max-width: 520px;
 }
-.hero-art {
-  background: #e2eddb;
-  border-radius: 100px 100px 28px 28px;
-  min-height: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero-art > span {
-  font-size: 72px;
-  transform: rotate(-15deg);
-  margin: 0 -5px;
-}
-.hero-art > span:nth-child(2) {
-  transform: translateY(-60px) rotate(15deg);
-}
-.hero-art p {
-  position: absolute;
-  bottom: 5px;
-  text-align: center;
-  color: var(--green);
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 1.4;
-}
+
 .eyebrow {
   font-size: 11px !important;
   letter-spacing: 0.17em;
@@ -346,9 +318,6 @@ fieldset p {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
-}
-.food-icon {
-  font-size: 44px;
 }
 .foods .card {
   display: flex;
@@ -523,12 +492,7 @@ a {
     grid-template-columns: 1fr 1fr;
     padding: 40px 0;
   }
-  .hero-art {
-    min-height: 300px;
-  }
-  .hero-art > span {
-    font-size: 50px;
-  }
+
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -556,19 +520,7 @@ a {
     grid-template-columns: 1fr;
     padding-top: 25px;
   }
-  .hero-art {
-    min-height: 220px;
-    border-radius: 26px;
-  }
-  .hero-art > span {
-    font-size: 65px;
-  }
-  .hero-art > span:nth-child(2) {
-    transform: translateY(-25px);
-  }
-  .hero-art p {
-    display: none;
-  }
+
   .grid,
   .form-grid,
   .filters,
@@ -651,3 +603,12 @@ dialog label {
     grid-template-columns: 1fr;
   }
 }
+
+/* Resumo do fluxo, com conteúdo textual e sem símbolos decorativos. */
+.routine-panel { background: #edf3e9; border: 1px solid var(--line); border-radius: 24px; padding: 32px; }
+.routine-panel h2 { font-size: clamp(1.35rem, 2.5vw, 1.8rem); margin: 12px 0 24px; }
+.routine-panel ol { padding-left: 22px; margin: 0; }
+.routine-panel li { padding-left: 8px; margin: 18px 0; }
+.routine-panel li::marker { color: var(--green); font-weight: 700; }
+.routine-panel li p { margin: 5px 0; font-size: .94rem; color: var(--muted); }
+@media (max-width: 600px) { .brand-logo { width: 158px; } .routine-panel { padding: 24px; } }
