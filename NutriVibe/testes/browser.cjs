@@ -48,6 +48,11 @@ const fs = require("node:fs");
       .click();
     await page.reload();
     assert.equal(await page.locator("#registros strong").count(), 1);
+    await page.goto(app + "index.html");
+    assert.equal(await page.locator("#recent-records strong").first().textContent(), "Banana");
+    assert.equal(await page.locator("#dashboard .stat").first().textContent(), "1");
+    await page.getByRole("link", { name: "Abrir diário", exact: true }).click();
+    assert.equal(await page.locator("#registros strong").count(), 1);
     await page.goto(app + "resumo.html");
     assert.equal(
       await page.locator("#resumo .stat").first().textContent(),

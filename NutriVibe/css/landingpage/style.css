@@ -1,18 +1,18 @@
 :root {
-  --verde-principal: #4caf50;
-  --verde-escuro: #2e7d32;
-  --verde-claro: #e8f5e9;
-  --laranja: #ff9800;
-  --laranja-claro: #fff3e0;
-  --amarelo: #ffd54f;
-  --azul: #42a5f5;
-  --azul-claro: #e3f2fd;
+  --verde-principal: #19733d;
+  --verde-escuro: #145c32;
+  --verde-claro: #edf5ee;
+  --laranja: #f2cf00;
+  --laranja-claro: #fff9d6;
+  --amarelo: #f2cf00;
+  --azul: #19733d;
+  --azul-claro: #edf5ee;
   --vermelho: #ef5350;
   --vermelho-claro: #ffebee;
   --fundo: #f8faf7;
   --card: #ffffff;
-  --texto-principal: #263238;
-  --texto-secundario: #607d8b;
+  --texto-principal: #223b2d;
+  --texto-secundario: #56695d;
   --borda: #dde9dd;
   --sombra: 0 18px 45px rgba(38, 50, 56, 0.12);
   --raio: 8px;
@@ -65,9 +65,8 @@ a {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(248, 250, 247, 0.92);
+  background: #ffffff;
   border-bottom: 1px solid var(--borda);
-  backdrop-filter: blur(14px);
 }
 
 .nav {
@@ -146,13 +145,8 @@ a {
 }
 
 .section-band {
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(255, 213, 79, 0.28),
-      transparent 34%
-    ),
-    linear-gradient(135deg, #f8faf7 0%, #e8f5e9 100%);
+  background: #f7f8ec;
+  border-bottom: 1px solid var(--borda);
 }
 
 .hero {
@@ -244,7 +238,7 @@ h3 {
 .button-primary {
   background: var(--verde-principal);
   color: #ffffff;
-  box-shadow: 0 12px 24px rgba(76, 175, 80, 0.25);
+  box-shadow: none;
 }
 
 .button-primary:hover,
@@ -275,7 +269,7 @@ h3 {
 .hero-badges span {
   padding: 8px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.76);
+  background: #ffffff;
   border: 1px solid var(--borda);
   color: var(--verde-escuro);
   font-size: 0.9rem;
@@ -285,7 +279,7 @@ h3 {
 .hero-visual {
   padding: 18px;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.56);
+  background: #ffffff;
   box-shadow: var(--sombra);
 }
 
@@ -354,12 +348,12 @@ h3 {
 
 .card-icon-orange {
   background: var(--laranja-claro);
-  color: #b85f00;
+  color: #705b00;
 }
 
 .card-icon-blue {
   background: var(--azul-claro);
-  color: #126aa4;
+  color: #145c32;
 }
 
 .feature-list {
@@ -394,13 +388,13 @@ h3 {
 }
 
 .section-highlight {
-  background: linear-gradient(135deg, var(--verde-escuro), #225927);
+  background: var(--verde-escuro);
   color: #ffffff;
 }
 
 .section-highlight .eyebrow,
 .section-highlight p {
-  color: #e8f5e9;
+  color: #edf5ee;
 }
 
 .score-panel {
@@ -434,7 +428,7 @@ h3 {
   width: 78%;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--amarelo), var(--laranja));
+  background: var(--amarelo);
 }
 
 .score-panel ul {
@@ -480,7 +474,7 @@ h3 {
 
 .footer-content p {
   margin: 0;
-  color: #e8f5e9;
+  color: #edf5ee;
 }
 
 @media (max-width: 860px) {
@@ -567,7 +561,7 @@ h3 {
 .contact-form input:not([type="checkbox"]) {
   width: 100%;
   padding: 14px;
-  border: 1px solid #607d8b;
+  border: 1px solid #56695d;
   border-radius: 8px;
   font: inherit;
 }
@@ -577,12 +571,12 @@ button {
   border: 0;
 }
 :focus-visible {
-  outline: 3px solid #126aa4;
+  outline: 3px solid #145c32;
   outline-offset: 4px;
 }
 .button-primary,
 .nav-cta {
-  background: #2e7d32;
+  background: #145c32;
 }
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -599,3 +593,7 @@ button {
   opacity: 1;
   transform: none;
 }
+
+.hero-visual { border-top: 5px solid var(--amarelo); }
+.card-icon-orange { background: #fff9d6; color: #705b00; }
+.nav-cta { border-bottom: 3px solid var(--amarelo); }

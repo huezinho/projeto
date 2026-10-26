@@ -91,3 +91,11 @@ Foram removidos emojis do catálogo, dos registros, das sugestões e das página
 Os relatórios em `documentacoes/relatorios-individuais/` são separados por estudante e incluem DOCX e PDF. O original institucional foi preservado integralmente. O gerador em `ferramentas/relatorios/gerar_relatorios.py` preenche cópias e verifica a estrutura do pacote. Dias, horas reais e dados de participação comunitária ainda dependem da validação de cada estudante; o README da pasta registra as pendências e a divergência de período presente no rodapé do modelo original.
 
 Verificação desta revisão: 25 testes unitários aprovados, fluxo Chromium com cadastro de perfil, filtros, diário, foto, confirmação nutricional, persistência, remoção e contatos aprovado; larguras de 360, 768 e 1280 pixels sem transbordamento horizontal nas duas páginas iniciais. Os cinco PDFs foram exportados, e a estrutura das cópias foi comparada ao modelo original.
+
+## Identidade da landing page e painel do aplicativo
+
+A landing page mantém a composição de apresentação e captação de contatos. A paleta foi ajustada ao verde e amarelo da marca, com fundos sólidos e remoção de todos os degradês das folhas de estilo dos dois sites.
+
+O aplicativo passou a utilizar uma área de trabalho própria: navegação lateral em telas a partir de 1100 pixels, superfície neutra, títulos diretos, cartões compactos e controles consistentes. Em telas menores a navegação permanece disponível pelo menu existente. A visão geral apresenta a data atual, indicadores calculados dos registros do dia, os cinco registros mais recentes desse dia e atalhos para diário, resumo, preferências e educação. O estado vazio permite iniciar o registro; não são inseridas refeições ilustrativas. Os nomes dos alimentos são renderizados como texto, preservando o tratamento seguro de entradas manuais.
+
+A verificação inclui 25 testes automatizados, build de produção e fluxo Chromium nas cinco telas em 360, 768 e 1280 pixels. O fluxo também verifica que um alimento registrado aparece no painel e que o atalho abre o diário correspondente.

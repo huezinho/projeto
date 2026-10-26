@@ -451,11 +451,33 @@ if ($("#resumo")) {
 }
 if ($("#dashboard")) {
   const day = dailyRecords(state.records, localDate());
+  $("#dashboard-date").textContent = new Intl.DateTimeFormat("pt-BR", {
+    weekday: "long", day: "numeric", month: "long", year: "numeric",
+  }).format(new Date());
+  const recent = $("#recent-records");
+  if (!day.length) {
+    const empty = node("li", undefined, "dashboard-empty");
+    const content = node("div");
+    content.append(node("strong", "Seu diário de hoje está vazio"), node("p", "Registre a primeira refeição pelo catálogo ou por uma foto.", "muted"));
+    const link = node("a", "Começar registro", "button secondary");
+    link.href = "registro.html";
+    empty.append(content, link);
+    recent.append(empty);
+  }
+  for (const record of day.slice(-5).reverse()) {
+    const food = foods.find((item) => item.id === record.foodId);
+    const item = node("li");
+    const content = node("div");
+    content.append(node("strong", food?.name || record.customName), node("p", record.meal, "muted"));
+    item.append(content, node("span", record.nutrition ? "Peso confirmado" : "Sem peso informado", "tag"));
+    recent.append(item);
+  }
+
   stat(
     $("#dashboard"),
     "Registros de hoje",
     day.length,
-    "Cada descoberta tem seu lugar",
+    "Refeições e alimentos registrados",
   );
   stat(
     $("#dashboard"),
@@ -465,13 +487,13 @@ if ($("#dashboard")) {
         .map((r) => foods.find((f) => f.id === r.foodId)?.group)
         .filter(Boolean),
     ).size,
-    "Acompanhe a variedade",
+    "Grupos alimentares identificados",
   );
   stat(
     $("#dashboard"),
     "Seu perfil",
-    state.profile.name || "Vamos começar?",
-    "Preferências respeitadas nas sugestões",
+    state.profile.name || "Não configurado",
+    "Restrições aplicadas às sugestões",
   );
 }
 function setupPhoto() {
