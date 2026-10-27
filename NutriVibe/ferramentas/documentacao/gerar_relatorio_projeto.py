@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[2]
 MODEL=Path(sys.argv[1]);OUT=ROOT/'documentacoes/relatorio-projeto';OUT.mkdir(exist_ok=True)
 doc=Document(MODEL);original=list(doc.paragraphs)
 headings=[deepcopy(original[i]._p)for i in [18,32,47,64,74,93,113,125,139]]
-cover={0:'PROJETO: NutriVibe',4:'Turma: a confirmar',7:'Nome do Grupo: NutriVibe',8:'Paulo Capreti — RA: 26028858',9:'Davi Pioli — RA: 26005199',10:'Victor Almeida — RA: 26003836',11:'Marcelo Dalbone — RA: 25001986',12:'Akiane Merbach — RA: 26027003'}
+cover={0:'PROJETO: NutriVibe',1:'3ª entrega — consolidação do front-end',4:'Turma: 101',7:'Nome do Grupo: NutriVibe',8:'Paulo Capreti — RA: 26028858',9:'Davi Pioli — RA: 26005199',10:'Victor Almeida — RA: 26003836',11:'Marcelo Dalbone — RA: 25001986',12:'Akiane Merbach — RA: 26027003'}
 for i,text in cover.items():
  p=original[i];r=p.runs[0]if p.runs else p.add_run();r.text=text
  for rr in p.runs[1:]:rr.text=''
@@ -31,7 +31,7 @@ def title(index):
  if pp is None:pp=OxmlElement('w:pPr');el.insert(0,pp)
  for tag in ['numPr','pageBreakBefore','keepNext']:
   for c in pp.findall(qn('w:'+tag)):pp.remove(c)
- if index==0:pp.append(OxmlElement('w:pageBreakBefore'))
+ if index in (0,8):pp.append(OxmlElement('w:pageBreakBefore'))
  else:
   spacing=pp.find(qn('w:spacing'))
   if spacing is None:spacing=OxmlElement('w:spacing');pp.append(spacing)
@@ -76,6 +76,9 @@ def code(path,start,end):
   r=p.add_run(('\n'if i else'')+line);r.font.name='Consolas';r.font.size=Pt(9)
 
 title(0)
+sub('Recorte desta entrega')
+para('Este relatório corresponde à terceira de cinco entregas do NutriVibe. A segunda entrega é a referência acadêmica anterior, com ideação, requisitos e representação inicial da solução. Nesta terceira etapa, o objetivo é comprovar evolução para um front-end navegável e interativo. A existência de funcionalidades em execução não encerra o projeto: ainda estão previstos dois ciclos de desenvolvimento, revisão e documentação, correspondentes à quarta e à quinta entregas.')
+para('A análise considera a proposta de agosto preservada em documentacoes/segunda-entrega/trabalho.pdf e as orientações da terceira entrega. O código atual é a evidência técnica do incremento apresentado nesta etapa, e não uma declaração de que todas as funcionalidades da proposta inicial estão concluídas. As seções de testes, implantação e considerações finais descrevem o estágio parcial do trabalho.')
 sub('Problema, público e contexto')
 para('O NutriVibe foi concebido para apoiar a organização da alimentação e a exploração de variedade alimentar, respeitando restrições e seletividade. Na rotina familiar, responsáveis podem encontrar dificuldade para registrar o que foi consumido, reconhecer padrões e apresentar novas possibilidades sem desconsiderar cores, texturas ou alimentos recusados. O projeto reúne essas informações em uma interface acessível pelo navegador.')
 para('O público-alvo previsto são responsáveis e crianças, especialmente famílias que enfrentam seletividade alimentar. O setor impactado é o de educação e promoção da saúde no cotidiano. A identificação desse público orienta o produto; não representa uma população já atendida ou uma pesquisa de campo concluída. O projeto não realiza diagnóstico, tratamento ou prescrição de dieta.')
@@ -88,7 +91,8 @@ sub('Viabilidade no semestre')
 para('Conforme informado pela equipe, o projeto começou em agosto de 2026, com implementação do aplicativo concentrada em outubro. A viabilidade foi favorecida pelo uso de HTML, CSS e JavaScript, catálogo delimitado, módulos reutilizáveis e entregas incrementais. O resultado atual inclui publicação na Vercel e persistência de contatos no Neon, mantendo os registros alimentares no navegador.')
 
 title(1)
-sub('Das telas iniciais à interface navegável')
+sub('Das telas da segunda entrega ao incremento da terceira')
+para('Na segunda entrega, o protótipo permitia apresentar a organização e a identidade pretendidas. Na terceira, as principais telas estão representadas em HTML e CSS com navegação e interações JavaScript. As imagens desta seção mostram o incremento funcional atual. O protótipo continuará sendo atualizado nas próximas entregas para refletir o cadastro de responsável/criança e os refinamentos que forem implementados.')
 para('A representação visual evoluiu para páginas implementadas. A landing page concentra apresentação do problema, solução, funcionalidades e formulário. O aplicativo adota uma organização própria de ferramenta: navegação lateral no computador, painel do dia e controles de registro. As cores verde e amarelo identificam a marca; fundos sólidos e hierarquia tipográfica mantêm legibilidade. A logo é utilizada com transparência e margens reduzidas.')
 table(['Tela','Interação principal','Resultado esperado'],[
 ('Visão geral','Consultar indicadores e registros de hoje; abrir o diário.','Entender o estado atual sem percorrer todas as páginas.'),
@@ -103,7 +107,7 @@ para('A solução foi projetada para Web responsiva. No celular, o menu concentr
 
 title(2)
 sub('Backlog e priorização')
-para('O planejamento utiliza o backlog exportado do Jira, com tarefas TRAB-26 a TRAB-57, preservado em documentacoes/historico/backlog-jira.json. As etapas S1, S2 e S3 organizam incrementos por etiquetas; não há confirmação de sprints nativas criadas na ferramenta. A ordem de implementação considera dependências: estrutura e identidade, preferências, diário, resumo, reconhecimento, integração e validação.')
+para('O planejamento da terceira entrega utiliza o backlog exportado do Jira, com tarefas TRAB-26 a TRAB-57, preservado em documentacoes/historico/backlog-jira.json. As etapas S1, S2 e S3 organizam incrementos por etiquetas; não há confirmação de sprints nativas criadas na ferramenta. A ordem de implementação considera dependências: estrutura e identidade, preferências, diário, resumo, reconhecimento, integração e validação.')
 para('O escopo acadêmico inicial do backlog previa frontend em HTML, CSS e JavaScript, sem backend e banco obrigatórios. Posteriormente, a solicitação do projeto foi ampliada para publicação, contatos persistentes e análise de fotos. Assim, Node.js e Neon são ampliações da solução entregue, e não requisitos atribuídos retroativamente ao backlog original. O enquadramento dessa ampliação na entrega acadêmica deve ser alinhado com o docente.')
 table(['Prioridade','Entrega','Critério de conclusão'],[
 ('Essencial','Perfil, restrições e persistência.','Preferências salvas e recarregadas; importação inválida rejeitada.'),
@@ -113,13 +117,30 @@ table(['Prioridade','Entrega','Critério de conclusão'],[
 ('Complementar implementada','Landing page, contatos e publicação.','Consentimento validado e gravação persistente pelo servidor.')])
 sub('Responsabilidades')
 table(['Integrante','Frente de trabalho'],[('Paulo Capreti','JavaScript e interações do aplicativo.'),('Davi Pioli','HTML e acompanhamento do Kanban.'),('Victor Almeida','CSS, responsividade e identidade visual.'),('Marcelo Dalbone','Pesquisas e apoio à contextualização e aos requisitos.'),('Akiane Merbach','Pesquisas e apoio às referências alimentares e limitações técnicas.')])
+sub('Planejamento das três etapas restantes a partir da segunda entrega')
+table(['Etapa','Objetivo','Evidência de encerramento do ciclo'],[
+('3ª entrega — incremento deste relatório','Consolidar o fluxo de preferências, diário e resumo, navegação, responsividade e JavaScript.','Demonstração do percurso principal, código organizado, testes e registro explícito de pendências.'),
+('4ª entrega — próximo incremento proposto','Aproximar o cadastro da estrutura responsável/criança, refinar regras e conteúdo educativo e avaliar cenários de uso.','Telas e estado local revisados, migração de dados testada, casos de restrição e resumo documentados e feedback registrado quando obtido.'),
+('5ª entrega — consolidação proposta','Corrigir problemas do ciclo anterior, executar regressão, concluir documentação e preparar demonstração final.','Versão estável do escopo acordado, matriz de requisitos revisada, evidências finais e orientações de uso; gamificação apenas se couber no prazo.')])
+para('A distribuição da quarta e quinta entregas é uma proposta de execução, sujeita às orientações futuras do professor. Não são atribuídas datas ou exigências ainda não informadas. O front-end da terceira entrega precisa demonstrar o MVP funcionando; as próximas etapas aprofundam os requisitos e a qualidade, sem adiar o fluxo principal já exigido.')
 sub('Scrum e Kanban')
 para('O Scrum orienta a entrega em incrementos verificáveis, revisão do resultado e adaptação do próximo ciclo. O Kanban torna tarefas, responsáveis e bloqueios visíveis. O quadro abaixo sintetiza o acompanhamento proposto a partir das evidências do repositório; não é uma reprodução dos status atuais do Jira.')
-table(['A Fazer','Em Andamento','Concluído tecnicamente'],[('Validação com usuários e profissionais; ampliar fotos e aparelhos de teste.','Revisão do relatório e conferência da apresentação acadêmica.','Fluxo perfil/diário/resumo, reconhecimento com confirmação, contatos e publicação.')])
-para('A conclusão de uma tarefa deve exigir código funcional e evidência de verificação. Separar desenvolvimento técnico, revisão documental e avaliação externa evita atribuir a uma funcionalidade pronta um impacto social ainda não medido. As próximas etapas priorizam validação do produto e revisão das limitações antes da expansão do escopo.')
+table(['A Fazer','Em Andamento','Concluído tecnicamente'],[('4ª: cadastro responsável/criança, refinamento de conteúdo e regras; 5ª: regressão e documentação final.','Preparação e revisão da terceira entrega; planejamento dos próximos incrementos.','Incremento técnico da 3ª: fluxo local perfil/diário/resumo, interações e verificações registradas. Não significa projeto finalizado.')])
+para('A conclusão de uma tarefa deve exigir código funcional e evidência de verificação. Separar desenvolvimento técnico, revisão documental e avaliação externa evita atribuir a uma funcionalidade pronta um impacto social ainda não medido. A quarta entrega prioriza as lacunas da proposta inicial e a avaliação dos fluxos; a quinta consolida as correções e a apresentação final. Melhorias que não couberem nesses ciclos serão registradas como evolução posterior, sem comprometer o MVP.')
 
 title(3)
-sub('Requisitos funcionais')
+sub('Rastreabilidade com os requisitos da proposta inicial')
+para('A proposta anterior define oito requisitos funcionais. A matriz abaixo preserva esses compromissos e diferencia implementação parcial de conclusão. Recursos adicionais, como foto, backup e contatos, não substituem as pendências dos requisitos originais.')
+table(['Requisito da proposta inicial','Situação nesta 3ª entrega','Continuidade prevista'],[
+('Cadastro do usuário e da criança','Parcial: perfil local simplificado, sem cadastro separado dos dois papéis.','4ª: representar responsável e criança no estado local e revisar validações; 5ª: regressão do fluxo.'),
+('Preferências e recusas alimentares','Operacional no perfil atual: restrições, cores, texturas e alimentos evitados.','4ª: associar à criança e refinar mensagens; 5ª: testar cenários e persistência.'),
+('Registro dos alimentos consumidos','Fluxo básico operacional por data e refeição.','4ª: revisar a experiência para o perfil infantil; 5ª: verificar integridade e consistência.'),
+('Informações de alimentos e nutrientes','Recorte operacional de catálogo e 43 referências TACO.','4ª: revisar cobertura e apresentação; 5ª: conferir fontes e limitações do escopo entregue.'),
+('Análise dos alimentos registrados','Parcial: resumo por grupos, nutrientes disponíveis e cobertura diária.','4ª: aprimorar interpretação e estados parciais; 5ª: validar cálculos e clareza.'),
+('Recomendações de complementação','Parcial: regras de variedade por grupos e compatibilidade; sem prescrição personalizada.','4ª: refinar regras e justificativas; 5ª: verificar casos-limite e limites educativos.'),
+('Conteúdos de educação alimentar','Parcial: conteúdo introdutório e perguntas frequentes.','4ª: ampliar e organizar conteúdos adequados ao público; 5ª: revisão de fontes e navegação.'),
+('Pontos, recompensas, avatar e desafios','Não implementado; a proposta inicial condiciona esse recurso ao prazo.','4ª: avaliar viabilidade; 5ª: entregar um recorte simples somente se o núcleo estiver estável.')])
+sub('Requisitos operacionais detalhados para o MVP')
 table(['ID','Requisito','Condição verificável'],[
 ('RF01','Cadastrar perfil e preferências.','Salvar e recuperar restrições, cores, texturas e alimentos evitados.'),
 ('RF02','Registrar e remover alimentos.','Relacionar entrada a data/refeição e refletir a remoção no diário.'),
@@ -137,6 +158,14 @@ para('RN01: sugestões consideram somente a data selecionada e não relaxam rest
 para('O catálogo é delimitado, a foto não confirma alergênicos ou ingredientes ocultos e a qualidade varia conforme cena e alimento. Não há autenticação ou sincronização remota do diário. O primeiro reconhecimento requer download volumoso. As recomendações apoiam variedade; não prescrevem quantidades nem diagnosticam deficiências. Esses limites integram os requisitos de transparência da solução.')
 
 title(4)
+sub('Evolução objetiva em relação à segunda entrega')
+table(['Na segunda entrega','Incremento apresentado na terceira','Pendência para os próximos ciclos'],[
+('Ideação e requisitos do aplicativo.','Regras executáveis de perfil, filtros, diário e recomendações no navegador.','Aproximar o cadastro dos papéis de responsável/criança e refinar critérios.'),
+('Protótipo e referências de identidade.','Cinco telas navegáveis, layout responsivo e painel separado da landing page.','Aprimorar fluxos, acessibilidade e experiência com base em avaliação.'),
+('Previsão de registro e análise alimentar.','Registro persistido localmente, resumo por data, TACO e peso confirmado.','Revisar cobertura, apresentação e casos-limite da análise.'),
+('Previsão de construção gradual e testes.','25 testes automatizados e percurso Chromium documentados.','Ampliar cenários, registrar feedback e repetir regressão nas entregas 4 e 5.'),
+('Gamificação prevista se houver prazo.','Recurso ainda não desenvolvido no aplicativo.','Avaliar um recorte simples após consolidar os requisitos centrais.')])
+para('A foto, o backup e a publicação foram incrementos técnicos adicionais. Sua presença nesta versão não significa que o cadastro infantil completo, o refinamento das recomendações e os recursos educativos já atingiram a abrangência da proposta original. A continuidade será medida por requisitos e evidências, não apenas pelo número de telas.')
 sub('Arquitetura e organização')
 para('O frontend foi desenvolvido com HTML semântico, CSS e JavaScript modular. O backend Node.js atende serviços HTTP; a Vercel hospeda os arquivos públicos e a função serverless. A análise principal de fotos ocorre no navegador com SigLIP quantizado e ONNX Runtime Web. A integração com PostgreSQL/Neon é destinada aos contatos da landing page.')
 table(['Pasta/arquivo','Responsabilidade'],[('html e css','Páginas e estilos separados para landing page e aplicativo.'),('javascript/aplicativo/app.js','Eventos, renderização, estado e integração dos fluxos.'),('engine.js e store.js','Regras de recomendação; validação e persistência local.'),('nutrition.js e dados/nutricao.js','Cálculo proporcional e referências TACO.'),('vision-local-entry.js e vision-semantic-policy.js','Execução visual local, ranking, limiares e recusa.'),('servidor e api/index.mjs','Handler HTTP, contatos e adaptação serverless.'),('ferramentas, testes e documentacoes','Preparação de artefatos, verificações e evidências.')])
@@ -152,10 +181,11 @@ sub('Backend, API e modelagem do banco')
 para('GET /api/status informa disponibilidade dos serviços. POST /api/contacts valida e grava nome, e-mail e consentimento. POST /api/identify mantém o adaptador remoto opcional; a configuração atual browser-local executa a identificação no aparelho. OpenAI e Vercel AI Gateway são alternativas dependentes de credenciais/créditos, não o motor gratuito atual.')
 table(['Campo de contacts','Tipo e regra'],[('email','TEXT, chave primária; identifica contato sem duplicar a mesma chave.'),('name','TEXT NOT NULL; nome validado pelo servidor.'),('consent_at','TEXT NOT NULL; data/hora ISO do consentimento registrada pelo servidor.')])
 para('A gravação utiliza parâmetros SQL e atualiza o contato quando o e-mail já existe. Na nuvem, a conexão é obtida do ambiente e aponta para o banco separado nutrivibe-production. Sem PostgreSQL, o modo local utiliza SQLite. O diário e as preferências não são gravados nessa tabela: permanecem no navegador. Credenciais não integram arquivos públicos ou documentos de entrega.')
-para('Foram concluídos os fluxos de perfil, catálogo, diário, resumo, backup, educação, contato e reconhecimento confirmado. As telas foram diferenciadas visualmente e publicadas. Contas, sincronização, gamificação completa e avaliação externa permanecem como evoluções, sem serem apresentadas como funcionalidades entregues.')
+para('O incremento da terceira entrega dispõe de fluxos básicos executáveis de perfil, catálogo, diário, resumo, backup, conteúdo introdutório, contato e reconhecimento confirmado. Isso caracteriza uma versão de desenvolvimento do MVP, não o encerramento desses módulos. Cadastro de responsável/criança, aprofundamento educativo e refinamento das recomendações permanecem no planejamento das próximas duas entregas. Contas remotas e sincronização são possibilidades posteriores, não exigências assumidas para o semestre.')
 
 title(5)
-sub('Estratégia de validação')
+sub('Validação do incremento da terceira entrega')
+para('Os resultados abaixo representam verificações do código disponível nesta etapa. Eles comprovam cenários específicos de funcionamento e não equivalem à homologação final do aplicativo. Alterações das entregas seguintes exigirão novas execuções e atualização das evidências; um teste aprovado hoje não garante o comportamento de funcionalidades ainda não implementadas.')
 para('A validação combina testes automatizados das regras, integração do servidor, fluxo ponta a ponta e avaliação comparativa de reconhecimento. A finalidade é verificar comportamento esperado, identificar entradas inválidas e registrar limites. As evidências de execução pertencem às revisões técnicas já realizadas; não constituem pesquisa com usuários externos.')
 table(['Tipo e caso','Finalidade','Resultado registrado'],[
 ('Regras: lactose, cor verde e outros filtros.','Impedir sugestões incompatíveis e não relaxar restrições.','Cenários automatizados aprovados.'),
@@ -172,7 +202,8 @@ para('Os erros incluíram plantas e folhas confundidas com comida. As correçõe
 para('Os scripts estão em testes/; as capturas, em documentacoes/evidencias/; os manifestos, fontes e resultados por imagem, em documentacoes/avaliacao-imagens/. Não foi documentada uma avaliação de usabilidade com comunidade externa. A validação técnica não comprova aceitação, impacto clínico ou mudança de hábitos.')
 
 title(6)
-sub('Acesso à versão publicada')
+sub('Ambiente de demonstração da terceira entrega')
+para('A publicação atual serve para demonstrar o incremento em desenvolvimento e permitir testes ao longo do semestre. Não caracteriza aceite final, conclusão das cinco entregas ou implantação definitiva. Nas entregas quarta e quinta, a mesma estrutura poderá receber novas versões, acompanhadas da atualização de evidências e instruções.')
 para('Landing page: https://nutrivibe-gamma.vercel.app . Aplicativo: https://nutrivibe-gamma.vercel.app/app . A implantação foi realizada na Vercel, com serviços de contato persistidos em Neon. A disponibilidade depende da conectividade e dos serviços utilizados; não foi definido acordo de nível de serviço.')
 sub('Execução local')
 para('Pré-requisitos: Node.js 24, npm e navegador atualizado com JavaScript e WebAssembly. Na raiz do repositório, executar os comandos abaixo. O build prepara recursos públicos e verifica/prepara os artefatos do reconhecimento; em máquina nova, requer internet para instalação e download.')
@@ -183,16 +214,25 @@ para('NUTRIVIBE_VISION_PROVIDER=browser-local seleciona o reconhecimento local. 
 para('Na Vercel, o build gera public e api/index.mjs exporta o handler serverless. vercel.json define redirecionamentos, rotas, cache dos modelos e cabeçalhos. O primeiro reconhecimento exige aproximadamente 112 MB; as fotos são processadas no aparelho nesse modo. O usuário deve manter backup do diário se pretende limpar o navegador ou trocar de dispositivo.')
 
 title(7)
-sub('Limitações e prioridades de evolução')
-table(['Prioridade','Evolução','Motivo'],[('Alta','Avaliação com responsáveis, profissionais e docente.','Validar necessidades, linguagem, utilidade e limites do produto.'),('Alta','Fotos mais variadas e celulares reais.','Ampliar cobertura e medir falsos positivos, latência e consumo de memória.'),('Alta','Revisão de acessibilidade.','Verificar teclado, contraste e tecnologias assistivas além das checagens atuais.'),('Média','Redução do primeiro download.','Melhorar uso em conexões lentas e aparelhos com menos recursos.'),('Média','Ampliação de catálogo e preparações.','Atender situações reais sem atribuir nutrientes sem referência.'),('Planejada','Contas e sincronização.','Exigir autenticação, autorização, retenção e desenho de privacidade antes de persistir o diário remotamente.'),('Planejada','Gamificação e novos conteúdos.','Introduzir recursos educativos após validação de adequação ao público.')])
-para('O reconhecimento não deve ser usado para garantir ausência de alergênicos ou identificar peso. Uma futura mudança de provedor exige comparação por qualidade, custo e privacidade. O limitador da API atual usa memória do processo: em infraestrutura serverless com múltiplas instâncias, um controle distribuído será necessário para uma política global de limitação.')
-para('As evoluções devem manter correção manual, validação de entradas e rastreabilidade das fontes. A expansão do escopo não deve eliminar os cuidados que tornaram os resultados verificáveis: referência explícita, distinção entre hipótese e confirmação e comunicação de dados ausentes.')
+sub('Quarta entrega: aprofundamento dos requisitos originais')
+para('O próximo incremento proposto concentra-se em três frentes. A primeira é estruturar o cadastro local de responsável e criança, com validações e adaptação das preferências já existentes, preservando ou migrando registros anteriores. A segunda é refinar a apresentação da análise e das recomendações, explicando cobertura nutricional parcial, grupos registrados e razões de exclusão. A terceira é ampliar conteúdos educativos com linguagem adequada e fontes identificadas.')
+para('Os critérios de verificação são: o cadastro dos dois papéis é compreensível; preferências e diário referem-se à criança correta; dados antigos não são perdidos; sugestões respeitam restrições; resultados sem cobertura não aparecem como totais completos; conteúdo e navegação funcionam em telas pequenas. A avaliação com usuários/profissionais será buscada e documentada se realizada, sem antecipar seus resultados.')
+sub('Quinta entrega: consolidação do produto acadêmico')
+para('O último ciclo proposto é destinado a corrigir problemas observados na quarta entrega, repetir testes de regras e de navegação, revisar responsividade e acessibilidade e atualizar o relatório com a situação final de cada requisito. A demonstração deverá percorrer o fluxo completo de cadastro, preferências, registro e análise, incluindo erros e correção manual. A documentação final deve identificar funcionalidades entregues e pendências remanescentes, sem ocultar limitações.')
+para('A gamificação continua opcional, conforme a proposta inicial. Se houver prazo após estabilizar o núcleo, será avaliado um recorte simples de avatar, desafios e pontuação local, com regras claras e caráter educativo. Não se assume a entrega integral de todos esses recursos. Eles não devem incentivar consumo forçado ou prometer melhora clínica; se não forem viáveis, essa decisão será registrada.')
+table(['Horizonte','Escopo proposto','Evidência esperada'],[
+('4ª entrega','Cadastro responsável/criança; revisão de recomendações e conteúdo; avaliação dos fluxos.','Incremento executável, casos de teste, compatibilidade dos dados e registro de problemas/feedback.'),
+('5ª entrega','Correções, regressão, documentação e demonstração; gamificação somente se viável.','Matriz final de requisitos, capturas atualizadas, testes e instruções reproduzíveis.'),
+('Após o semestre, se houver continuidade','Contas remotas, sincronização, maior catálogo e otimização profunda do reconhecimento.','Novo escopo e avaliação de privacidade, custo e manutenção; sem compromisso de entrega nesta etapa.')])
+sub('Manutenção ao longo dos próximos ciclos')
+para('O reconhecimento continuará sujeito a erros; a identificação manual deverá permanecer disponível. Mudanças de catálogo, modelo ou limiares precisam de avaliação com controles negativos e fotos variadas. O esquema de armazenamento deve ser versionado se o cadastro for ampliado, com testes de migração e backup. No servidor, a evolução de tráfego exigirá avaliar um limitador distribuído, pois o mecanismo atual opera em memória por instância.')
+para('As orientações futuras do professor podem alterar prioridades. Este planejamento mantém o foco acadêmico em HTML, CSS e JavaScript; as integrações adicionais não deverão impedir a demonstração e a avaliação do front-end. A referência de progresso continuará sendo a proposta inicial, confrontada com evidências a cada entrega.')
 
 title(8)
-para('O NutriVibe evoluiu de uma proposta de educação alimentar para uma solução Web navegável, com apresentação e aplicativo separados. O produto organiza preferências, registros, resumo e sugestões em um fluxo coerente e oferece foto como apoio à entrada de dados, sem transformar reconhecimento visual em garantia de composição nutricional.')
-para('Os principais resultados técnicos são o fluxo completo de perfil e diário, o cálculo proporcional com referências TACO, o backup local, o cadastro consentido de contatos no Neon, a publicação na Vercel e a seleção de um modelo após comparação documentada. Testes automatizados e no navegador forneceram evidências de funcionamento e revelaram limites incorporados ao tratamento de erros e à confirmação manual.')
-para('A contribuição pretendida é facilitar a organização da rotina e o acesso a orientações de apoio, com respeito às preferências. O projeto não apresenta como concluídas melhorias clínicas, mudanças de hábitos ou impactos comunitários sem avaliação. O próximo passo é aproximar a solução dos usuários e profissionais para testar a utilidade real e orientar sua continuidade.')
-para('Para o grupo, a experiência articula programação, estruturação de páginas, identidade visual, gestão de tarefas, pesquisa e análise crítica de resultados. A separação de responsabilidades favorece a colaboração, mas a qualidade depende da integração entre essas frentes. O repositório e as evidências permitem revisar decisões e distinguir o que foi implementado do que ainda precisa ser validado.')
+para('Nesta terceira entrega, o NutriVibe avança da proposta e organização apresentadas na segunda etapa para um incremento navegável e interativo. O front-end dispõe de fluxo de preferências, diário e resumo, com recursos de busca, filtros, persistência local e tratamento de entradas. A publicação e as integrações existentes são apoios técnicos à demonstração, sem configurar conclusão do projeto.')
+para('As evidências atuais incluem telas responsivas, testes de regras, percurso no navegador e avaliação documentada do reconhecimento visual. Esses resultados demonstram evolução técnica em cenários delimitados. O cadastro completo de responsável/criança, o aprofundamento dos conteúdos e o refinamento das recomendações ainda devem ser trabalhados, testados e documentados nas duas entregas restantes.')
+para('A quarta entrega será orientada ao aprofundamento dos requisitos originais e à revisão dos fluxos; a quinta, à correção dos problemas, regressão e consolidação da documentação e demonstração. A gamificação permanece condicionada à viabilidade, como previsto na proposta inicial. O planejamento será ajustado às orientações docentes, sem apresentar como realizadas tarefas ou avaliações ainda futuras.')
+para('O resultado desta etapa é, portanto, um MVP em consolidação. A contribuição pretendida segue sendo apoiar responsáveis na organização da alimentação e na exploração de variedade com respeito às preferências. O projeto não declara impacto clínico ou comunitário comprovado. A formação do grupo se fortalece pela integração entre programação, interface, pesquisa e gestão, e pela comparação entre o que foi proposto, o que funciona e o que ainda precisa evoluir.')
 sub('Fontes e evidências do projeto')
 para('Repositório: https://github.com/huezinho/projeto . Backlog fornecido: documentacoes/historico/backlog-jira.json. Documento anterior: documentacoes/segunda-entrega/trabalho.pdf. Detalhamento técnico: documentacoes/implementacao.md e documentacoes/nutricao.md. Avaliação visual: documentacoes/avaliacao-imagens/README.md. Capturas: documentacoes/evidencias/. Os caminhos são relativos à pasta NutriVibe do repositório.')
 # Não deixa orientações de preenchimento ou numeração vazia no documento final.
