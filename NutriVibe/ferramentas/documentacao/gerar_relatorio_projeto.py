@@ -2,7 +2,7 @@
 from pathlib import Path
 from copy import deepcopy
 from zipfile import ZipFile
-import sys
+import sys,json
 from docx import Document
 from docx.shared import Pt, Inches
 from docx.oxml import OxmlElement
@@ -39,30 +39,16 @@ def title(index):
  pp.append(OxmlElement('w:keepNext'))
 
 def sub(text):
- p=doc.add_paragraph();p.paragraph_format.keep_with_next=True;p.paragraph_format.space_before=Pt(10)
+ p=doc.add_paragraph();p.paragraph_format.keep_with_next=True;p.paragraph_format.space_before=Pt(6)
  r=p.add_run(text);r.bold=True
 
 def table(headers,rows):
- t=doc.add_table(rows=1,cols=len(headers))
- borders=OxmlElement('w:tblBorders')
- for edge in ['top','left','bottom','right','insideH','insideV']:
-  border=OxmlElement('w:'+edge);border.set(qn('w:val'),'single');border.set(qn('w:sz'),'4');border.set(qn('w:color'),'A0A0A0');borders.append(border)
- t._tbl.tblPr.append(borders)
- for c,text in zip(t.rows[0].cells,headers):c.text=text
- repeat=OxmlElement('w:tblHeader');t.rows[0]._tr.get_or_add_trPr().append(repeat)
- for r in t.rows[0].cells:
-  for run in r.paragraphs[0].runs:run.bold=True
  for row in rows:
-  cells=t.add_row().cells
-  for c,text in zip(cells,row):c.text=text
- for idx,row in enumerate(t.rows):
-  no=OxmlElement('w:cantSplit');row._tr.get_or_add_trPr().append(no)
-  for c in row.cells:
-   for p in c.paragraphs:
-    p.paragraph_format.space_after=Pt(4)
-    if len(t.rows)<=7 and idx<len(t.rows)-1:p.paragraph_format.keep_with_next=True
-    for r in p.runs:r.font.size=Pt(10)
- doc.add_paragraph()
+  p=doc.add_paragraph();p.paragraph_format.space_after=Pt(6)
+  r=p.add_run(str(row[0])+'. ');r.bold=True
+  for index,value in enumerate(row[1:],1):
+   p.add_run(headers[index]+': '+str(value)+(' 'if index<len(row)-1 else''))
+
 
 def image(name,caption,width=5.7):
  p=doc.add_paragraph();p.paragraph_format.keep_with_next=True;p.add_run().add_picture(str(ROOT/'documentacoes/evidencias'/name),width=Inches(width))
@@ -78,7 +64,7 @@ def code(path,start,end):
 title(0)
 sub('Recorte desta entrega')
 para('Este relatório corresponde à terceira de cinco entregas do NutriVibe. A segunda entrega é a referência acadêmica anterior, com ideação, requisitos e representação inicial da solução. Nesta terceira etapa, o objetivo é comprovar evolução para um front-end navegável e interativo. A existência de funcionalidades em execução não encerra o projeto: ainda estão previstos dois ciclos de desenvolvimento, revisão e documentação, correspondentes à quarta e à quinta entregas.')
-para('A análise considera a proposta de agosto preservada em documentacoes/segunda-entrega/trabalho.pdf e as orientações da terceira entrega. O código atual é a evidência técnica do incremento apresentado nesta etapa, e não uma declaração de que todas as funcionalidades da proposta inicial estão concluídas. As seções de testes, implantação e considerações finais descrevem o estágio parcial do trabalho.')
+para('A proposta de agosto define cadastro do usuário e da criança, preferências e recusas alimentares, registro dos alimentos, informações nutricionais, análise dos registros, recomendações, conteúdos educativos e gamificação condicionada ao prazo. A terceira entrega exige telas funcionais, navegação, responsividade, interações JavaScript e evidências de execução. O código atual é a evidência técnica do incremento apresentado nesta etapa, e não uma declaração de que todas as funcionalidades da proposta inicial estão concluídas. As seções de testes, implantação e considerações finais descrevem o estágio parcial do trabalho.')
 sub('Problema, público e contexto')
 para('O NutriVibe foi concebido para apoiar a organização da alimentação e a exploração de variedade alimentar, respeitando restrições e seletividade. Na rotina familiar, responsáveis podem encontrar dificuldade para registrar o que foi consumido, reconhecer padrões e apresentar novas possibilidades sem desconsiderar cores, texturas ou alimentos recusados. O projeto reúne essas informações em uma interface acessível pelo navegador.')
 para('O público-alvo previsto são responsáveis e crianças, especialmente famílias que enfrentam seletividade alimentar. O setor impactado é o de educação e promoção da saúde no cotidiano. A identificação desse público orienta o produto; não representa uma população já atendida ou uma pesquisa de campo concluída. O projeto não realiza diagnóstico, tratamento ou prescrição de dieta.')
@@ -102,12 +88,22 @@ table(['Tela','Interação principal','Resultado esperado'],[
 ('Aprender','Consultar conteúdos e perguntas frequentes.','Compreender cuidados e limites de uso.')])
 para('Fluxo principal: Preferências → Diário alimentar → seleção ou identificação → confirmação de referência e peso → registro → Meu dia. Quando o reconhecimento não oferece resultado aceitável, o usuário informa o alimento pelo catálogo ou por nome. Um prato composto não é convertido automaticamente em ingredientes ou valores nutricionais presumidos.')
 image('visao-geral-1280.png','Figura 1 — Visão geral do aplicativo em 1280 pixels. Captura do fluxo técnico de teste; os dados apresentados pertencem ao cenário de validação.')
-para('As versões móveis também estão documentadas nas capturas visao-geral-360.png e recomendacoes-360.png, na pasta de evidências do projeto. As imagens completas permitem conferir a disposição vertical sem reduzir o conteúdo a uma reprodução ilegível neste relatório.')
+para('Na versão móvel, o menu é acionado por botão; ao abrir, apresenta as páginas principais e pode ser fechado pela tecla Escape. Os indicadores são reorganizados em cartões e os controles continuam disponíveis na largura de 360 pixels.')
 para('A solução foi projetada para Web responsiva. No celular, o menu concentra a navegação e os cartões se reorganizam; no computador, a navegação lateral separa o espaço de trabalho da página de apresentação. As capturas são evidências da interface implementada, não substituem testes de usabilidade com público externo.')
 
 title(2)
 sub('Backlog e priorização')
-para('O planejamento da terceira entrega utiliza o backlog exportado do Jira, com tarefas TRAB-26 a TRAB-57, preservado em documentacoes/historico/backlog-jira.json. As etapas S1, S2 e S3 organizam incrementos por etiquetas; não há confirmação de sprints nativas criadas na ferramenta. A ordem de implementação considera dependências: estrutura e identidade, preferências, diário, resumo, reconhecimento, integração e validação.')
+para('O backlog da terceira entrega contém 32 tarefas, de TRAB-26 a TRAB-57, organizadas em três etapas: S1 — Estrutura e navegação; S2 — JavaScript e fluxo funcional; S3 — Consolidação e apresentação. A relação a seguir reproduz os títulos das tarefas e suas prioridades no material fornecido, permitindo compreender o planejamento sem consultar o Jira.')
+backlog=json.loads((ROOT/'documentacoes/historico/backlog-jira.json').read_text())
+for stage in backlog['sprints']:
+ sub(stage['id']+' — '+stage['name'])
+ para('Meta: '+stage['goal'])
+ for task in backlog['tasks']:
+  if task['planned_sprint']==stage['id']:
+   para(task['jira_key']+' — '+task['title']+'. Prioridade: '+({'Highest':'máxima','High':'alta','Medium':'média','Low':'baixa'}.get(task['priority'],task['priority']))+'.')
+para('Os critérios comuns registrados para as funcionalidades são: comportamento demonstrável na aplicação em execução; interação funcional quando aplicável; navegação e estados de erro validados; layout legível em celular e desktop; evidência anexada ou vinculada. A definição de pronto é código integrado, sem erros bloqueantes no console, revisado, testado e com evidência real.')
+para('As tarefas de documentação exigem material completo, revisado, consistente com a aplicação real, identificado e pronto para demonstração. Pendências e dificuldades devem ser relatadas sem inventar funcionalidades realizadas. As tarefas de planejamento preveem revisão das etiquetas, responsáveis, capacidade e impedimentos, demonstração do incremento e registro de melhorias. O fechamento exige revisão e evidências.')
+para('No registro fornecido, as tarefas aparecem como A fazer; responsáveis e datas não foram definidos e as etapas são planejamento por etiquetas, sem sprints nativas confirmadas. Esses dados descrevem aquele registro e não afirmam que o código atual esteja sem implementação. A organização recomendada do quadro é A fazer, Em andamento, Revisão/Testes e Feito; o mínimo acadêmico pode ser representado por A Fazer, Em Andamento e Concluído.')
 para('O escopo acadêmico inicial do backlog previa frontend em HTML, CSS e JavaScript, sem backend e banco obrigatórios. Posteriormente, a solicitação do projeto foi ampliada para publicação, contatos persistentes e análise de fotos. Assim, Node.js e Neon são ampliações da solução entregue, e não requisitos atribuídos retroativamente ao backlog original. O enquadramento dessa ampliação na entrega acadêmica deve ser alinhado com o docente.')
 table(['Prioridade','Entrega','Critério de conclusão'],[
 ('Essencial','Perfil, restrições e persistência.','Preferências salvas e recarregadas; importação inválida rejeitada.'),
@@ -199,7 +195,7 @@ para('A suíte Node.js registrou 25 testes aprovados. O fluxo Chromium também v
 sub('Avaliação de fotos e correções')
 para('Foram comparados MobileNet, CLIP e SigLIP. Para o modelo selecionado, a avaliação documentada reuniu 148 imagens: 108 fotos de alimentos/pratos e 40 controles negativos. Houve 94 acertos do alimento/prato principal entre as 108 fotos de comida, aproximadamente 87%; na coleta adicional de 50 fotos de comida, houve 40 acertos, ou 80%. São resultados de amostra, sem garantia de acerto em fotos novas.')
 para('Os erros incluíram plantas e folhas confundidas com comida. As correções adotadas foram recusa por classe negativa/score/margem, confirmação obrigatória e correção manual. Pratos compostos não recebem ingredientes ou nutrientes presumidos. Valores sem referência continuam ausentes. O diário permanece utilizável pelo catálogo quando a foto falha.')
-para('Os scripts estão em testes/; as capturas, em documentacoes/evidencias/; os manifestos, fontes e resultados por imagem, em documentacoes/avaliacao-imagens/. Não foi documentada uma avaliação de usabilidade com comunidade externa. A validação técnica não comprova aceitação, impacto clínico ou mudança de hábitos.')
+para('As verificações utilizaram cenários de cadastro, filtro por lactose e cor verde, busca sem acentos, registro por dia, peso confirmado, remoção e importação de backup. As capturas mostram a execução nesses cenários. Não foi documentada uma avaliação de usabilidade com comunidade externa. A validação técnica não comprova aceitação, impacto clínico ou mudança de hábitos.')
 
 title(6)
 sub('Ambiente de demonstração da terceira entrega')
@@ -233,8 +229,7 @@ para('Nesta terceira entrega, o NutriVibe avança da proposta e organização ap
 para('As evidências atuais incluem telas responsivas, testes de regras, percurso no navegador e avaliação documentada do reconhecimento visual. Esses resultados demonstram evolução técnica em cenários delimitados. O cadastro completo de responsável/criança, o aprofundamento dos conteúdos e o refinamento das recomendações ainda devem ser trabalhados, testados e documentados nas duas entregas restantes.')
 para('A quarta entrega será orientada ao aprofundamento dos requisitos originais e à revisão dos fluxos; a quinta, à correção dos problemas, regressão e consolidação da documentação e demonstração. A gamificação permanece condicionada à viabilidade, como previsto na proposta inicial. O planejamento será ajustado às orientações docentes, sem apresentar como realizadas tarefas ou avaliações ainda futuras.')
 para('O resultado desta etapa é, portanto, um MVP em consolidação. A contribuição pretendida segue sendo apoiar responsáveis na organização da alimentação e na exploração de variedade com respeito às preferências. O projeto não declara impacto clínico ou comunitário comprovado. A formação do grupo se fortalece pela integração entre programação, interface, pesquisa e gestão, e pela comparação entre o que foi proposto, o que funciona e o que ainda precisa evoluir.')
-sub('Fontes e evidências do projeto')
-para('Repositório: https://github.com/huezinho/projeto . Backlog fornecido: documentacoes/historico/backlog-jira.json. Documento anterior: documentacoes/segunda-entrega/trabalho.pdf. Detalhamento técnico: documentacoes/implementacao.md e documentacoes/nutricao.md. Avaliação visual: documentacoes/avaliacao-imagens/README.md. Capturas: documentacoes/evidencias/. Os caminhos são relativos à pasta NutriVibe do repositório.')
+
 # Não deixa orientações de preenchimento ou numeração vazia no documento final.
 for p in doc.paragraphs:
  for n in p._p.xpath('./w:pPr/w:numPr'):n.getparent().remove(n)

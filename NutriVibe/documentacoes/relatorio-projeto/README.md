@@ -26,3 +26,5 @@ soffice --headless --convert-to pdf --outdir NutriVibe/documentacoes/relatorio-p
 ```
 
 O arquivo enviado com extensão `.DOC` contém internamente um pacote DOCX. O gerador aceita esse arquivo original. O ZIP deve ser atualizado após regenerar os dois formatos.
+
+A revisão mais recente reproduz os 32 títulos reais do backlog TRAB-26 a TRAB-57 no próprio texto, agrupados em S1/S2/S3, com prioridades e critérios. Foram removidas as tabelas acrescentadas e as referências internas que exigiam abrir outros documentos. A capa e os nove títulos originais permanecem; as respostas usam parágrafos e rótulos em negrito, sem listas vazias.
