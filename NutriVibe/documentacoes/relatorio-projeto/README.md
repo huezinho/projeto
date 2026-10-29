@@ -1,30 +1,25 @@
-# NutriVibe — terceira entrega
-
-O relatório é uma versão progressiva para a **3ª de cinco entregas**. A referência acadêmica anterior é a segunda entrega, preservada em `../segunda-entrega/`. O documento apresenta o incremento técnico disponível para a terceira etapa e o planejamento das duas seguintes, sem declarar o projeto finalizado.
+# Relatório do projeto NutriVibe
 
 ## Arquivos
 
-- `NutriVibe_Preenchido.docx`: documento editável baseado no modelo fornecido.
-- `NutriVibe_Preenchido.pdf`: versão de leitura e conferência.
+- `NutriVibe_Preenchido.docx`: documento editável.
+- `NutriVibe_Preenchido.pdf`: versão de leitura.
 - `NutriVibe_Documento.zip`: os dois formatos reunidos.
+- `capturas/`: dez capturas da aplicação em execução, utilizadas nas figuras.
 
-## Critérios desta revisão
+A redação descreve o problema, a solução e as funcionalidades disponíveis, sem enquadramento em número de entrega e sem comentários sobre o processo de preenchimento. A seção de manutenção apresenta evoluções previstas do sistema. Os nove títulos e as imagens institucionais do modelo são preservados, incluindo a imagem da PUC no parágrafo da capa e a marca do cabeçalho.
 
-A capa identifica a terceira entrega. Os nove títulos do modelo foram preservados. Foram eliminadas orientações de preenchimento e listas vazias. O relatório inclui comparação com a segunda entrega, rastreabilidade dos oito requisitos originais, evidências técnicas e separação entre recursos operacionais, parciais e ainda não desenvolvidos.
-
-A quarta e quinta entregas são propostas de continuidade, sujeitas às instruções futuras do docente. Cadastro responsável/criança, conteúdo educativo e refinamento das recomendações continuam no planejamento. A gamificação permanece opcional e condicionada ao prazo, como no documento de agosto. Contas remotas e sincronização não são compromissos assumidos para o semestre. Backend e Neon são incrementos adicionais; a exigência da terceira etapa continua centrada em HTML, CSS e JavaScript.
-
-A turma 101 foi recuperada da capa do documento anterior. Não foram inventadas avaliações com público externo, datas de entregas futuras ou novas exigências do professor.
+O planejamento inclui as 32 tarefas do backlog, com códigos e títulos reais. As telas e os testes são apresentados com imagens e explicações no próprio texto. O cenário de interface utiliza dados de teste, identificados como tal, sem apresentar acompanhamento real de uma criança.
 
 ## Reprodução
 
-Com Python, python-docx e LibreOffice disponíveis, a partir da raiz do repositório:
+Na raiz do repositório, com Python, python-docx e LibreOffice:
 
 ```sh
 python NutriVibe/ferramentas/documentacao/gerar_relatorio_projeto.py /caminho/para/modelo-original.docx
 soffice --headless --convert-to pdf --outdir NutriVibe/documentacoes/relatorio-projeto NutriVibe/documentacoes/relatorio-projeto/NutriVibe_Preenchido.docx
 ```
 
-O arquivo enviado com extensão `.DOC` contém internamente um pacote DOCX. O gerador aceita esse arquivo original. O ZIP deve ser atualizado após regenerar os dois formatos.
+O arquivo original enviado com extensão `.DOC` é internamente um pacote DOCX e pode ser passado diretamente ao gerador. As capturas são lidas da pasta `capturas/`. Para atualizá-las, iniciar o servidor local na porta 8099 e executar `node NutriVibe/ferramentas/documentacao/capturar_relatorio.cjs`, com Playwright e Chromium instalados. O script também aceita `NUTRIVIBE_URL` e `CHROMIUM_PATH`.
 
-A revisão mais recente reproduz os 32 títulos reais do backlog TRAB-26 a TRAB-57 no próprio texto, agrupados em S1/S2/S3, com prioridades e critérios. Foram removidas as tabelas acrescentadas e as referências internas que exigiam abrir outros documentos. A capa e os nove títulos originais permanecem; as respostas usam parágrafos e rótulos em negrito, sem listas vazias.
+Após exportar o PDF, atualizar o ZIP com os dois arquivos. A geração verifica que os arquivos de mídia institucionais do original foram preservados byte a byte.
