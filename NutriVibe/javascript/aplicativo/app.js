@@ -47,6 +47,11 @@ function save(next) {
 function message(id, text) {
   $(id).textContent = text;
 }
+function requestedDay(input) {
+  const date = new URLSearchParams(location.search).get("date");
+  input.value = date || localDate();
+  if (!input.checkValidity()) input.value = localDate();
+}
 $("#menu").onclick = () => {
   const open = $("#menu").getAttribute("aria-expanded") !== "true";
   $("#menu").setAttribute("aria-expanded", open);
@@ -195,8 +200,17 @@ function addFoods(ids) {
 }
 function renderRecords() {
   const list = $("#registros");
+  const dateInput = $("#data");
+  const date = dateInput.value;
   list.replaceChildren();
-  const records = dailyRecords(state.records, $("#data").value);
+  const summaryLink = $("#day-summary");
+  summaryLink.hidden = !dateInput.checkValidity();
+  if (summaryLink.hidden) {
+    list.append(node("li", "Selecione uma data válida para ver os registros.", "empty"));
+    return;
+  }
+  summaryLink.href = `resumo.html?date=${encodeURIComponent(date)}#suggestions`;
+  const records = dailyRecords(state.records, date);
   if (!records.length)
     list.append(
       node(
@@ -314,8 +328,9 @@ function renderCatalog() {
   }
 }
 if ($("#catalogo")) {
-  $("#data").value = localDate();
-  $("#data").max = localDate();
+  const dateInput = $("#data");
+  dateInput.max = localDate();
+  requestedDay(dateInput);
   for (const group of new Set(foods.map((f) => f.group))) {
     const o = node("option", group);
     $("#grupo").append(o);
@@ -323,24 +338,22 @@ if ($("#catalogo")) {
   $("#busca").oninput = renderCatalog;
   $("#grupo").onchange = renderCatalog;
   $("#compativeis").onchange = renderCatalog;
-  $("#data").onchange = renderRecords;
+  dateInput.onchange = renderRecords;
   const params = new URLSearchParams(location.search);
   const suggested = foods.find((f) => f.id === params.get("food"));
   if (suggested) $("#busca").value = suggested.name;
-  const selectedDate = params.get("date");
-  if (
-    selectedDate &&
-    /^\d{4}-\d{2}-\d{2}$/.test(selectedDate) &&
-    selectedDate <= localDate()
-  )
-    $("#data").value = selectedDate;
   renderCatalog();
   renderRecords();
   setupPhoto();
   $("#custom-form").onsubmit = (e) => {
     e.preventDefault();
     const name = $("#custom-name").value.trim();
-    if (!name || !validEntry()) return;
+    if (!name) {
+      message("#registro-status", "Informe o nome do alimento para registrar.");
+      $("#custom-name").focus();
+      return;
+    }
+    if (!validEntry()) return;
     const record = {
       id: crypto.randomUUID(),
       foodId: null,
@@ -360,8 +373,10 @@ if ($("#catalogo")) {
   };
 }
 function updateSummary() {
-  const date = $("#dia-resumo").value;
-  if (!date) return;
+  const input = $("#dia-resumo");
+  if (!input.checkValidity()) input.value = localDate();
+  const date = input.value;
+  $("#day-diary").href = `registro.html?date=${encodeURIComponent(date)}`;
   renderNutritionSummary(date);
   const day = dailyRecords(state.records, date);
   const groups = new Map();
@@ -406,9 +421,9 @@ function updateSummary() {
     );
     $("#grupos-resumo").append(row);
   }
-  if (!day.length)
+  if (!groups.size)
     $("#grupos-resumo").append(
-      node("p", "Este dia ainda não tem registros.", "empty"),
+      node("p", day.length ? "Os alimentos informados neste dia não têm grupo no catálogo." : "Este dia ainda não tem registros.", "empty"),
     );
   message(
     "#suggestion-context",
@@ -445,8 +460,10 @@ function updateSummary() {
   }
 }
 if ($("#resumo")) {
-  $("#dia-resumo").value = localDate();
-  $("#dia-resumo").onchange = updateSummary;
+  const dateInput = $("#dia-resumo");
+  dateInput.max = localDate();
+  requestedDay(dateInput);
+  dateInput.onchange = updateSummary;
   updateSummary();
 }
 if ($("#dashboard")) {

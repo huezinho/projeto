@@ -1,11 +1,15 @@
-const { chromium } = require("playwright");
+const { chromium, firefox } = require("playwright");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
+const path = require("node:path");
 (async () => {
-  const browser = await chromium.launch({
+  const useFirefox = process.env.NUTRIVIBE_BROWSER === "firefox";
+  const browser = await (useFirefox ? firefox : chromium).launch({
     headless: true,
-    executablePath: process.env.CHROMIUM_PATH || "/usr/bin/chromium",
-    args: ["--no-sandbox"],
+    ...(useFirefox ? {} : {
+      executablePath: process.env.CHROMIUM_PATH || "/usr/bin/chromium",
+      args: ["--no-sandbox"],
+    }),
   });
   try {
     const page = await browser.newPage();
@@ -13,6 +17,14 @@ const fs = require("node:fs");
     page.on("pageerror", (e) => errors.push(e.message));
     const base = process.env.NUTRIVIBE_URL || "http://127.0.0.1:8090";
     const app = base + "/html/aplicativo/";
+    const evidence = process.env.NUTRIVIBE_EVIDENCE_DIR;
+    if (evidence) fs.mkdirSync(evidence, { recursive: true });
+    if (process.env.NUTRIVIBE_TEST_REDIRECTS === "1") {
+      assert((await page.goto(base + "/")).ok());
+      assert.match(page.url(), /\/html\/landingpage\/index\.html$/);
+      assert((await page.goto(base + "/app")).ok());
+      await page.locator("#dashboard .stat").first().waitFor();
+    }
     await page.goto(app + "perfil.html");
     await page.locator("#apelido").fill("Ana");
     await page.locator("#idade").fill("12");
@@ -21,6 +33,7 @@ const fs = require("node:fs");
     await page.getByRole("button", { name: "Salvar preferências" }).click();
     await page.getByText("Preferências salvas.", { exact: false }).waitFor();
     await page.goto(app + "registro.html");
+    await page.locator("#catalogo article").first().waitFor();
     assert.equal(
       await page
         .getByRole("button", { name: "Registrar Brócolis", exact: true })
@@ -47,11 +60,13 @@ const fs = require("node:fs");
       .getByRole("button", { name: "Confirmar peso e registrar" })
       .click();
     await page.reload();
+    await page.locator("#registros strong").first().waitFor();
     assert.equal(await page.locator("#registros strong").count(), 1);
     await page.goto(app + "index.html");
     assert.equal(await page.locator("#recent-records strong").first().textContent(), "Banana");
     assert.equal(await page.locator("#dashboard .stat").first().textContent(), "1");
     await page.getByRole("link", { name: "Abrir diário", exact: true }).click();
+    await page.locator("#registros strong").first().waitFor();
     assert.equal(await page.locator("#registros strong").count(), 1);
     await page.goto(app + "resumo.html");
     assert.equal(
@@ -72,7 +87,30 @@ const fs = require("node:fs");
       await page.locator("#resumo .stat").first().textContent(),
       "0",
     );
-    await page.goto(app + "registro.html");
+    await page.getByRole("link", { name: "Abrir diário deste dia" }).click();
+    await page.locator("#catalogo article").first().waitFor();
+    assert.equal(await page.locator("#data").inputValue(), "2020-01-01");
+    await page.locator("#custom-name").fill("   ");
+    await page.getByRole("button", { name: "Registrar alimento informado" }).click();
+    await page.getByText("Informe o nome do alimento para registrar.").waitFor();
+    await page.locator("#custom-name").fill("Sopa de legumes");
+    await page.getByRole("button", { name: "Registrar alimento informado" }).click();
+    await page.getByRole("link", { name: "Ver sugestões para o dia" }).click();
+    assert.equal(await page.locator("#resumo .stat").first().textContent(), "1");
+    assert.equal(await page.locator("#dia-resumo").inputValue(), "2020-01-01");
+    await page.getByText("Os alimentos informados neste dia não têm grupo no catálogo.").waitFor();
+    await page.locator("#sugestoes").getByRole("link", { name: "Adicionar ao diário" }).first().click();
+    await page.locator("#catalogo article").first().waitFor();
+    assert.equal(await page.locator("#data").inputValue(), "2020-01-01");
+    assert(await page.locator("#busca").inputValue());
+    await page.getByRole("button", { name: "Remover Sopa de legumes" }).click();
+    await page.locator("#data").fill("");
+    await page.locator("#data").dispatchEvent("change");
+    await page.getByText("Selecione uma data válida para ver os registros.").waitFor();
+    assert(await page.locator("#day-summary").isHidden());
+    await page.goto(app + "registro.html?date=2020-02-31");
+    await page.locator("#catalogo article").first().waitFor();
+    assert(await page.locator("#data").inputValue());
     let paidRequests = 0;
     page.on("request", (req) => {
       if (req.url().includes("/api/identify")) paidRequests++;
@@ -218,6 +256,8 @@ const fs = require("node:fs");
             "true",
           );
           await page.keyboard.press("Escape");
+          assert.equal(await page.locator("#menu").getAttribute("aria-expanded"), "false");
+          assert(await page.locator("#menu").evaluate((button) => button === document.activeElement));
         }
         for (const ref of await page
           .locator("a[href],script[src],link[href]")
@@ -229,16 +269,12 @@ const fs = require("node:fs");
           assert((await page.request.get(u.href)).ok(), u.href);
         }
       }
-      await page.goto(app + "index.html");
-      await page.screenshot({
-        path: `documentacoes/evidencias/visao-geral-${width}.png`,
-        fullPage: true,
-      });
-      await page.goto(app + "resumo.html");
-      await page.screenshot({
-        path: `documentacoes/evidencias/recomendacoes-${width}.png`,
-        fullPage: true,
-      });
+      if (evidence) {
+        await page.goto(app + "index.html");
+        await page.screenshot({ path: path.join(evidence, `visao-geral-${width}.png`), fullPage: true });
+        await page.goto(app + "resumo.html");
+        await page.screenshot({ path: path.join(evidence, `recomendacoes-${width}.png`), fullPage: true });
+      }
       await page.goto(base + "/html/landingpage/index.html");
       assert(
         await page.evaluate(
@@ -246,14 +282,21 @@ const fs = require("node:fs");
         ),
       );
     }
-    // Real contact persistence API, using a dedicated test database (server started with NUTRIVIBE_DATA_DIR).
-    await page.locator("#nome").fill("Teste de integração");
-    await page.locator("#email").fill("integration-check@nutrivibe.invalid");
-    await page.locator("#consent").check();
-    await page
-      .getByRole("button", { name: "Quero acompanhar o NutriVibe" })
-      .click();
-    await page.getByText("Interesse registrado.", { exact: false }).waitFor();
+    // Use um banco de teste dedicado para validar o formulário local.
+    if (process.env.NUTRIVIBE_TEST_CONTACTS !== "0") {
+      await page.locator("#nome").fill("Teste de integração");
+      await page.locator("#email").fill("integration-check@nutrivibe.invalid");
+      await page.locator("#consent").check();
+      await page.getByRole("button", { name: "Quero acompanhar o NutriVibe" }).click();
+      await page.getByText("Interesse registrado.", { exact: false }).waitFor();
+      assert.equal(
+        (await page.request.post(base + "/api/contacts", {
+          headers: { Origin: "https://outro.site" },
+          data: {},
+        })).status(),
+        403,
+      );
+    }
     assert.equal(
       (await page.request.get(base + "/servidor/server.js")).status(),
       404,
@@ -262,18 +305,9 @@ const fs = require("node:fs");
       (await page.request.get(base + "/.data/nutrivibe.sqlite")).status(),
       404,
     );
-    assert.equal(
-      (
-        await page.request.post(base + "/api/contacts", {
-          headers: { Origin: "https://outro.site" },
-          data: {},
-        })
-      ).status(),
-      403,
-    );
     assert.deepEqual(errors, []);
     console.log(
-      "PASS Chromium: perfil, restrições, busca, persistência, dia, foto/fallback/consentimento/confirmação, remoção, navegação, contatos, segurança básica e 360/768/1280.",
+      `PASS ${browser.browserType().name()}: perfil, busca, restrições, diário, foto, resumo, sugestões, backup e layout em 360/768/1280.`,
     );
   } finally {
     await browser.close();
