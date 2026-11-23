@@ -1,54 +1,50 @@
 # NutriVibe
 
-Aplicativo de diário alimentar, estimativa nutricional com referência TACO e sugestões de variedade, com preferências, restrições e registro por foto. A landing page inicia a criação da conta. O aplicativo conclui o cadastro com senha e direciona para as preferências. HTML, CSS e JavaScript no frontend; Node.js 24 no servidor.
+## Ideia do projeto
 
-## Iniciar
+O NutriVibe é um aplicativo web de educação alimentar voltado a crianças com seletividade alimentar e seus responsáveis. A proposta é ajudar as famílias a organizar a rotina de refeições, acompanhar o que foi consumido e explorar alimentos variados de acordo com as preferências e restrições cadastradas.
 
-```sh
-npm ci
-npm run build
-npm start
-```
+O diário permite escolher alimentos pelo catálogo ou começar o registro por uma foto. Após confirmar o alimento e a quantidade, o usuário pode consultar estimativas nutricionais com base na Tabela Brasileira de Composição de Alimentos (TACO) e ver o resumo do dia. O aplicativo também oferece conteúdo educativo e sugestões para variar as refeições. A landing page apresenta o projeto e dá acesso ao aplicativo.
 
-Abra a raiz do servidor para a landing page ou `/html/aplicativo/index.html` para o aplicativo. A porta padrão é 8080. Use `PORT` para escolher outra porta. O build prepara o ONNX Runtime Web e baixa o modelo SigLIP do Hugging Face se o arquivo ainda não estiver em cache.
+## Mudanças futuras
 
-## Organização
+- Separar os perfis de responsáveis e crianças, associar preferências a cada perfil e preservar os registros atuais durante a migração.
+- Ampliar os conteúdos educativos e o catálogo de alimentos, com linguagem acessível e referências identificadas.
+- Aprimorar as justificativas das sugestões e testar o reconhecimento com pratos compostos, fotos variadas e celulares reais.
+- Reduzir o tamanho do download do modelo de reconhecimento e avaliar o uso de memória e o tempo de resposta em celulares.
+- Avaliar a navegação por teclado, o contraste e o uso com tecnologias assistivas.
+- Planejar a sincronização do diário entre dispositivos, com controles de acesso e privacidade.
 
-```text
-NutriVibe/
-  html/{aplicativo,landingpage}/
-  css/{aplicativo,landingpage}/
-  javascript/{aplicativo,landingpage}/
-  imagens/{aplicativo,landingpage}/
-  dados/                   catálogo alimentar
-  servidor/                API, arquivos públicos e SQLite
-  testes/                  regras e fluxos de navegador
-  documentacoes/           implementação, evidências e materiais anteriores
-  .env.example             nomes de configuração, sem credenciais
-  package.json
-```
+Veja o [relatório do projeto](NutriVibe/documentacoes/relatorio-projeto/README.md) para mais detalhes.
 
-Contas e preferências ficam no Neon em produção e no SQLite no desenvolvimento. O diário fica no navegador e é separado por conta, com exportação e importação de registros. Quem já usava o diário pode transferir os registros antigos pelo rodapé após entrar na conta. Fotos são analisadas no aparelho e não são enviadas ao servidor. Recomendações consideram o dia e excluem opções incompatíveis; são sugestões de variedade, sem prescrição nutricional.
+## Integrantes do grupo
 
-O reconhecimento gratuito usa SigLIP e ONNX Runtime Web no navegador, escolhido após 148 avaliações com fotos da internet. O primeiro rótulo acertou 94 de 108 fotos de comida/pratos (87%); em 50 fotos novas, foram 40 acertos (80%). Ele sugere o alimento ou prato principal, não todos os ingredientes. Exige confirmação e pode pedir identificação manual. O primeiro download é maior (~112 MB); não há envio de fotos nem cobrança por inferência.
+| Integrante | Área de atuação |
+| --- | --- |
+| Paulo Capreti | JavaScript e integração dos fluxos do aplicativo |
+| Davi Pioli | HTML e acompanhamento do Kanban |
+| Victor Almeida | CSS, responsividade e identidade visual |
+| Marcelo Dalbone | Pesquisa |
+| Akiane Merbach | Pesquisa |
+
+## Tecnologias utilizadas
+
+- **HTML, CSS e JavaScript** para a interface da landing page e do aplicativo.
+- **Node.js 24** para a API.
+- **Vercel** para hospedar o site e executar a API.
+- **Neon (PostgreSQL)** para armazenar contas e preferências em produção. No desenvolvimento local, o projeto usa **SQLite**.
+- **Better Auth** para cadastro e login com e-mail e senha.
+- **SigLIP e ONNX Runtime Web** para sugerir o alimento principal de uma foto. O modelo roda no navegador e a foto permanece no dispositivo. O usuário confirma ou corrige a sugestão antes de salvar.
+
+## Documentação
 
 - [Comparação dos modelos, resultados e fontes](NutriVibe/documentacoes/avaliacao-imagens/README.md)
 - [Reconhecimento gratuito, testes e limitações](NutriVibe/documentacoes/reconhecimento-gratuito.md)
 - [Cálculo nutricional, fonte e confirmação de quantidade](NutriVibe/documentacoes/nutricao.md)
 - [Implementação, testes, configuração e limites](NutriVibe/documentacoes/implementacao.md)
 - [Backlog fornecido](NutriVibe/documentacoes/historico/backlog-jira.json)
+- [Publicação e configuração da Vercel](NutriVibe/documentacoes/vercel.md)
 
-`cd NutriVibe && npm test` executa os testes de regras. Para testes Chromium, siga o documento de implementação. Hospedagem completa requer Node 24 e disco persistente; GitHub Pages sozinho não executa a API.
+## Acesse o NutriVibe
 
-## Publicação na internet
-
-A Vercel executa a API de autenticação do Better Auth. Em produção, configure `BETTER_AUTH_SECRET` como segredo e conecte `POSTGRES_URL` ou `DATABASE_URL` do Neon. As tabelas de autenticação são criadas na primeira execução. Execute `npm ci && npm test && npm run build` na raiz para validar a preparação. Veja [publicação e variáveis necessárias](NutriVibe/documentacoes/vercel.md). O deploy requer conta Vercel autorizada; o Neon já está conectado. O reconhecimento local não usa credenciais de IA.
-
-## Endereços de produção
-
-- Landing page: https://nutrivibe-gamma.vercel.app
-- Aplicativo: https://nutrivibe-gamma.vercel.app/app
-
-Em 23/11/2026, a Vercel confirmou o deploy de produção `dpl_2T1KrFMjPtfPDcs4nQj93yoHXtyL` com o código de cadastro e login do commit `3c5e178`. A navegação entre diário, resumo e sugestões preserva o dia selecionado.
-
-O aplicativo usa HTML, CSS e JavaScript com catálogo e diário locais. O acesso por e-mail e senha e a gravação das preferências dependem da API. Consulte o [roteiro de apresentação e o PDF da entrega](NutriVibe/documentacoes/relatorio-projeto/README.md).
+[Landing page do NutriVibe](https://nutrivibe-gamma.vercel.app)
