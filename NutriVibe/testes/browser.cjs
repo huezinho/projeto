@@ -233,6 +233,7 @@ const path = require("node:path");
     });
     await page.getByText("Sopa de legumes", { exact: true }).waitFor();
 
+    const verifiedLinks = new Set();
     for (const width of [360, 768, 1280]) {
       await page.setViewportSize({ width, height: 900 });
       for (const slug of [
@@ -265,8 +266,9 @@ const path = require("node:path");
             nodes.map((n) => n.getAttribute("href") || n.getAttribute("src")),
           )) {
           const u = new URL(ref, page.url());
-          if (u.origin !== new URL(base).origin || u.hash) continue;
+          if (u.origin !== new URL(base).origin || u.hash || verifiedLinks.has(u.href)) continue;
           assert((await page.request.get(u.href)).ok(), u.href);
+          verifiedLinks.add(u.href);
         }
       }
       if (evidence) {

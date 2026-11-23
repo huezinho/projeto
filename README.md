@@ -10,7 +10,7 @@ npm run build
 npm start
 ```
 
-Abra a raiz do servidor para a landing page ou `/html/aplicativo/index.html` para o aplicativo. A porta padrão é 8080; use `PORT` se necessário. O build prepara a biblioteca TensorFlow.js e o modelo local; na primeira execução precisa de acesso à origem oficial Google.
+Abra a raiz do servidor para a landing page ou `/html/aplicativo/index.html` para o aplicativo. A porta padrão é 8080. Use `PORT` para escolher outra porta. O build prepara o ONNX Runtime Web e baixa o modelo SigLIP do Hugging Face se o arquivo ainda não estiver em cache.
 
 ## Organização
 
@@ -49,4 +49,6 @@ Configuração Vercel na raiz do repositório, com API serverless e PostgreSQL N
 - Landing page: https://nutrivibe-gamma.vercel.app
 - Aplicativo: https://nutrivibe-gamma.vercel.app/app
 
-Deploy de produção confirmado como READY na Vercel. O reconhecimento local substitui a integração paga. O banco Neon permanece conectado. Consulte as evidências e os limites na documentação.
+Em 23/11/2026, a Vercel confirmou o deploy de produção `dpl_6f4ijAR3MBdTm8Jgb6hjqEqzJjbU` com código do commit `2c8c65b`. A navegação entre diário, resumo e sugestões preserva o dia selecionado.
+
+O percurso acadêmico roda no navegador com HTML, CSS, JavaScript, catálogo local e `localStorage`. O cadastro de interesse da landing page é um recurso complementar com API e Neon. Consulte o [roteiro de apresentação e o PDF da entrega](NutriVibe/documentacoes/relatorio-projeto/README.md).
