@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { createContactsStore } from "./contacts.js";
+import { authResponse } from "./auth.js";
 import { identify } from "./vision.js";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const dataDir = process.env.NUTRIVIBE_DATA_DIR || path.join(root, ".data");
@@ -57,6 +58,16 @@ export async function handler(req, res) {
     // A Vercel encaminha todas as rotas de API para uma função.
     const endpoint = req.query?.endpoint || url.searchParams.get("endpoint");
     if (endpoint) url.pathname = "/api/" + String(endpoint);
+    if (url.pathname.startsWith("/api/auth/")) {
+      const result = await authResponse(req, url.pathname.slice("/api/auth/".length), dataDir, body);
+      for (const [name, value] of result.headers)
+        if (name !== "set-cookie") res.setHeader(name, value);
+      const cookies = result.headers.getSetCookie();
+      if (cookies.length) res.setHeader("Set-Cookie", cookies);
+      res.setHeader("Cache-Control", "no-store");
+      res.writeHead(result.status);
+      return res.end(await result.text());
+    }
     if (url.pathname === "/api/status" && req.method === "GET")
       return json(res, 200, {
         vision: true,

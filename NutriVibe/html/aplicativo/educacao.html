@@ -7,11 +7,12 @@
     <title>Aprender · NutriVibe</title>
     <link rel="icon" href="../../imagens/logo-nutrivibe-transparente.png" />
     <link rel="stylesheet" href="../../css/aplicativo/style.css" />
-    <script type="module" src="../../javascript/aplicativo/app.js"></script>
+    <script type="module" src="../../javascript/aplicativo/app-entry.js"></script>
   </head>
   <body data-page="educacao">
     <a class="skip" href="#conteudo">Pular para conteúdo</a>
-    <header>
+    <p class="container" id="session-status" role="status">Consultando sua conta…</p>
+    <header hidden>
       <div class="container bar">
         <a class="brand" href="index.html"
           ><img class="brand-logo" src="../../imagens/logo-nutrivibe-transparente.png" alt="NutriVibe" /></a
@@ -33,7 +34,7 @@
         <div class="workspace-note"><strong>Seu espaço de alimentação</strong><p>Registre, acompanhe e descubra no seu ritmo.</p><a href="../landingpage/index.html">Sobre o NutriVibe</a></div>
       </div>
     </header>
-    <main id="conteudo" class="container">
+    <main hidden id="conteudo" class="container">
       <p id="storage-status" role="status"></p>
       <div class="page-title">
         <p class="eyebrow">APRENDER À MESA</p>
@@ -101,7 +102,7 @@
         </p>
       </section>
     </main>
-    <footer class="container">
+    <footer hidden class="container">
       <div>
         <a class="brand" href="../landingpage/index.html">NutriVibe</a>
         <p>Alimentação com mais cuidado e possibilidades.</p>

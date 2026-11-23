@@ -52,7 +52,16 @@ export function validState(s) {
   }
   return { profile: s.profile, records: s.records };
 }
-export function load() {
+export function load(accountId) {
+  const raw = localStorage.getItem(KEY + ":" + accountId);
+  return raw ? validState(JSON.parse(raw)) : { profile: {}, records: [] };
+}
+
+export function hasLegacyData() {
+  return localStorage.getItem(KEY) !== null || localStorage.getItem("nutrivibe-mvp-v1") !== null;
+}
+
+export function loadLegacy() {
   const raw = localStorage.getItem(KEY);
   if (raw) return validState(JSON.parse(raw));
   const old = JSON.parse(localStorage.getItem("nutrivibe-mvp-v1") || "null");
@@ -77,10 +86,15 @@ export function load() {
   }
   return { profile: {}, records: [] };
 }
-export function persist(state) {
-  localStorage.setItem(KEY, JSON.stringify(validState(state)));
+export function persist(accountId, state) {
+  localStorage.setItem(KEY + ":" + accountId, JSON.stringify(validState(state)));
 }
-export function clear() {
+
+export function clear(accountId) {
+  localStorage.removeItem(KEY + ":" + accountId);
+}
+
+export function clearLegacy() {
   localStorage.removeItem(KEY);
   localStorage.removeItem("nutrivibe-mvp-v1");
 }

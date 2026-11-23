@@ -1,3 +1,5 @@
+import { signupDraftKey } from "../aplicativo/auth-client.js";
+
 const menuButton = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector("#menu-principal");
 
@@ -38,38 +40,21 @@ if ("IntersectionObserver" in window) {
 }
 
 const contactForm = document.querySelector("#contato-form");
-contactForm.addEventListener("submit", async (event) => {
+contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const status = document.querySelector("#contato-status");
-  const name = contactForm.elements.nome.value.trim(),
-    email = contactForm.elements.email.value.trim();
+  const name = contactForm.elements.nome.value.trim();
+  const email = contactForm.elements.email.value.trim();
   if (!name) {
-    status.textContent = "Informe seu nome.";
+    document.querySelector("#contato-status").textContent = "Informe seu nome.";
+    contactForm.elements.nome.focus();
     return;
   }
-  const button = contactForm.querySelector("button");
-  button.disabled = true;
-  status.textContent = "Registrando seu interesse…";
   try {
-    const response = await fetch("/api/contacts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        email,
-        consent: document.querySelector("#consent").checked,
-      }),
-    });
-    const result = await response.json();
-    if (!response.ok) throw Error(result.error);
-    status.textContent = result.message;
-    contactForm.reset();
+    sessionStorage.setItem(signupDraftKey, JSON.stringify({ name, email }));
   } catch {
-    status.textContent =
-      "Não foi possível registrar seu interesse. Tente novamente quando o serviço estiver disponível.";
-  } finally {
-    button.disabled = false;
+    // Sem armazenamento de sessão, os campos podem ser preenchidos no aplicativo.
   }
+  location.assign("../aplicativo/acesso.html");
 });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && navLinks.classList.contains("is-open")) {

@@ -679,3 +679,18 @@ footer p { margin: 6px 0; font-size: 12px; }
   .bar { padding: 16px 0; }
   main { padding-top: 12px; }
 }
+
+.account-page .account-layout {
+  width: min(100% - 32px, 480px);
+  margin: 40px auto;
+}
+.account-layout > a {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.account-layout form > button {
+  margin-top: 16px;
+}
+.account-layout h1 {
+  font-size: 2rem;
+}

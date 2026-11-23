@@ -19,14 +19,23 @@ const path = require("node:path");
     const app = base + "/html/aplicativo/";
     const evidence = process.env.NUTRIVIBE_EVIDENCE_DIR;
     if (evidence) fs.mkdirSync(evidence, { recursive: true });
-    if (process.env.NUTRIVIBE_TEST_REDIRECTS === "1") {
-      assert((await page.goto(base + "/")).ok());
-      assert.match(page.url(), /\/html\/landingpage\/index\.html$/);
-      assert((await page.goto(base + "/app")).ok());
-      await page.locator("#dashboard .stat").first().waitFor();
-    }
-    await page.goto(app + "perfil.html");
-    await page.locator("#apelido").fill("Ana");
+    const testEmail = `browser-${Date.now()}@nutrivibe.invalid`;
+    const testPassword = "NutriVibe-teste-2026!";
+    assert((await page.goto(base + "/html/landingpage/index.html")).ok());
+    await page.locator("#nome").fill("Ana");
+    await page.locator("#email").fill(testEmail);
+    await page.getByRole("button", { name: "Continuar para criar conta" }).click();
+    await page.getByRole("heading", { name: "Crie sua senha" }).waitFor();
+    assert.match(await page.locator("#signup-identity").textContent(), /Ana/);
+    await page.locator("#new-password").fill(testPassword);
+    await page.locator("#confirm-password").fill("senha-diferente");
+    await page.getByRole("button", { name: "Criar conta", exact: true }).click();
+    await page.getByText("As senhas precisam ser iguais.").waitFor();
+    await page.locator("#confirm-password").fill(testPassword);
+    await page.getByRole("button", { name: "Criar conta", exact: true }).click();
+    await page.getByRole("heading", { name: "Preferências alimentares" }).waitFor();
+    assert.equal(await page.locator("#apelido").inputValue(), "Ana");
+    assert(await page.getByRole("link", { name: "Ir para o diário" }).isHidden());
     await page.locator("#idade").fill("12");
     await page.locator("input[value=lactose]").check();
     await page.locator("input[value=verde]").check();
@@ -284,21 +293,22 @@ const path = require("node:path");
         ),
       );
     }
-    // Use um banco de teste dedicado para validar o formulário local.
-    if (process.env.NUTRIVIBE_TEST_CONTACTS !== "0") {
-      await page.locator("#nome").fill("Teste de integração");
-      await page.locator("#email").fill("integration-check@nutrivibe.invalid");
-      await page.locator("#consent").check();
-      await page.getByRole("button", { name: "Quero acompanhar o NutriVibe" }).click();
-      await page.getByText("Interesse registrado.", { exact: false }).waitFor();
-      assert.equal(
-        (await page.request.post(base + "/api/contacts", {
-          headers: { Origin: "https://outro.site" },
-          data: {},
-        })).status(),
-        403,
-      );
-    }
+    await page.goto(app + "registro.html");
+    await page.getByText("Sopa de legumes", { exact: true }).waitFor();
+    await page.getByRole("button", { name: "Sair da conta" }).click();
+    await page.getByRole("heading", { name: "Entre no NutriVibe" }).waitFor();
+    await page.goto(app + "registro.html");
+    await page.getByRole("heading", { name: "Crie sua conta" }).waitFor();
+    await page.getByRole("button", { name: "Já tenho uma conta" }).click();
+    await page.locator("#signin-email").fill(testEmail);
+    await page.locator("#signin-password").fill("senha-errada");
+    await page.getByRole("button", { name: "Entrar", exact: true }).click();
+    await page.getByText("Confira o e-mail e a senha e tente novamente.").waitFor();
+    await page.locator("#signin-password").fill(testPassword);
+    await page.getByRole("button", { name: "Entrar", exact: true }).click();
+    await page.getByText("Sopa de legumes", { exact: true }).waitFor();
+    await page.goto(app + "perfil.html");
+    assert(await page.locator("input[value=lactose]").isChecked());
     assert.equal(
       (await page.request.get(base + "/servidor/server.js")).status(),
       404,
@@ -309,7 +319,7 @@ const path = require("node:path");
     );
     assert.deepEqual(errors, []);
     console.log(
-      `PASS ${browser.browserType().name()}: perfil, busca, restrições, diário, foto, resumo, sugestões, backup e layout em 360/768/1280.`,
+      `PASS ${browser.browserType().name()}: cadastro, sessão, perfil, busca, restrições, diário, foto, resumo, sugestões, backup e layout em 360/768/1280.`,
     );
   } finally {
     await browser.close();

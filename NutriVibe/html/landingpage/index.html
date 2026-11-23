@@ -43,7 +43,7 @@
           <li><a href="#solucao">Solução</a></li>
           <li><a href="#funcionalidades">Funcionalidades</a></li>
           <li><a href="#gamificacao">Gamificação</a></li>
-          <li><a class="nav-cta" href="#contato">Quero conhecer</a></li>
+          <li><a class="nav-cta" href="#contato">Criar conta</a></li>
         </ul>
       </nav>
     </header>
@@ -66,7 +66,7 @@
                 >Conhecer solução</a
               >
               <a class="button button-secondary" href="../aplicativo/index.html"
-                >Experimentar aplicativo</a
+                >Abrir aplicativo</a
               >
             </div>
             <div class="hero-badges" aria-label="Destaques do projeto">
@@ -244,39 +244,16 @@
 
       <section class="section section-soft" id="contato">
         <div class="container final-cta">
-          <p class="eyebrow">Apresentação do projeto</p>
-          <h2>
-            NutriVibe une saúde, educação e tecnologia em uma experiência
-            acessível.
-          </h2>
-          <form id="contato-form" class="contact-form">
-            <label for="nome">Seu nome</label
-            ><input
-              id="nome"
-              name="nome"
-              maxlength="80"
-              autocomplete="given-name"
-              required
-            /><label for="email">Seu e-mail</label
-            ><input
-              id="email"
-              name="email"
-              type="email"
-              maxlength="254"
-              autocomplete="email"
-              required
-            /><label
-              ><input id="consent" type="checkbox" required /> Autorizo
-              armazenar meu nome e e-mail para contato sobre o NutriVibe.</label
-            >
-            <p>
-              Armazenamos seu contato para acompanhar seu interesse no projeto.
-              Não enviamos e-mails automaticamente.
-            </p>
-            <button class="button button-primary" type="submit">
-              Quero acompanhar o NutriVibe
-            </button>
+          <h2>Crie sua conta NutriVibe</h2>
+          <p>Informe seu nome e e-mail. Em seguida, crie uma senha e configure suas preferências no aplicativo.</p>
+          <form method="post" id="contato-form" class="contact-form">
+            <label for="nome">Seu nome</label>
+            <input id="nome" name="nome" maxlength="80" autocomplete="name" required />
+            <label for="email">Seu e-mail</label>
+            <input id="email" name="email" type="email" maxlength="254" autocomplete="email" required />
+            <button class="button button-primary" type="submit">Continuar para criar conta</button>
             <p id="contato-status" role="status"></p>
+            <p><a href="../aplicativo/acesso.html?modo=entrar">Já tenho uma conta</a></p>
           </form>
         </div>
       </section>
@@ -289,6 +266,6 @@
       </div>
     </footer>
 
-    <script src="../../javascript/landingpage/script.js"></script>
+    <script type="module" src="../../javascript/landingpage/script.js"></script>
   </body>
 </html>

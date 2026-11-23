@@ -13,8 +13,8 @@ O planejamento inclui as 32 tarefas do backlog, com códigos e títulos reais. A
 
 ## Roteiro da demonstração do MVP
 
-1. Abra a landing page e selecione **Experimentar aplicativo**. Mostre o painel e os atalhos para as telas principais. [Abrir NutriVibe](https://nutrivibe-gamma.vercel.app/)
-2. Em **Preferências**, use um perfil fictício. Marque lactose e salve. Abra o diário e mostre que o filtro de compatibilidade esconde leite.
+1. Na landing page, informe nome e e-mail e selecione **Continuar para criar conta**. Crie uma senha no aplicativo. [Abrir NutriVibe](https://nutrivibe-gamma.vercel.app/)
+2. Em **Preferências**, confira o nome preenchido e informe a idade do perfil fictício. Marque lactose e salve. Abra o diário e mostre que o filtro de compatibilidade esconde leite.
 3. Selecione o almoço e pesquise banana no diário. Registre **Banana, prata, crua**, com 100 g. A referência TACO resulta em uma estimativa de 98,2 kcal para esse item.
 4. Em **Refeições registradas**, abra **Ver sugestões para o dia**. Confira o dia selecionado, os totais e as sugestões compatíveis. Abra **Adicionar ao diário** em uma sugestão para mostrar que o catálogo abre com o alimento e a data selecionados.
 5. Abra **Aprender** pela navegação e mostre o conteúdo educativo. Em um celular, demonstre o menu e a adaptação das telas.

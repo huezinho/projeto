@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#176247" />
+    <title>Acesso · NutriVibe</title>
+    <link rel="icon" href="../../imagens/logo-nutrivibe-transparente.png" />
+    <link rel="stylesheet" href="../../css/aplicativo/style.css" />
+    <script type="module" src="../../javascript/aplicativo/auth-page.js"></script>
+  </head>
+  <body class="account-page">
+    <main class="account-layout">
+      <a href="../landingpage/index.html">
+        <img class="brand-logo" src="../../imagens/logo-nutrivibe-transparente.png" alt="Voltar para o NutriVibe" />
+      </a>
+      <section class="card" aria-labelledby="account-title">
+        <h1 id="account-title" tabindex="-1">Crie sua conta</h1>
+        <form method="post" id="identity-form">
+          <label for="signup-name">Seu nome</label>
+          <input id="signup-name" name="name" maxlength="80" autocomplete="name" required />
+          <label for="signup-email">Seu e-mail</label>
+          <input id="signup-email" name="email" type="email" maxlength="254" autocomplete="email" required />
+          <button type="submit">Continuar</button>
+        </form>
+        <form method="post" id="password-form" hidden>
+          <p id="signup-identity"></p>
+          <label for="new-password">Crie uma senha</label>
+          <input id="new-password" name="password" type="password" autocomplete="new-password"
+            required minlength="8" maxlength="128" aria-describedby="password-help" />
+          <p id="password-help" class="muted">Use pelo menos 8 caracteres.</p>
+          <label for="confirm-password">Confirme a senha</label>
+          <input id="confirm-password" type="password" autocomplete="new-password"
+            required minlength="8" maxlength="128" />
+          <p class="muted">Nome e e-mail serão usados na sua conta. Suas preferências ficam vinculadas à conta.</p>
+          <div class="actions">
+            <button type="submit">Criar conta</button>
+            <button id="edit-identity" class="secondary" type="button">Alterar nome ou e-mail</button>
+          </div>
+        </form>
+        <form method="post" id="signin-form" hidden>
+          <label for="signin-email">Seu e-mail</label>
+          <input id="signin-email" name="email" type="email" maxlength="254" autocomplete="username" required />
+          <label for="signin-password">Sua senha</label>
+          <input id="signin-password" name="password" type="password" maxlength="128" autocomplete="current-password" required />
+          <button type="submit">Entrar</button>
+        </form>
+        <p id="account-status" role="status"></p>
+        <button id="account-mode" class="text-button" type="button">Já tenho uma conta</button>
+      </section>
+    </main>
+  </body>
+</html>

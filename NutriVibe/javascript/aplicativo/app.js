@@ -15,7 +15,9 @@ import {
   recommend,
   localDate,
 } from "./engine.js";
-import { load, persist, clear, validState } from "./store.js";
+import { load, persist, clear, hasLegacyData, loadLegacy, clearLegacy, validState } from "./store.js";
+import { authRequest, getSession, notifySessionChange, readProfile } from "./auth-client.js";
+
 const $ = (s) => document.querySelector(s);
 const node = (tag, text, cls) => {
   const e = document.createElement(tag);
@@ -23,19 +25,21 @@ const node = (tag, text, cls) => {
   if (cls) e.className = cls;
   return e;
 };
-let state = { profile: {}, records: [] };
+const { user } = await getSession();
+const savedProfile = readProfile(user);
+let state = { profile: savedProfile || { name: user.name }, records: [] };
 let storageBlocked = false;
 try {
-  state = load();
+  state.records = load(user.id).records;
 } catch {
   storageBlocked = true;
   $("#storage-status").textContent =
-    "Não foi possível ler os dados salvos. Exporte uma cópia antes de alterar ou limpar o armazenamento.";
+    "Não foi possível ler os registros salvos neste navegador.";
 }
 function save(next) {
   if (storageBlocked) return false;
   try {
-    persist(next);
+    persist(user.id, { profile: {}, records: next.records });
     state = next;
     return true;
   } catch {
@@ -63,10 +67,46 @@ document.addEventListener("keydown", (e) => {
     $("#menu").focus();
   }
 });
-$("#limpar").onclick = () => {
-  if (confirm("Apagar seu perfil e todos os registros deste navegador?"))
+const logout = node("button", "Sair da conta", "secondary");
+logout.type = "button";
+$("#global-status").before(logout);
+logout.onclick = async () => {
+  logout.disabled = true;
+  try {
+    await authRequest("sign-out", {});
+    notifySessionChange();
+    location.replace("acesso.html?modo=entrar");
+  } catch {
+    message("#global-status", "Não foi possível sair. Tente novamente.");
+    logout.disabled = false;
+  }
+};
+
+if (!storageBlocked && hasLegacyData()) {
+  const migrate = node("button", "Transferir registros antigos para esta conta", "secondary");
+  migrate.type = "button";
+  $("#global-status").before(migrate);
+  migrate.onclick = () => {
+    if (!confirm("Transferir para esta conta os registros feitos neste navegador antes da criação de contas?"))
+      return;
     try {
-      clear();
+      const records = new Map(loadLegacy().records.map(record => [record.id, record]));
+      for (const record of state.records) records.set(record.id, record);
+      if (save({ ...state, records: [...records.values()] })) {
+        clearLegacy();
+        location.reload();
+      }
+    } catch {
+      message("#global-status", "Não foi possível transferir os registros antigos.");
+    }
+  };
+}
+$("#limpar").textContent = "Apagar registros locais";
+$("#importar-btn").textContent = "Importar registros";
+$("#limpar").onclick = () => {
+  if (confirm("Apagar os registros alimentares desta conta neste navegador?"))
+    try {
+      clear(user.id);
       location.reload();
     } catch {
       message("#global-status", "Não foi possível apagar os dados.");
@@ -92,8 +132,8 @@ $("#importar").onchange = async (e) => {
     if (file.size > 5_000_000) throw Error("Arquivo muito grande.");
     const incoming = validState(JSON.parse(await file.text()));
     if (
-      confirm("Substituir seus dados pelos dados deste arquivo?") &&
-      save(incoming)
+      confirm("Substituir os registros locais pelos registros deste arquivo?") &&
+      save({ ...state, records: incoming.records })
     )
       location.reload();
   } catch {
@@ -131,6 +171,9 @@ if ($("#perfil-form")) {
   for (const texture of ["macio", "crocante", "cremoso", "liquido", "firme"])
     choice("#texturas", texture, texture, "textures");
   const p = state.profile;
+  const diaryLink = $("#perfil-form a[href='registro.html']");
+  const submit = $("#perfil-form button");
+  diaryLink.hidden = !savedProfile;
   $("#apelido").value = p.name || "";
   $("#idade").value = p.age || "";
   $("#preferred").value = p.preferred || "";
@@ -139,7 +182,7 @@ if ($("#perfil-form")) {
     document
       .querySelectorAll(`[name=${k}]`)
       .forEach((i) => (i.checked = (p[k] || []).includes(i.value)));
-  $("#perfil-form").onsubmit = (e) => {
+  $("#perfil-form").onsubmit = async (e) => {
     e.preventDefault();
     const name = $("#apelido").value.trim();
     if (!name)
@@ -153,11 +196,18 @@ if ($("#perfil-form")) {
     };
     for (const k of ["restrictions", "colors", "textures"])
       profile[k] = data.getAll(k);
-    if (save({ ...state, profile }))
-      message(
-        "#perfil-status",
-        "Preferências salvas. Suas próximas sugestões já considerarão estas escolhas.",
-      );
+    submit.disabled = true;
+    message("#perfil-status", "Salvando preferências…");
+    try {
+      await authRequest("update-user", { preferences: JSON.stringify(profile) });
+      state = { ...state, profile };
+      diaryLink.hidden = false;
+      message("#perfil-status", "Preferências salvas. Suas próximas sugestões já considerarão estas escolhas.");
+    } catch {
+      message("#perfil-status", "Não foi possível salvar suas preferências. Tente novamente.");
+    } finally {
+      submit.disabled = false;
+    }
   };
 }
 function stat(container, label, value, detail) {

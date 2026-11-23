@@ -1,6 +1,6 @@
 # NutriVibe
 
-Aplicativo de diário alimentar, estimativa nutricional com referência TACO e sugestões de variedade, com preferências, restrições e registro por foto. Landing page separada com formulário de interesse integrado ao Neon em produção e SQLite no desenvolvimento. HTML, CSS e JavaScript no frontend; Node.js 24 no servidor.
+Aplicativo de diário alimentar, estimativa nutricional com referência TACO e sugestões de variedade, com preferências, restrições e registro por foto. A landing page inicia a criação da conta. O aplicativo conclui o cadastro com senha e direciona para as preferências. HTML, CSS e JavaScript no frontend; Node.js 24 no servidor.
 
 ## Iniciar
 
@@ -28,7 +28,7 @@ NutriVibe/
   package.json
 ```
 
-Perfil e registros ficam no navegador, com exportação/importação e remoção. Contatos ficam no Neon em produção e no SQLite local no desenvolvimento. Fotos são analisadas no aparelho e não são enviadas ao servidor. Recomendações consideram o dia e excluem opções incompatíveis; são sugestões de variedade, sem prescrição nutricional.
+Contas e preferências ficam no Neon em produção e no SQLite no desenvolvimento. O diário fica no navegador e é separado por conta, com exportação e importação de registros. Quem já usava o diário pode transferir os registros antigos pelo rodapé após entrar na conta. Fotos são analisadas no aparelho e não são enviadas ao servidor. Recomendações consideram o dia e excluem opções incompatíveis; são sugestões de variedade, sem prescrição nutricional.
 
 O reconhecimento gratuito usa SigLIP e ONNX Runtime Web no navegador, escolhido após 148 avaliações com fotos da internet. O primeiro rótulo acertou 94 de 108 fotos de comida/pratos (87%); em 50 fotos novas, foram 40 acertos (80%). Ele sugere o alimento ou prato principal, não todos os ingredientes. Exige confirmação e pode pedir identificação manual. O primeiro download é maior (~112 MB); não há envio de fotos nem cobrança por inferência.
 
@@ -42,7 +42,7 @@ O reconhecimento gratuito usa SigLIP e ONNX Runtime Web no navegador, escolhido 
 
 ## Publicação na internet
 
-Configuração Vercel na raiz do repositório, com API serverless e PostgreSQL Neon para contatos. Execute `npm ci && npm test && npm run build` na raiz para validar a preparação. Veja [publicação e variáveis necessárias](NutriVibe/documentacoes/vercel.md). O deploy requer conta Vercel autorizada; o Neon já está conectado. O reconhecimento local não usa credenciais de IA.
+A Vercel executa a API de autenticação do Better Auth. Em produção, configure `BETTER_AUTH_SECRET` como segredo e conecte `POSTGRES_URL` ou `DATABASE_URL` do Neon. As tabelas de autenticação são criadas na primeira execução. Execute `npm ci && npm test && npm run build` na raiz para validar a preparação. Veja [publicação e variáveis necessárias](NutriVibe/documentacoes/vercel.md). O deploy requer conta Vercel autorizada; o Neon já está conectado. O reconhecimento local não usa credenciais de IA.
 
 ## Endereços de produção
 
@@ -51,4 +51,4 @@ Configuração Vercel na raiz do repositório, com API serverless e PostgreSQL N
 
 Em 23/11/2026, a Vercel confirmou o deploy de produção `dpl_6f4ijAR3MBdTm8Jgb6hjqEqzJjbU` com código do commit `2c8c65b`. A navegação entre diário, resumo e sugestões preserva o dia selecionado.
 
-O percurso acadêmico roda no navegador com HTML, CSS, JavaScript, catálogo local e `localStorage`. O cadastro de interesse da landing page é um recurso complementar com API e Neon. Consulte o [roteiro de apresentação e o PDF da entrega](NutriVibe/documentacoes/relatorio-projeto/README.md).
+O aplicativo usa HTML, CSS e JavaScript com catálogo e diário locais. O acesso por e-mail e senha e a gravação das preferências dependem da API. Consulte o [roteiro de apresentação e o PDF da entrega](NutriVibe/documentacoes/relatorio-projeto/README.md).
