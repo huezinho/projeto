@@ -1,5 +1,13 @@
 # Publicação na Vercel
 
+## Cadastro e login — versão atual
+
+A landing page inicia a criação de uma conta com nome e e-mail. O Better Auth, executado na função Vercel, recebe a senha e mantém a sessão em cookie HttpOnly e Secure. `BETTER_AUTH_SECRET` é uma variável sensível de Production. As tabelas `nutrivibe_auth_*` são criadas no Neon na primeira execução, com bloqueio transacional para inicializações simultâneas.
+
+Preferências e restrições ficam na conta. O diário permanece no navegador e usa uma chave por conta. Registros das versões anteriores podem ser transferidos manualmente no rodapé após entrar. O formulário anterior gravava interesses em `contacts`. Esses registros não são convertidos em contas.
+
+O projeto ainda precisa de verificação de e-mail e recuperação de senha para oferecer esses fluxos. Abaixo está o histórico das publicações e da infraestrutura anterior.
+
 ## Publicação confirmada
 
 Projeto Vercel `nutrivibe` criado e deploy de produção concluído com estado **READY** pela API oficial. Endereço de produção: https://nutrivibe-gamma.vercel.app . Aplicativo: https://nutrivibe-gamma.vercel.app/app . A exigência de login da Vercel foi removida do projeto (`ssoProtection: null`) para acesso público, conforme pedido do usuário.

@@ -49,6 +49,6 @@ A Vercel executa a API de autenticação do Better Auth. Em produção, configur
 - Landing page: https://nutrivibe-gamma.vercel.app
 - Aplicativo: https://nutrivibe-gamma.vercel.app/app
 
-Em 23/11/2026, a Vercel confirmou o deploy de produção `dpl_6f4ijAR3MBdTm8Jgb6hjqEqzJjbU` com código do commit `2c8c65b`. A navegação entre diário, resumo e sugestões preserva o dia selecionado.
+Em 23/11/2026, a Vercel confirmou o deploy de produção `dpl_2T1KrFMjPtfPDcs4nQj93yoHXtyL` com o código de cadastro e login do commit `3c5e178`. A navegação entre diário, resumo e sugestões preserva o dia selecionado.
 
 O aplicativo usa HTML, CSS e JavaScript com catálogo e diário locais. O acesso por e-mail e senha e a gravação das preferências dependem da API. Consulte o [roteiro de apresentação e o PDF da entrega](NutriVibe/documentacoes/relatorio-projeto/README.md).
